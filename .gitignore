@@ -1,0 +1,14 @@
+tags
+autoload
+bundle
+plugin
+view
+.*.swp
+.netrwhist
+
+colors/Tomorrow-Night.vim
+colors/hybrid.vim
+colors/quantum.vim
+
+colors/.tags
+after/ftplugin/.tags

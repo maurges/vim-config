@@ -1,0 +1,14 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+<F6>	/home/god/.vim/after/ftplugin/c.vim	/^nnoremap <buffer> <F6> :make %:r.o<CR>$/;"	m	language:Vim
+<F6>	/home/god/.vim/after/ftplugin/cpp.vim	/^nnoremap <buffer> <F6> :make %:r.o<CR>$/;"	m	language:Vim
+<S-CR>	/home/god/.vim/after/ftplugin/c.vim	/^inoremap <buffer> <silent> <S-CR> <End><CR>{<CR>}<Up><CR>$/;"	m	language:Vim
+<S-CR>	/home/god/.vim/after/ftplugin/cpp.vim	/^inoremap <buffer> <silent> <S-CR> <End><CR>{<CR>}<Up><CR>$/;"	m	language:Vim
+<S-CR>	/home/god/.vim/after/ftplugin/ruby.vim	/^inoremap <buffer> <silent> <S-CR> <End><CR>end<Up><End><CR>$/;"	m	language:Vim
+main#	/home/god/.vim/after/ftplugin/c.vim	/^inoreabbrev <buffer> main# int main(int argc, char** argv)<CR>{<CR>}<Up>$/;"	m	language:Vim
+main#	/home/god/.vim/after/ftplugin/cpp.vim	/^inoreabbrev <buffer> main# int main(int argc, char** argv)<CR>{<CR>}<Up>$/;"	m	language:Vim
+Q	/home/god/.vim/after/ftplugin/c.vim	/^noremap  <buffer> <silent> Q :s\/^\\(\\\/\\\/\\)\\?\/\/<CR>$/;"	m	language:Vim
+q	/home/god/.vim/after/ftplugin/c.vim	/^noremap  <buffer> <silent> q :s\/^\\(\\\/\\\/\\)\\?\/\\\/\\\/\/<CR>$/;"	m	language:Vim
+Q	/home/god/.vim/after/ftplugin/cpp.vim	/^noremap  <buffer> <silent> Q :s\/^\\(\\\/\\\/\\)\\?\/\/<CR>$/;"	m	language:Vim
+q	/home/god/.vim/after/ftplugin/cpp.vim	/^noremap  <buffer> <silent> q :s\/^\\(\\\/\\\/\\)\\?\/\\\/\\\/\/<CR>$/;"	m	language:Vim
+q	/home/god/.vim/after/ftplugin/python.vim	/^noremap  <buffer> <silent> q :s\/^\\(#\\)\\?\/#\/<Cr>$/;"	m	language:Vim
+Q	/home/god/.vim/after/ftplugin/python.vim	/^noremap  <buffer> <silent> Q :s\/^\\(#\\)\\?\/\/<Cr>$/;"	m	language:Vim
