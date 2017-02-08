@@ -3,12 +3,18 @@ autoload
 bundle
 plugin
 view
-.*.swp
 .netrwhist
+
+.*.swp
+after/ftplugin/.*.swp
+colors/.*.swp
 
 colors/Tomorrow-Night.vim
 colors/hybrid.vim
 colors/quantum.vim
+colors/jellybeans.vim
+colors/one.vim
+colors/paramount.vim
 
 colors/.tags
 after/ftplugin/.tags
