@@ -152,8 +152,8 @@ nnoremap ZQ <C-W>q
 
 
 "yeah i edit vimrc a lot
-nnoremap <F10> :tabe ~/.vimrc<CR>
-nnoremap <C-F10> :source ~/.vimrc<CR>
+nnoremap <F10> :tabe ~/.vim/vimrc<CR>
+nnoremap <C-F10> :source ~/.vim/vimrc<CR>
 nnoremap <F9> :tabe ~/.vim/after/ftplugin/
 nnoremap <C-F9> :source ~/.vim/after/ftplugin/
 
@@ -187,7 +187,7 @@ nnoremap <silent> g* yiw:let @/=@"<CR>:set hlsearch<CR>
 vnoremap <silent> g* <C-C>yiw:let @/=@"<CR>:set hlsearch<CR>gv
 vnoremap <silent> g/ y/<C-R>"<CR>:set hlsearch<CR>
 nnoremap <silent> g/ :set hlsearch<CR>
-nnoremap <silent> <Esc> <Esc>:set nohlsearch<CR>
+nnoremap <silent> <Esc> :set nohlsearch<CR>
 
 
 "delimitmate maps for expanding space and enter

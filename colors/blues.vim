@@ -11,7 +11,7 @@ set t_Co=256
 let g:colors_name="blues"
 
 
-hi Normal        ctermfg=251    ctermbg=None  cterm=None  guifg=#c6c6c6  guibg=#1c1c1c
+hi Normal        ctermfg=251    ctermbg=234   cterm=None  guifg=#c6c6c6  guibg=#1c1c1c
 hi Cursor        ctermfg=Black  ctermbg=White cterm=None  guifg=Black    guibg=White
 hi SpecialKey    ctermfg=30     ctermbg=None  cterm=None  guifg=#008787  guibg=#1c1c1c
 hi Directory     ctermfg=32     ctermbg=None  cterm=None  guifg=#0087d7  guibg=#1c1c1c
