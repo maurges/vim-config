@@ -40,7 +40,7 @@ set autoread
 "set list
 "set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
-set foldmethod=indent
+set foldmethod=syntax
 
 set splitright
 set splitbelow
@@ -170,8 +170,8 @@ nnoremap <silent> <C-F5> :cclose<CR>
 "some quickfix window maps
 nnoremap <silent> <F4> :copen<CR>
 nnoremap <silent> <C-F4> :cclose<CR>
-nnoremap <silent> <C-N> :copen<CR><C-W>o:cn<CR><C-W>p:resize 15<CR><C-W>r
-nnoremap <silent> <C-P> :copen<CR><C-W>o:cp<CR><C-W>p:resize 15<CR><C-W>r
+nnoremap <silent> <C-N> :copen<CR><C-W>o:cn<CR><C-W>p:resize 15<CR>
+nnoremap <silent> <C-P> :copen<CR><C-W>o:cp<CR><C-W>p:resize 15<CR>
 
 
 "making searches highlight the thing
