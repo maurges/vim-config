@@ -77,10 +77,12 @@ let g:airline_section_warning = ''
 let g:airline_section_error = ''
 
 "so hard to choose..
-"AirlineTheme monochrome
 let g:airline_theme='raven'
-"AirlineTheme wombat
-"AirlineTheme badcat
+
+"disable airline for console
+if !has("gui_running")
+	let g:loaded_airline = 1
+endif
 
 
 "vim sneak settings
