@@ -200,6 +200,8 @@ noremap  = 3<C-E>
 noremap  - 3<C-Y>
 inoremap <C-E> <C-O>2<C-E>
 inoremap <C-Y> <C-O>2<C-Y>
+inoremap <A-Z> <C-O>zz
+inoremap ú <C-O>zz
 
 "other movement
 noremap  k gk
