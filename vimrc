@@ -102,8 +102,9 @@ omap <Tab> <Plug>Sneak_s
 omap <S-Tab> <Plug>Sneak_S
 
 
-let g:quantum_black = 1
-colo blues
+"colo blues
+"a new colorscheme in town
+colo vorange
 
 
 "unmapping shit
