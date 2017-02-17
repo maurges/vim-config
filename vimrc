@@ -10,9 +10,8 @@ set noexpandtab
 set mouse=a
 set visualbell
 set wildmode=list:longest
-"an option that does not delete automatic tab when moving cursor away (it
-"works in a weird way)
-set cpoptions+=I
+"yank can be redone with .
+set cpoptions+=y
 
 set relativenumber
 
