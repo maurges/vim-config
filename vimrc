@@ -75,13 +75,27 @@ set laststatus=2
 let g:airline_section_warning = ''
 let g:airline_section_error = ''
 
-"so hard to choose..
 let g:airline_theme='raven'
 
 "disable airline for console
 if !has("gui_running")
 	let g:loaded_airline = 1
 endif
+
+
+"OmniCppComplete options
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+"show function parameters
+let OmniCpp_ShowPrototypeInAbbr = 1
+"autocomplete after .
+let OmniCpp_MayCompleteDot = 1
+"autocomplete after ->
+let OmniCpp_MayCompleteArrow = 1
+"autocomplete after ::
+let OmniCpp_MayCompleteScope = 1
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 
 
 "vim sneak settings
@@ -166,7 +180,7 @@ nnoremap <C-F1> :set filetype?
 
 
 "while we're at it, some quickfix maps
-nnoremap <F5> :make<CR>:copen<CR>
+nnoremap <F5> :make<CR>
 nnoremap <silent> <C-F5> :cclose<CR>
 
 "some quickfix window maps
