@@ -1,1 +1,1 @@
-autocmd BufRead,BufNewFile	~/asm/*	setlocal tabstop=10
+setlocal tabstop=10

@@ -115,9 +115,12 @@ omap <Tab> <Plug>Sneak_s
 omap <S-Tab> <Plug>Sneak_S
 
 
-"colo blues
 "a new colorscheme in town
 colo vorange
+if !has("gui_running")
+	colo blues
+endif
+
 
 
 "unmapping shit
