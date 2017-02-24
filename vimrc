@@ -179,7 +179,7 @@ nnoremap <C-F9> :source ~/.vim/after/ftplugin/
 
 "found out I also set the filetype a lot
 nnoremap <F1> :set filetype=
-nnoremap <C-F1> :set filetype?
+nnoremap <C-F1> :set filetype?<CR>
 
 
 "while we're at it, some quickfix maps
