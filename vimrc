@@ -233,6 +233,7 @@ noremap  <Home> ^
 inoremap <Home> <C-O>^
 inoremap <S-Home> <Home>
 nnoremap <Space>e $
+vnoremap <Space>e $
 onoremap <Space>e $
 
 nnoremap <CR> o<Esc>k
