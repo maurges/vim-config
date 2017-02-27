@@ -184,11 +184,10 @@ nnoremap <C-F1> :set filetype?<CR>
 
 "while we're at it, some quickfix maps
 nnoremap <F5> :wa<CR>:make<CR>
-nnoremap <silent> <C-F5> :cclose<CR>
 
 "some quickfix window maps
-nnoremap <silent> <F4> :copen<CR>
-nnoremap <silent> <C-F4> :cclose<CR>
+nnoremap <silent> <F4> :tabdo copen<CR>
+nnoremap <silent> <C-F4> :tabdo cclose<CR>
 nnoremap <silent> <C-N> :cn<CR>
 nnoremap <silent> <C-P> :cp<CR>
 
