@@ -165,11 +165,6 @@ nmap     <M-A> A
 nmap     á A
 
 
-"quicksaving, why not
-nnoremap ZW :w<CR>
-nnoremap ZQ <C-W>q
-
-
 "yeah i edit vimrc a lot
 nnoremap <F10> :tabe ~/.vim/vimrc<CR>
 nnoremap <C-F10> :source ~/.vim/vimrc<CR>
