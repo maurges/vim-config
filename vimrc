@@ -258,12 +258,12 @@ nnoremap <silent> gmT :tabm -1<CR>
 nnoremap <silent> <Space>p Vp
 nnoremap <silent> <Space>P kVp
 vnoremap <silent> <Space>p p
-nnoremap <Space>t gt
-nnoremap <Space>T gT
 noremap  <Space>` <C-O>
 noremap  <Space>' <C-I>
 map      <Space>+ <C-A>
 map      <Space>- <C-X>
+
+nnoremap <Space>t gT
 
 noremap  <Space>] g<C-]>
 "if i knew more i maybe would like to delete it
