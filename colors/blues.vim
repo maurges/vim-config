@@ -9,6 +9,7 @@ if $TERM != 'linux'
 set bg=dark
 set t_Co=256
 let g:colors_name="blues"
+highlight clear
 
 
 hi Normal        ctermfg=251    ctermbg=234   cterm=None  guifg=#c6c6c6  guibg=#1c1c1c
