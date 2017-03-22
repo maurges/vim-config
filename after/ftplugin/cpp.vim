@@ -4,7 +4,6 @@ noremap  <buffer> <silent> Q :s/^\(\/\/\)\?//<CR>
 iabbrev  <buffer> and &&
 iabbrev  <buffer> or \|\|
 
-setlocal omnifunc=omni#cpp#complete#Main
 set tags+=~/.vim/cpptags
 
 inoreabbrev <buffer> main# int main(int argc, char** argv)<CR>{<CR>}<Up>
