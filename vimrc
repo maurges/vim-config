@@ -305,8 +305,8 @@ augroup end
 "keep folds and other stuff when closing file
 augroup autoview
 	autocmd!
-	autocmd FileWritePost ?* if @% != "" | mkview | endif
-	autocmd BufReadPost ?* silent if @% != "" | loadview | endif
+	autocmd BufWritePre ?* if @% != "" | mkview! | endif
+	autocmd BufWinEnter ?* if @% != "" | silent! loadview | endif
 augroup end
 
 
