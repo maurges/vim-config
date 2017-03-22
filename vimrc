@@ -84,21 +84,6 @@ if !has("gui_running")
 endif
 
 
-"OmniCppComplete options
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-"show function parameters
-let OmniCpp_ShowPrototypeInAbbr = 1
-"autocomplete after .
-let OmniCpp_MayCompleteDot = 1
-"autocomplete after ->
-let OmniCpp_MayCompleteArrow = 1
-"autocomplete after ::
-let OmniCpp_MayCompleteScope = 1
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-
-
 "vim sneak settings
 let g:sneak#map_netrw = 0
 let g:sneak#prompt = ''
