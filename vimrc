@@ -181,8 +181,11 @@ nnoremap <C-F1> :set filetype?<CR>
 nnoremap <F5> :wa<CR>:make<CR>
 
 "some quickfix window maps
-nnoremap <silent> <F4> :tabdo copen<CR>
-nnoremap <silent> <C-F4> :tabdo cclose<CR>
+
+"this one remembers current tab, opens/closes quickfix everywhere and returns to it
+nnoremap <silent> <F4> :let _ctabpage=tabpagenr()<CR>:tabdo copen<CR>:execute "normal! " . _ctabpage . "gt"<CR>
+nnoremap <silent> <C-F4> :let _ctabpage=tabpagenr()<CR>:tabdo cclose<CR>:execute "normal! " . _ctabpage . "gt"<CR>
+
 nnoremap <silent> <C-N> :cn<CR>
 nnoremap <silent> <C-P> :cp<CR>
 
