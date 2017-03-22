@@ -2,45 +2,46 @@ set nocompatible
 
 execute pathogen#infect()
 
+filetype plugin on
+
 set number
 set tabstop=4
 set shiftwidth=4
 set autoindent
 set noexpandtab
 set mouse=a
+set ruler
+"blink screen on errors
 set visualbell
+"bash-like tab behavior
 set wildmode=list:longest
 "yank can be redone with .
 set cpoptions+=y
-
+"don't save options with views
+set viewoptions-=options
+"good shit
 set relativenumber
-
-"a fix to disable default ftplugins
-"autocmd BufReadPre,BufNewFile *.py let b:did_ftplugin = 1
-"but should i disable them?
-filetype plugin on
-
+"searching is smart about case
 set ignorecase
 set smartcase
-
-"set cursorline
-set ruler
+"keep two lines before cursor
 set scrolloff=2
-
+"quickfix windows searches for open tab, splits if not found
 set switchbuf=usetab,split
-
+"include keyword should look like this:
 set include=^\s*\(#\s*include\|import\)
 
 "set matchpairs+=<:>
+"moving left and right can move past the line
 set whichwrap=b,s,<,>,[,]
-
+"re-read modified file
 set autoread
-
+"showing non-printable characters: i don't need it right now
 "set list
 "set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
 set foldmethod=syntax
-
+"splitting windows prioritizes right>below>rest
 set splitright
 set splitbelow
 
@@ -71,7 +72,7 @@ let g:easytags_async=1
 "airline settings
 let g:airline_powerline_fonts=1
 set laststatus=2
-
+"disable ugly error sections
 let g:airline_section_warning = ''
 let g:airline_section_error = ''
 
@@ -168,8 +169,10 @@ nmap     á A
 "yeah i edit vimrc a lot
 nnoremap <F10> :tabe ~/.vim/vimrc<CR>
 nnoremap <C-F10> :source ~/.vim/vimrc<CR>
+nnoremap <C-S-F10> :source ~/.vim/vimrc<CR>
 nnoremap <F9> :tabe ~/.vim/after/ftplugin/
 nnoremap <C-F9> :source ~/.vim/after/ftplugin/
+nnoremap <C-S-F9> :source ~/.vim/after/ftplugin/
 
 
 "found out I also set the filetype a lot
@@ -181,16 +184,15 @@ nnoremap <C-F1> :set filetype?<CR>
 nnoremap <F5> :wa<CR>:make<CR>
 
 "some quickfix window maps
-
 "this one remembers current tab, opens/closes quickfix everywhere and returns to it
 nnoremap <silent> <F4> :let _ctabpage=tabpagenr()<CR>:tabdo copen<CR>:execute "normal! " . _ctabpage . "gt"<CR>
 nnoremap <silent> <C-F4> :let _ctabpage=tabpagenr()<CR>:tabdo cclose<CR>:execute "normal! " . _ctabpage . "gt"<CR>
-
+"fast moving between errors
 nnoremap <silent> <C-N> :cn<CR>
 nnoremap <silent> <C-P> :cp<CR>
 
 
-"making searches highlight the thing
+"highlights words as i search
 nmap <silent> / :let @/=""<CR>:set hlsearch<CR><Plug>(incsearch-forward)
 nmap <silent> ? :let @/=""<CR>:set hlsearch<CR><Plug>(incsearch-backward)
 nnoremap <silent> * :set hlsearch<CR>*
@@ -198,11 +200,14 @@ nnoremap <silent> # :set hlsearch<CR>#
 "but also sometimes i want to search without highlights
 noremap <silent> <Space>/ /
 noremap <silent> <Space>? ?
-
+"highlights the word under cursor
 nnoremap <silent> g* yiw:let @/=@"<CR>:set hlsearch<CR>
 vnoremap <silent> g* <C-C>yiw:let @/=@"<CR>:set hlsearch<CR>gv
+"highlights selected text
 vnoremap <silent> g/ y/<C-R>"<CR>:set hlsearch<CR>
+"highlights previously highlighted text
 nnoremap <silent> g/ :set hlsearch<CR>
+"turns off text highlighting
 nnoremap <silent> <Esc> :set nohlsearch<CR>
 
 
@@ -214,8 +219,8 @@ imap <unique> <buffer> <Space> <Plug>delimitMateSpace
 "screen movement
 noremap  = 3<C-E>
 noremap  - 3<C-Y>
-inoremap <C-E> <C-O>2<C-E>
-inoremap <C-Y> <C-O>2<C-Y>
+inoremap <C-E> <C-X><C-E><C-X><C-E>a<BS>
+inoremap <C-Y> <C-X><C-Y><C-X><C-Y>a<BS>
 inoremap <A-Z> <C-O>zz
 inoremap ú <C-O>zz
 
@@ -227,15 +232,18 @@ noremap  0 ^
 onoremap 0 ^
 noremap  ^ 0
 onoremap ^ 0
+"also home should go to the first non-blank character, not just first
 noremap  <Home> ^
 inoremap <Home> <C-O>^
 inoremap <S-Home> <Home>
+"because $ is hard to press
 nnoremap <Space>e $
 vnoremap <Space>e $
 onoremap <Space>e $
-
+"easily add new lines
 nnoremap <CR> o<Esc>k
 nnoremap <S-CR> O<Esc>j
+"easily split lines
 nnoremap <C-O> i<CR><Esc>
 
 
@@ -252,7 +260,7 @@ cnoremap ;) \(\)<Left><Left>
 cnoremap ;< \<\><Left><Left>
 cnoremap ;> \<\><Left><Left>
 
-
+"hotkeys for moving tabs
 nnoremap <silent> gmt :tabm +1<CR>
 nnoremap <silent> gmT :tabm -1<CR>
 
@@ -265,7 +273,7 @@ noremap  <Space>` <C-O>
 noremap  <Space>' <C-I>
 map      <Space>+ <C-A>
 map      <Space>- <C-X>
-
+"took me a lot to think of it
 nnoremap <Space>t gT
 
 noremap  <Space>] g<C-]>
@@ -277,9 +285,14 @@ nmap     <Space>s ys
 vmap     <Space>s S
 nmap     <Space>s<Space> ys$
 
-
 "found i use <C-W> a lot, but it's a pain to press
 nnoremap <Space>w <C-W>
+
+
+"hotkey to quickly replace word under cursor
+nnoremap <silent> <F2> yiw:tabdo %s/<C-R>"/
+"and quickly replace all occurences of selected text
+vnoremap <silent> <F2> y:tabdo %s/<C-R>"/
 
 
 
