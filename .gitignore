@@ -5,6 +5,7 @@ bundle
 plugin
 view
 .netrwhist
+init.vim
 
 .*.swp
 after/ftplugin/.*.swp
