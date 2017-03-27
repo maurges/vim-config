@@ -178,13 +178,13 @@ nnoremap <silent> <C-P> :cp<CR>
 
 
 "highlights words as i search
-nmap <silent> / :let @/=""<CR>:set hlsearch<CR><Plug>(incsearch-forward)
-nmap <silent> ? :let @/=""<CR>:set hlsearch<CR><Plug>(incsearch-backward)
+nmap / :let @/=""<CR>:set hlsearch<CR><Plug>(incsearch-forward)
+nmap ? :let @/=""<CR>:set hlsearch<CR><Plug>(incsearch-backward)
 nnoremap <silent> * :set hlsearch<CR>*
 nnoremap <silent> # :set hlsearch<CR>#
 "but also sometimes i want to search without highlights
-noremap <silent> <Space>/ /
-noremap <silent> <Space>? ?
+noremap <Space>/ /
+noremap <Space>? ?
 "highlights the word under cursor
 nnoremap <silent> g* yiw:let @/=@"<CR>:set hlsearch<CR>
 vnoremap <silent> g* <C-C>yiw:let @/=@"<CR>:set hlsearch<CR>gv
@@ -193,7 +193,7 @@ vnoremap <silent> g/ y/<C-R>"<CR>:set hlsearch<CR>
 "highlights previously highlighted text
 nnoremap <silent> g/ :set hlsearch<CR>
 "turns off text highlighting
-nnoremap <silent> <Esc> :set nohlsearch<CR>
+nnoremap <silent> <Esc> :let @/=""<CR>:set nohlsearch<CR>
 
 
 "delimitmate maps for expanding space and enter
@@ -275,9 +275,9 @@ nnoremap <Space>w <C-W>
 
 
 "hotkey to quickly replace word under cursor
-nnoremap <silent> <F2> yiw:tabdo %s/<C-R>"/
+nnoremap <F2> yiw:tabdo %s/<C-R>"/
 "and quickly replace all occurences of selected text
-vnoremap <silent> <F2> y:tabdo %s/<C-R>"/
+vnoremap <F2> y:tabdo %s/<C-R>"/
 
 
 
