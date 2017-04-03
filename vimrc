@@ -119,6 +119,12 @@ noremap  S <nop>
 "don't want that annoying help window
 nnoremap <F1> <NOP>
 nnoremap <S-F1> <NOP>
+"this thing exists in insert mode!
+inoremap <F1> <NOP>
+inoremap <S-F1> <NOP>
+"visual too just in case
+vnoremap <F1> <NOP>
+vnoremap <S-F1> <NOP>
 
 
 "it doesn't make sense by default
