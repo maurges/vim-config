@@ -125,6 +125,8 @@ inoremap <S-F1> <NOP>
 "visual too just in case
 vnoremap <F1> <NOP>
 vnoremap <S-F1> <NOP>
+"hate that small deletes overwrite unnamed
+nnoremap x "_x
 
 
 "it doesn't make sense by default
