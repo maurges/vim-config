@@ -1,7 +1,41 @@
 set nocompatible
 
-execute pathogen#infect()
+call plug#begin('~/.vim/bundle')
 
+"essentiol
+Plug 'tpope/vim-surround'
+"requirement for some other plugins
+Plug 'xolox/vim-misc'
+"auto-closing brackets
+Plug 'Raimondi/delimitMate'
+"regexes in search
+Plug 'haya14busa/incsearch.vim'
+"file tree
+Plug 'scrooloose/nerdtree'
+"rust colors, syntax, ftplugin
+Plug 'rust-lang/rust.vim'
+"quick reformat
+Plug 'godlygeek/tabular'
+"source code browsing bar
+Plug 'majutsushi/tagbar'
+"beautiful status line
+Plug 'vim-airline/vim-airline'
+"beatiful themes for beatiful airline (they mostly ugly tho)
+Plug 'vim-airline/vim-airline-themes'
+"automatic tag creation
+Plug 'xolox/vim-easytags'
+"indent text-object
+Plug 'michaeljsmith/vim-indent-object'
+"smarter .
+Plug 'tpope/vim-repeat'
+"fast search by two characters
+Plug 'justinmk/vim-sneak'
+"change date with only a few keystrokes!
+Plug 'tpope/vim-speeddating'
+
+call plug#end()
+
+filetype indent off
 filetype plugin on
 
 set number
@@ -44,6 +78,12 @@ set foldmethod=syntax
 "splitting windows prioritizes right>below>rest
 set splitright
 set splitbelow
+
+"don't insert comment leader when creating a new line
+augroup comment_formatoptions
+	autocmd!
+	autocmd FileType * setlocal formatoptions-=r formatoptions-=o
+augroup end
 
 "prettier nerdtree
 let NERDTreeMinimalUI = 1
