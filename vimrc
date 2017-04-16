@@ -32,6 +32,8 @@ Plug 'tpope/vim-repeat'
 Plug 'justinmk/vim-sneak'
 "change date with only a few keystrokes!
 Plug 'tpope/vim-speeddating'
+"undo tree visualisation
+Plug 'mbbill/undotree'
 
 call plug#end()
 
@@ -326,6 +328,10 @@ nnoremap <Space>w <C-W>
 nnoremap <F2> yiw:tabdo %s/<C-R>"/
 "and quickly replace all occurences of selected text
 vnoremap <F2> y:tabdo %s/<C-R>"/
+
+
+"quickly invoke undotree
+nnoremap U :UndoTreeToggle<CR>
 
 
 
