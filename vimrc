@@ -13,7 +13,7 @@ Plug 'haya14busa/incsearch.vim'
 "file tree
 Plug 'scrooloose/nerdtree'
 "rust colors, syntax, ftplugin
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 "quick reformat
 Plug 'godlygeek/tabular'
 "source code browsing bar
@@ -38,6 +38,8 @@ Plug 'mbbill/undotree'
 Plug 'nathanaelkane/vim-indent-guides'
 "special symbols for haskell
 Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
+"lots of additional text objects
+Plug 'wellle/targets.vim'
 
 call plug#end()
 
