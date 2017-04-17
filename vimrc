@@ -68,8 +68,8 @@ set smartcase
 set scrolloff=2
 "quickfix windows searches for open tab, splits if not found
 set switchbuf=usetab,split
-"include keyword should look like this:
-set include=^\s*\(#\s*include\|import\)
+"don't redraw screen when executing untyped commands
+set lazyredraw
 
 "set matchpairs+=<:>
 "moving left and right can move past the line
