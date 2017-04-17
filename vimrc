@@ -267,8 +267,8 @@ nnoremap <silent> <Esc> :let @/=""<CR>:set nohlsearch<CR>
 
 
 "delimitmate maps for expanding space and enter
-imap <unique> <buffer> <CR> <Plug>delimitMateCR
-imap <unique> <buffer> <Space> <Plug>delimitMateSpace
+silent! imap <unique> <buffer> <CR> <Plug>delimitMateCR
+silent! imap <unique> <buffer> <Space> <Plug>delimitMateSpace
 
 
 "screen movement
@@ -363,9 +363,9 @@ nnoremap õ :UndotreeToggle<CR>
 
 
 "for when i have to edit other man's file
-command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
-command! Implodetab2 :%s/  /	/g
-command! Implodetab4 :%s/    /	/g
+silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
+silent! command! Implodetab2 :%s/  /	/g
+silent! command! Implodetab4 :%s/    /	/g
 
 
 "maps for comments for files
