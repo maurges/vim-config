@@ -331,11 +331,16 @@ nnoremap <Space>[ <C-T>
 
 "better surround-vim maps with spaaace
 nmap     <Space>s ys
-vmap     <Space>s S
+vmap     <Space>s gS
 nmap     <Space>s<Space> ys$
 
 "found i use <C-W> a lot, but it's a pain to press
 nnoremap <Space>w <C-W>
+
+
+"maps for most commonly used surround operations
+nnoremap <Space>b i(<End>)<C-C>
+nmap     <Space>B ySs}
 
 
 "hotkey to quickly replace word under cursor
