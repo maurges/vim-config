@@ -36,6 +36,8 @@ Plug 'tpope/vim-speeddating'
 Plug 'mbbill/undotree'
 "show tab layers
 Plug 'nathanaelkane/vim-indent-guides'
+"special symbols for haskell
+Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
 
 call plug#end()
 
@@ -118,6 +120,10 @@ let g:easytags_async=1
 let g:undotree_DiffAutoOpen=0
 "autofocus when opening window
 let g:undotree_SetFocusWhenToggle=1
+
+
+"haskell-conseal option: disable consealing of "where"
+let hscoptions='w'
 
 
 "indent_guides settings
