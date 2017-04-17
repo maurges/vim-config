@@ -34,6 +34,8 @@ Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-speeddating'
 "undo tree visualisation
 Plug 'mbbill/undotree'
+"show tab layers
+Plug 'nathanaelkane/vim-indent-guides'
 
 call plug#end()
 
@@ -109,6 +111,18 @@ set tags=./.tags,./.TAGS
 let g:easytags_dynamic_files = 2
 "also asynchronous updates
 let g:easytags_async=1
+
+
+"undoTree settings
+"don't open diff window
+let g:undotree_DiffAutoOpen=0
+"autofocus when opening window
+let g:undotree_SetFocusWhenToggle=1
+
+
+"indent_guides settings
+"more opaque colors
+let g:indent_guides_color_change_percent=5
 
 
 "airline settings
@@ -331,7 +345,8 @@ vnoremap <F2> y:tabdo %s/<C-R>"/
 
 
 "quickly invoke undotree
-nnoremap U :UndoTreeToggle<CR>
+nnoremap <A-U> :UndotreeToggle<CR>
+nnoremap õ :UndotreeToggle<CR>
 
 
 
