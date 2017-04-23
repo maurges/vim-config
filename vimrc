@@ -40,6 +40,10 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
 "lots of additional text objects
 Plug 'wellle/targets.vim'
+"plugin for asynchronous code execution (for other plugins)
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+"stuff mainly to hot typechek haskell code
+Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 
 call plug#end()
 

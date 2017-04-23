@@ -2,6 +2,8 @@
 setlocal norelativenumber
 "someone recommended having qf removed from buffer list
 setlocal nobuflisted
+"i like it more without cursorline
+setlocal nocursorline
 
 "some maps to select errors
 
