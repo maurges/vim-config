@@ -342,8 +342,9 @@ noremap  <Space>] g<C-]>
 nnoremap <Space>[ <C-T>
 
 "better surround-vim maps with spaaace
-nmap     <Space>s ys
-vmap     <Space>s gS
+nmap     <Space>s  <Plug>Ysurround
+nmap     <Space>ss <Plug>Yssurround
+vmap     <Space>s  <Plug>VSurround
 nmap     <Space>s<Space> ys$
 
 "found i use <C-W> a lot, but it's a pain to press
@@ -352,7 +353,7 @@ nnoremap <Space>w <C-W>
 
 "maps for most commonly used surround operations
 nnoremap <Space>b i(<End>)<C-C>
-nmap     <Space>B ySs}
+nmap     <Space>B <<ySs}
 
 
 "hotkey to quickly replace word under cursor
@@ -364,6 +365,13 @@ vnoremap <F2> y:tabdo %s/<C-R>"/
 "quickly invoke undotree
 nnoremap <A-U> :UndotreeToggle<CR>
 nnoremap õ :UndotreeToggle<CR>
+
+
+"main tabularize maps
+vnoremap <silent> <Leader>t= :Tabularize /=/<CR>
+nnoremap <silent> <Leader>t= :Tabularize /=/<CR>
+vnoremap <silent> <Leader>t: :Tabularize /=/<CR>
+nnoremap <silent> <Leader>t: :Tabularize /=/<CR>
 
 
 
