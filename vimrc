@@ -91,6 +91,10 @@ set foldmethod=syntax
 set splitright
 set splitbelow
 
+"cursor style. The most important are cursor blinking options, others are
+"default
+set guicursor=n-v-c:block-blinkon0-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-blinkon925-blinkoff700-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+
 "don't insert comment leader when creating a new line
 augroup comment_formatoptions
 	autocmd!
