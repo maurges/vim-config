@@ -2,8 +2,7 @@ set nocompatible
 
 call plug#begin('~/.vim/bundle')
 
-"essentiol
-Plug 'tpope/vim-surround'
+"essentiol Plug 'tpope/vim-surround'
 "requirement for some other plugins
 Plug 'xolox/vim-misc'
 "auto-closing brackets
@@ -216,12 +215,6 @@ inoremap <C-R> <C-R><C-P>
 "i'm too used to q to comment, but macros are nice
 noremap <BS> q
 
-"better shortcuts for completion
-inoremap <M-J> <C-N>
-inoremap ê <C-N>
-inoremap <M-K> <C-P>
-inoremap ë <C-P>
-
 
 "faster navigation in insert mode
 inoremap <M-H> <Left>
@@ -239,15 +232,17 @@ nmap     á A
 
 "yeah i edit vimrc a lot
 nnoremap <F10> :tabe ~/.vim/vimrc<CR>
-nnoremap <C-F10> :source ~/.vim/vimrc<CR>
-nnoremap <C-S-F10> :source ~/.vim/vimrc<CR>
-nnoremap <F9> :tabe ~/.vim/after/ftplugin/
-nnoremap <C-F9> :source ~/.vim/after/ftplugin/
+nnoremap <F9>  :tabe ~/.vim/after/ftplugin/
+"sources from selected ftplugin
+nnoremap <C-F9>   :source ~/.vim/after/ftplugin/
 nnoremap <C-S-F9> :source ~/.vim/after/ftplugin/
+"sources from vimrc and required ftplugin if it exists
+nnoremap <C-F10>   :source ~/.vim/vimrc<CR>:if filereadable("~/.vim/after/ftplugin/".&filetype.".vim") <Bar> :exec "source ~/.vim/after/ftplugin/".&filetype.".vim" <Bar> :endif<CR>
+nnoremap <C-S-F10> :source ~/.vim/vimrc<CR>:if filereadable("~/.vim/after/ftplugin/".&filetype.".vim") <Bar> :exec "source ~/.vim/after/ftplugin/".&filetype.".vim" <Bar> :endi<CR>
 
 
 "found out I also set the filetype a lot
-nnoremap <F1> :set filetype=
+nnoremap <F1>   :set filetype=
 nnoremap <C-F1> :set filetype?<CR>
 
 
@@ -256,7 +251,7 @@ nnoremap <F5> :wa<CR>:make<CR>
 
 "some quickfix window maps
 "this one remembers current tab, opens/closes quickfix everywhere and returns to it
-nnoremap <silent> <F4> :let _ctabpage=tabpagenr()<CR>:tabdo copen<CR>:execute "normal! " . _ctabpage . "gt"<CR>
+nnoremap <silent> <F4>   :let _ctabpage=tabpagenr()<CR>:tabdo copen<CR>:execute "normal! " . _ctabpage . "gt"<CR>
 nnoremap <silent> <C-F4> :let _ctabpage=tabpagenr()<CR>:tabdo cclose<CR>:execute "normal! " . _ctabpage . "gt"<CR>
 "fast moving between errors
 nnoremap <silent> <C-N> :cn<CR>
@@ -384,6 +379,14 @@ vnoremap <silent> <Leader>t: :Tabularize /=/<CR>
 nnoremap <silent> <Leader>t: :Tabularize /=/<CR>
 nnoremap <silent> <Leader>t<Space> :Tabularize / /l0r0<CR>
 vnoremap <silent> <Leader>t<Space> :Tabularize / /l0r0<CR>
+
+
+"some remaps to control completion
+inoremap <expr> <ESC> pumvisible() ? "\<C-E>" : "\<C-C>"
+inoremap <expr> <A-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
+inoremap <expr> ê     pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
+inoremap <expr> <A-K> pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
+inoremap <expr> ë     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 
 
 
