@@ -19,7 +19,7 @@ augroup end
 
 
 "ghc-mod bindings
-nnoremap <Leader>gt :GhcModType<CR>
-nnoremap <silent> <Esc> :let @/=""<CR>:set nohlsearch<CR>:GhcModTypeClear<CR>
-nnoremap <Leader>gi :GhcModInfo<CR>
-nnoremap <Leader>go :GhcModTypeInsert<CR>
+nnoremap <buffer> <Leader>gt :GhcModType<CR>
+nnoremap <buffer> <silent> <Esc> :let @/=""<CR>:set nohlsearch<CR>:GhcModTypeClear<CR>
+nnoremap <buffer> <Leader>gi :GhcModInfo<CR>
+nnoremap <buffer> <Leader>go :GhcModTypeInsert<CR>

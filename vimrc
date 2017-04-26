@@ -44,6 +44,8 @@ Plug 'wellle/targets.vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 "stuff mainly to hot typechek haskell code
 Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
+"best autocompletion evaaaar
+Plug 'd86leader/vim-stupidcomplete'
 
 call plug#end()
 
@@ -130,6 +132,10 @@ let g:easytags_async=1
 let g:undotree_DiffAutoOpen=0
 "autofocus when opening window
 let g:undotree_SetFocusWhenToggle=1
+
+
+"using stupidcomplete as usercomplete function
+set completefunc=Stupidcomplete
 
 
 "haskell-conseal option: disable consealing of "where"
@@ -376,6 +382,8 @@ vnoremap <silent> <Leader>t= :Tabularize /=/<CR>
 nnoremap <silent> <Leader>t= :Tabularize /=/<CR>
 vnoremap <silent> <Leader>t: :Tabularize /=/<CR>
 nnoremap <silent> <Leader>t: :Tabularize /=/<CR>
+nnoremap <silent> <Leader>t<Space> :Tabularize / /l0r0<CR>
+vnoremap <silent> <Leader>t<Space> :Tabularize / /l0r0<CR>
 
 
 
