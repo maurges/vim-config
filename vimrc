@@ -2,7 +2,8 @@ set nocompatible
 
 call plug#begin('~/.vim/bundle')
 
-"essentiol Plug 'tpope/vim-surround'
+"essentiol
+Plug 'tpope/vim-surround'
 "requirement for some other plugins
 Plug 'xolox/vim-misc'
 "auto-closing brackets
