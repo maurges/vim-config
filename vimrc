@@ -415,13 +415,13 @@ augroup end
 "and the function used in autocmd
 fun! s:set_commentstring()
 	if &filetype == ""
-		let b:cs = "#" | echom "1"
+		let b:cs = "#"
  	elseif &commentstring == "/*%s*/"
- 		let b:cs = "\\/\\/" | echom "2" "why so many backslashes required?
+ 		let b:cs = "\\/\\/" "why so many backslashes required?
  	elseif &commentstring == ""
- 		let b:cs = "#" | echom "3"
+ 		let b:cs = "#"
  	else
- 		let b:cs = escape(strpart(&commentstring, 0, match(&commentstring, "%s")), "/\\") | echom "4"
+ 		let b:cs = escape(strpart(&commentstring, 0, match(&commentstring, "%s")), "/\\")
  	endif
 endfun
 
