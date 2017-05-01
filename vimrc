@@ -374,16 +374,19 @@ nnoremap õ :UndotreeToggle<CR>
 
 
 "main tabularize maps
-vnoremap <silent> <Leader>t= :Tabularize /=/<CR>
-nnoremap <silent> <Leader>t= :Tabularize /=/<CR>
-vnoremap <silent> <Leader>t: :Tabularize /=/<CR>
-nnoremap <silent> <Leader>t: :Tabularize /=/<CR>
+vnoremap <silent> <Leader>t= :Tabularize assignment<CR>
+nnoremap <silent> <Leader>t= :Tabularize assignment<CR>
+vnoremap <silent> <Leader>t: :Tabularize /:/<CR>
+nnoremap <silent> <Leader>t: :Tabularize /:/<CR>
 nnoremap <silent> <Leader>t<Space> :Tabularize / /l0r0<CR>
 vnoremap <silent> <Leader>t<Space> :Tabularize / /l0r0<CR>
+nnoremap <silent> <leader>t, :Tabularize argument_list<CR>
+vnoremap <silent> <leader>t, :Tabularize argument_list<CR>
 
 
 "some remaps to control completion
 inoremap <expr> <ESC> pumvisible() ? "\<C-E>" : "\<C-C>"
+inoremap <expr> <CR>  pumvisible() ? "\<C-Y>" : "\<CR>"
 inoremap <expr> <A-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
 inoremap <expr> ê     pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
 inoremap <expr> <A-K> pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
@@ -398,9 +401,29 @@ silent! command! Implodetab2 :%s/  /	/g
 silent! command! Implodetab4 :%s/    /	/g
 
 
-"maps for comments for files
-noremap <buffer> <silent> q :s/^#\?/#/<CR>
-noremap <buffer> <silent> Q :s/^#\?//<CR>
+"a small commentary pluginchik: will comment based on commentstring
+nnoremap <silent> q :exec "s/^\\V\\(".b:cs."\\)\\?/".b:cs."/"<CR>
+vnoremap <silent> q <C-C>:exec "'<,'>s/^\\V\\(".b:cs."\\)\\?/".b:cs."/"<CR>
+"uncommenting
+nnoremap <silent> Q :exec "s/^\\V\\(".b:cs."\\)\\?//"<CR>
+vnoremap <silent> Q <C-C>:exec "'<,'>s/^\\V\\(".b:cs."\\)\\?//"<CR>
+"setting the string to comment with
+augroup commentstring_set
+	autocmd!
+	autocmd BufWinEnter * call s:set_commentstring()
+augroup end
+"and the function used in autocmd
+fun! s:set_commentstring()
+	if &filetype == ""
+		let b:cs = "#" | echom "1"
+ 	elseif &commentstring == "/*%s*/"
+ 		let b:cs = "\\/\\/" | echom "2" "why so many backslashes required?
+ 	elseif &commentstring == ""
+ 		let b:cs = "#" | echom "3"
+ 	else
+ 		let b:cs = escape(strpart(&commentstring, 0, match(&commentstring, "%s")), "/\\") | echom "4"
+ 	endif
+endfun
 
 
 "Close tab if only nerdtree is left
@@ -426,15 +449,20 @@ augroup end
 
 
 "an omnicompletion fix: inserts a closing bracket when text has opening one
-"inoremap <C-x><C-o> <C-r>=<SID>close_paren()<CR><C-x><C-o>
-"function! s:close_paren() abort
-"    augroup close_paren
-"        autocmd!
-"        autocmd CompleteDone <buffer> if v:completed_item.word && v:completed_item.word =~# '($'
-"                                   \ |     call feedkeys(")\<Left>", 'in')
-"                                   \ | endif
-"                                   \ | autocmd! close_paren
-"                                   \ | augroup! close_paren
-"    augroup END
-"    return ''
-"endfunction
+inoremap <C-x><C-o> <C-r>=<SID>close_paren()<CR><C-x><C-o>
+
+fun! s:perform_paren_closing() abort
+	if v:completed_item.word && v:completed_item.word =~# '($'
+		call feedkeys(")\<Left>", 'in')
+	endif
+	autocmd! close_paren
+	augroup! close_paren
+endfun
+
+fun! s:close_paren() abort
+    augroup close_paren
+        autocmd!
+        autocmd CompleteDone <buffer> call <SID>perform_paren_closing()
+    augroup END
+    return ''
+endfun

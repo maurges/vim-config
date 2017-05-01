@@ -1,6 +1,4 @@
 inoremap <buffer> <silent> <S-CR> <End><CR>{<CR>}<Up><CR>
-noremap  <buffer> <silent> q :s/^\(\/\/\)\?/\/\//<CR>
-noremap  <buffer> <silent> Q :s/^\(\/\/\)\?//<CR>
 iabbrev  <buffer> and &&
 iabbrev  <buffer> or \|\|
 

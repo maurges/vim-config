@@ -1,6 +1,4 @@
 setlocal cpoptions+=M
-noremap  <buffer> <silent> q :s/^\(-- \)\?/-- /<CR>
-noremap  <buffer> <silent> Q :s/^\(-- \)\?//<CR>
 
 setlocal makeprg=ghc\ --make\ -Wall\ -fno-warn-tabs
 let g:ghcmod_ghc_options=['-Wall', '-fno-warn-tabs']
