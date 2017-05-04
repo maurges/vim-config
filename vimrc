@@ -451,8 +451,8 @@ augroup end
 "an omnicompletion fix: inserts a closing bracket when text has opening one
 inoremap <C-x><C-o> <C-r>=<SID>close_paren()<CR><C-x><C-o>
 
-fun! s:perform_paren_closing() abort
-	if v:completed_item.word && v:completed_item.word =~# '($'
+fun! s:perform_paren_closing(completed_item) abort
+	if has_key(a:completed_item, "word") && a:completed_item.word =~# '($'
 		call feedkeys(")\<Left>", 'in')
 	endif
 	autocmd! close_paren
@@ -462,7 +462,7 @@ endfun
 fun! s:close_paren() abort
     augroup close_paren
         autocmd!
-        autocmd CompleteDone <buffer> call <SID>perform_paren_closing()
+        autocmd CompleteDone <buffer> call <SID>perform_paren_closing(v:completed_item)
     augroup END
     return ''
 endfun
