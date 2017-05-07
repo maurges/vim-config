@@ -97,6 +97,9 @@ set splitbelow
 "default
 set guicursor=n-v-c:block-blinkon0-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-blinkon925-blinkoff700-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
+"beautiful line wrapping
+set breakindent
+
 "don't insert comment leader when creating a new line
 augroup comment_formatoptions
 	autocmd!
@@ -180,10 +183,10 @@ omap <S-Tab> <Plug>Sneak_S
 
 
 "a new colorscheme in town
-colo vorange
-if !has("gui_running")
+"colo vorange
+"if !has("gui_running")
 	colo blues
-endif
+"endif
 
 
 
@@ -354,7 +357,7 @@ vmap     <Space>s  <Plug>VSurround
 nmap     <Space>s<Space> ys$
 
 "found i use <C-W> a lot, but it's a pain to press
-nnoremap <Space>w <C-W>
+nmap     <Space>w <C-W>
 
 
 "maps for most commonly used surround operations
@@ -391,6 +394,11 @@ inoremap <expr> <A-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
 inoremap <expr> ê     pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
 inoremap <expr> <A-K> pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 inoremap <expr> ë     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
+
+
+"a map to the swapwins plugin (for more info see plugin/swapwindows.vim)
+nnoremap <C-W>a :call Swap_window_with_prev(0)<CR>
+
 
 
 
