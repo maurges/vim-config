@@ -106,6 +106,13 @@ augroup comment_formatoptions
 	autocmd FileType * setlocal formatoptions-=r formatoptions-=o
 augroup end
 
+
+"open the largest possible window when is gvim
+if has("gui_running")
+	set lines=9999 columns=9999
+endif
+
+
 "prettier nerdtree
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
@@ -262,25 +269,6 @@ nnoremap <silent> <C-N> :cn<CR>
 nnoremap <silent> <C-P> :cp<CR>
 
 
-"highlights words as i search
-nmap / :let @/=""<CR>:set hlsearch<CR><Plug>(incsearch-forward)
-nmap ? :let @/=""<CR>:set hlsearch<CR><Plug>(incsearch-backward)
-nnoremap <silent> * :set hlsearch<CR>*
-nnoremap <silent> # :set hlsearch<CR>#
-"but also sometimes i want to search without highlights
-noremap <Space>/ /
-noremap <Space>? ?
-"highlights the word under cursor
-nnoremap <silent> g* yiw:let @/=@"<CR>:set hlsearch<CR>
-vnoremap <silent> g* <C-C>yiw:let @/=@"<CR>:set hlsearch<CR>gv
-"highlights selected text
-vnoremap <silent> g/ y/<C-R>"<CR>:set hlsearch<CR>
-"highlights previously highlighted text
-nnoremap <silent> g/ :set hlsearch<CR>
-"turns off text highlighting
-nnoremap <silent> <Esc> :let @/=""<CR>:set nohlsearch<CR>
-
-
 "delimitmate maps for expanding space and enter
 silent! imap <unique> <buffer> <CR> <Plug>delimitMateCR
 silent! imap <unique> <buffer> <Space> <Plug>delimitMateSpace
@@ -409,31 +397,6 @@ silent! command! Implodetab2 :%s/  /	/g
 silent! command! Implodetab4 :%s/    /	/g
 
 
-"a small commentary pluginchik: will comment based on commentstring
-nnoremap <silent> q :exec "s/^\\V\\(".b:cs."\\)\\?/".b:cs."/"<CR>
-vnoremap <silent> q <C-C>:exec "'<,'>s/^\\V\\(".b:cs."\\)\\?/".b:cs."/"<CR>
-"uncommenting
-nnoremap <silent> Q :exec "s/^\\V\\(".b:cs."\\)\\?//"<CR>
-vnoremap <silent> Q <C-C>:exec "'<,'>s/^\\V\\(".b:cs."\\)\\?//"<CR>
-"setting the string to comment with
-augroup commentstring_set
-	autocmd!
-	autocmd BufWinEnter * call s:set_commentstring()
-augroup end
-"and the function used in autocmd
-fun! s:set_commentstring()
-	if &filetype == ""
-		let b:cs = "#"
- 	elseif &commentstring == "/*%s*/"
- 		let b:cs = "\\/\\/" "why so many backslashes required?
- 	elseif &commentstring == ""
- 		let b:cs = "#"
- 	else
- 		let b:cs = escape(strpart(&commentstring, 0, match(&commentstring, "%s")), "/\\")
- 	endif
-endfun
-
-
 "Close tab if only nerdtree is left
 augroup nerdtreecloser
 	autocmd!
@@ -454,23 +417,3 @@ augroup omniclose
 	autocmd!
 	autocmd CompleteDone * pclose
 augroup end
-
-
-"an omnicompletion fix: inserts a closing bracket when text has opening one
-inoremap <C-x><C-o> <C-r>=<SID>close_paren()<CR><C-x><C-o>
-
-fun! s:perform_paren_closing(completed_item) abort
-	if has_key(a:completed_item, "word") && a:completed_item.word =~# '($'
-		call feedkeys(")\<Left>", 'in')
-	endif
-	autocmd! close_paren
-	augroup! close_paren
-endfun
-
-fun! s:close_paren() abort
-    augroup close_paren
-        autocmd!
-        autocmd CompleteDone <buffer> call <SID>perform_paren_closing(v:completed_item)
-    augroup END
-    return ''
-endfun
