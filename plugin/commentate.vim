@@ -17,6 +17,11 @@ augroup commentstring_set
 augroup end
 "and the function used in autocmd
 fun! s:set_commentstring()
+	"if someone has already set the cs, use it
+	if exists("b:cs")
+		return
+	endif
+
 	if &filetype == ""
 		"use # where unsure
 		let b:cs = "#"

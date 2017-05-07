@@ -407,9 +407,19 @@ augroup end
 "keep folds and other stuff when closing file
 augroup autoview
 	autocmd!
-	autocmd BufWritePre ?* if @% != "" | mkview! | endif
-	autocmd BufWinEnter ?* if @% != "" | silent! loadview | endif
+	autocmd BufWritePre ?* call s:make_view()
+	autocmd BufWinEnter ?* call s:load_view()
 augroup end
+fun! s:make_view() abort
+	if @% != ""
+		mkview!
+	endif
+endfun
+fun! s:load_view() abort
+	if @% != ""
+		silent! loadview
+	endif
+endfun
 
 
 "the following code removes omnicompletion window after the completion is finished
