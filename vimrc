@@ -113,80 +113,8 @@ if has("gui_running")
 endif
 
 
-"prettier nerdtree
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let NERDTreeMouseMode = 3
-let NERDTreeQuitOnOpen = 1
-
-
-"for tagbar to show it's contents chronologically
-let g:tagbar_sort = 0
-
-
-"delimitmate settings
-let delimitMate_matchpairs = "(:),[:],{:}"
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
-
-
-"for easytags to keep separate tag files
-set tags=./.tags,./.TAGS
-let g:easytags_dynamic_files = 2
-"also asynchronous updates
-let g:easytags_async=1
-
-
-"undoTree settings
-"don't open diff window
-let g:undotree_DiffAutoOpen=0
-"autofocus when opening window
-let g:undotree_SetFocusWhenToggle=1
-
-
 "using stupidcomplete as usercomplete function
 set completefunc=Stupidcomplete
-
-
-"haskell-conseal option: disable consealing of "where"
-let hscoptions='w'
-
-
-"indent_guides settings
-"more opaque colors
-let g:indent_guides_color_change_percent=5
-
-
-"airline settings
-let g:airline_powerline_fonts=1
-set laststatus=2
-"disable ugly error sections
-let g:airline_section_warning = ''
-let g:airline_section_error = ''
-
-let g:airline_theme='raven'
-
-"disable airline for console
-if !has("gui_running")
-	let g:loaded_airline = 1
-endif
-
-
-"vim sneak settings
-let g:sneak#map_netrw = 0
-let g:sneak#prompt = ''
-"this will get rid of the fucking highlight
-augroup sneak_color
-	autocmd!
-	autocmd ColorScheme * hi! link Sneak Normal
-augroup end
-"how dared he remap my sS?!
-nmap <Tab> <Plug>Sneak_s
-nmap <S-Tab> <Plug>Sneak_S
-xmap <Tab> <Plug>Sneak_s
-xmap <S-Tab> <Plug>Sneak_S
-omap <Tab> <Plug>Sneak_s
-omap <S-Tab> <Plug>Sneak_S
 
 
 "a new colorscheme in town
@@ -310,6 +238,8 @@ nnoremap <silent> æ <Esc>:NERDTreeToggle<CR>
 nnoremap <silent> <A-F> <Esc>:NERDTreeToggle<CR>
 nnoremap <silent> í :TagbarOpenAutoClose<CR>
 nnoremap <silent> <A-M> :TagbarOpenAutoClose<CR>
+nnoremap <silent> <A-U> :UndotreeToggle<CR>
+nnoremap <silent> õ :UndotreeToggle<CR>
 
 
 "helpful for search and regexps
@@ -338,41 +268,14 @@ noremap  <Space>] g<C-]>
 "if i knew more i maybe would like to delete it
 nnoremap <Space>[ <C-T>
 
-"better surround-vim maps with spaaace
-nmap     <Space>s  <Plug>Ysurround
-nmap     <Space>ss <Plug>Yssurround
-vmap     <Space>s  <Plug>VSurround
-nmap     <Space>s<Space> ys$
-
 "found i use <C-W> a lot, but it's a pain to press
 nmap     <Space>w <C-W>
-
-
-"maps for most commonly used surround operations
-nnoremap <Space>b i(<End>)<C-C>
-nmap     <Space>B <<ySs}
 
 
 "hotkey to quickly replace word under cursor
 nnoremap <F2> yiw:tabdo %s/<C-R>"/
 "and quickly replace all occurences of selected text
 vnoremap <F2> y:tabdo %s/<C-R>"/
-
-
-"quickly invoke undotree
-nnoremap <A-U> :UndotreeToggle<CR>
-nnoremap õ :UndotreeToggle<CR>
-
-
-"main tabularize maps
-vnoremap <silent> <Leader>t= :Tabularize assignment<CR>
-nnoremap <silent> <Leader>t= :Tabularize assignment<CR>
-vnoremap <silent> <Leader>t: :Tabularize /:/<CR>
-nnoremap <silent> <Leader>t: :Tabularize /:/<CR>
-nnoremap <silent> <Leader>t<Space> :Tabularize / /l0r0<CR>
-vnoremap <silent> <Leader>t<Space> :Tabularize / /l0r0<CR>
-nnoremap <silent> <leader>t, :Tabularize argument_list<CR>
-vnoremap <silent> <leader>t, :Tabularize argument_list<CR>
 
 
 "some remaps to control completion
