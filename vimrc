@@ -170,31 +170,31 @@ nmap     á A
 
 
 "yeah i edit vimrc a lot
-nnoremap <F10> :tabe ~/.vim/vimrc<CR>
-nnoremap <F9>  :tabe ~/.vim/after/ftplugin/
+nnoremap <F10> :<C-U>tabe ~/.vim/vimrc<CR>
+nnoremap <F9>  :<C-U>tabe ~/.vim/after/ftplugin/
 "sources from selected ftplugin
-nnoremap <C-F9>   :source ~/.vim/after/ftplugin/
-nnoremap <C-S-F9> :source ~/.vim/after/ftplugin/
+nnoremap <C-F9>   :<C-U>source ~/.vim/after/ftplugin/
+nnoremap <C-S-F9> :<C-U>source ~/.vim/after/ftplugin/
 "sources from vimrc and required ftplugin if it exists
-nnoremap <C-F10>   :source ~/.vim/vimrc<CR>:if filereadable("~/.vim/after/ftplugin/".&filetype.".vim") <Bar> :exec "source ~/.vim/after/ftplugin/".&filetype.".vim" <Bar> :endif<CR>
-nnoremap <C-S-F10> :source ~/.vim/vimrc<CR>:if filereadable("~/.vim/after/ftplugin/".&filetype.".vim") <Bar> :exec "source ~/.vim/after/ftplugin/".&filetype.".vim" <Bar> :endi<CR>
+nnoremap <C-F10>   :<C-U>source ~/.vim/vimrc<CR>:if filereadable("~/.vim/after/ftplugin/".&filetype.".vim") <Bar> :exec "source ~/.vim/after/ftplugin/".&filetype.".vim" <Bar> :endif<CR>
+nnoremap <C-S-F10> :<C-U>source ~/.vim/vimrc<CR>:if filereadable("~/.vim/after/ftplugin/".&filetype.".vim") <Bar> :exec "source ~/.vim/after/ftplugin/".&filetype.".vim" <Bar> :endi<CR>
 
 
 "found out I also set the filetype a lot
-nnoremap <F1>   :set filetype=
-nnoremap <C-F1> :set filetype?<CR>
+nnoremap <F1>   :<C-U>set filetype=
+nnoremap <C-F1> :<C-U>set filetype?<CR>
 
 
 "while we're at it, some quickfix maps
-nnoremap <F5> :wa<CR>:make<CR>
+nnoremap <F5> :<C-U>wa<CR>:make<CR>
 
 "some quickfix window maps
 "this one remembers current tab, opens/closes quickfix everywhere and returns to it
-nnoremap <silent> <F4>   :let _ctabpage=tabpagenr()<CR>:tabdo copen<CR>:execute "normal! " . _ctabpage . "gt"<CR>
-nnoremap <silent> <C-F4> :let _ctabpage=tabpagenr()<CR>:tabdo cclose<CR>:execute "normal! " . _ctabpage . "gt"<CR>
+nnoremap <silent> <F4>   :<C-U>let _ctabpage=tabpagenr()<CR>:tabdo copen<CR>:execute "normal! " . _ctabpage . "gt"<CR>
+nnoremap <silent> <C-F4> :<C-U>let _ctabpage=tabpagenr()<CR>:tabdo cclose<CR>:execute "normal! " . _ctabpage . "gt"<CR>
 "fast moving between errors
-nnoremap <silent> <C-N> :cn<CR>
-nnoremap <silent> <C-P> :cp<CR>
+nnoremap <silent> <C-N> :<C-U>cn<CR>
+nnoremap <silent> <C-P> :<C-U>cp<CR>
 
 
 "delimitmate maps for expanding space and enter
@@ -234,12 +234,12 @@ nnoremap <C-O> i<CR><Esc>
 
 
 "all those helping windows
-nnoremap <silent> æ <Esc>:NERDTreeToggle<CR>
-nnoremap <silent> <A-F> <Esc>:NERDTreeToggle<CR>
-nnoremap <silent> í :TagbarOpenAutoClose<CR>
-nnoremap <silent> <A-M> :TagbarOpenAutoClose<CR>
-nnoremap <silent> <A-U> :UndotreeToggle<CR>
-nnoremap <silent> õ :UndotreeToggle<CR>
+nnoremap <silent> æ :<C-U>NERDTreeToggle<CR>
+nnoremap <silent> <A-F> :<C-U>NERDTreeToggle<CR>
+nnoremap <silent> í :<C-U>TagbarOpenAutoClose<CR>
+nnoremap <silent> <A-M> :<C-U>TagbarOpenAutoClose<CR>
+nnoremap <silent> <A-U> :<C-U>UndotreeToggle<CR>
+nnoremap <silent> õ :<C-U>UndotreeToggle<CR>
 
 
 "helpful for search and regexps
@@ -249,8 +249,8 @@ cnoremap ;< \<\><Left><Left>
 cnoremap ;> \<\><Left><Left>
 
 "hotkeys for moving tabs
-nnoremap <silent> gmt :tabm +1<CR>
-nnoremap <silent> gmT :tabm -1<CR>
+nnoremap <silent> gmt :<C-U>tabm +1<CR>
+nnoremap <silent> gmT :<C-U>tabm -1<CR>
 
 
 "i want space to be a g-like modifier for useful stuff
@@ -288,7 +288,7 @@ inoremap <expr> ë     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 
 
 "a map to the swapwins plugin (for more info see plugin/swapwindows.vim)
-nnoremap <C-W>a :call Swap_window_with_prev(0)<CR>
+nnoremap <C-W>a :<C-U>call Swap_window_with_prev(0)<CR>
 
 
 
