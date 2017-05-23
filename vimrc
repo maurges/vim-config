@@ -46,6 +46,8 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 "best autocompletion evaaaar
 Plug 'd86leader/vim-stupidcomplete'
+"hacker scratchpad plugin
+Plug 'metakirby5/codi.vim'
 
 call plug#end()
 
