@@ -80,6 +80,9 @@ set scrolloff=2
 set switchbuf=usetab,split
 "don't redraw screen when executing untyped commands
 set lazyredraw
+"there's a fishy thing going on with selections; disable it
+set guioptions-=a
+set clipboard-=autoselect
 
 "set matchpairs+=<:>
 "moving left and right can move past the line
@@ -97,7 +100,9 @@ set splitbelow
 
 "cursor style. The most important are cursor blinking options, others are
 "default
-set guicursor=n-v-c:block-blinkon0-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-blinkon925-blinkoff700-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+if !has("nvim")
+	set guicursor=n-v-c:block-blinkon0-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-blinkon925-blinkoff700-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+endif
 
 "beautiful line wrapping
 if exists("&breakindent")
@@ -294,6 +299,10 @@ inoremap <expr> ë     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 "a map to the swapwins plugin (for more info see plugin/swapwindows.vim)
 nnoremap <C-W>a :<C-U>call Swap_window_with_prev(0)<CR>
 
+
+"follow tag under cursor in new tab
+nnoremap <Space>g] yiw:tab tjump <C-R>"<CR>
+vnoremap <Space>g] y:tab tjump <C-R>"<CR>
 
 
 
