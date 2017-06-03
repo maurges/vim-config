@@ -272,7 +272,7 @@ noremap  <Space>` <C-O>
 noremap  <Space>' <C-I>
 map      <Space>+ <C-A>
 map      <Space>- <C-X>
-"took me a lot to think of it
+"took me a long time to think of it
 nnoremap <Space>t gT
 
 noremap  <Space>] g<C-]>
@@ -316,6 +316,11 @@ vnoremap <expr> ' '"' . nr2char(getchar()) . 'P'
 nnoremap <BS><BS> qq
 nnoremap <BS><S-BS> qQ
 nnoremap <S-BS> @q
+
+
+"quickly move between windows (i never move between paragraphs)
+nnoremap { <C-W>W
+nnoremap } <C-W>w
 
 
 
