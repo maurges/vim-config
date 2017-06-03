@@ -299,13 +299,23 @@ inoremap <expr> ë     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 
 
 "a map to the swapwins plugin (for more info see plugin/swapwindows.vim)
-nnoremap <C-W>a :<C-U>call Swap_window_with_prev(0)<CR>
+nnoremap <silent> <C-W>a :<C-U>call Swap_window_with_prev(0)<CR>
 
 
 "follow tag under cursor in new tab
 nnoremap <Space>g] yiw:tab tjump <C-R>"<CR>
 vnoremap <Space>g] y:tab tjump <C-R>"<CR>
 
+
+"quickly paste register contents with ' (as i only use ` for marks)
+nnoremap <expr> ' '"' . nr2char(getchar()) . 'P'
+vnoremap <expr> ' '"' . nr2char(getchar()) . 'P'
+
+
+"fast macro definition/usage
+nnoremap <BS><BS> qq
+nnoremap <BS><S-BS> qQ
+nnoremap <S-BS> @q
 
 
 
@@ -345,3 +355,20 @@ augroup omniclose
 	autocmd!
 	autocmd CompleteDone * pclose
 augroup end
+
+
+
+" Some setting which can't be set in plugin-settings for some reason
+
+"this will get rid of the fucking sneak highlight
+augroup sneak_color
+	autocmd!
+	autocmd ColorScheme * hi! link Sneak Normal
+augroup end
+
+
+"delimitmate settings
+let delimitMate_matchpairs = "(:),[:],{:}"
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
+
