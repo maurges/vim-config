@@ -214,6 +214,8 @@ silent! imap <unique> <buffer> <Space> <Plug>delimitMateSpace
 "screen movement
 noremap  = 3<C-E>
 noremap  - 3<C-Y>
+noremap  + <C-W>p3<C-E><C-W>w
+noremap  _ <C-W>p3<C-Y><C-W>w
 inoremap <C-E> <C-X><C-E><C-X><C-E>a<BS>
 inoremap <C-Y> <C-X><C-Y><C-X><C-Y>a<BS>
 inoremap <A-Z> <C-O>zz
