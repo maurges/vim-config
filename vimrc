@@ -48,6 +48,10 @@ Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 Plug 'd86leader/vim-stupidcomplete'
 "hacker scratchpad plugin
 Plug 'metakirby5/codi.vim'
+"rename opened file
+Plug 'danro/rename.vim'
+"exchange two regions
+Plug 'tommcdo/vim-exchange'
 
 call plug#end()
 
@@ -235,7 +239,7 @@ inoremap <Home> <C-O>^
 inoremap <S-Home> <Home>
 "because $ is hard to press
 nnoremap <Space>e $
-vnoremap <Space>e $
+xnoremap <Space>e $
 onoremap <Space>e $
 "easily add new lines
 nnoremap <CR> o<Esc>k
@@ -267,7 +271,7 @@ nnoremap <silent> gmT :<C-U>tabm -1<CR>
 "i want space to be a g-like modifier for useful stuff
 nnoremap <silent> <Space>p Vp
 nnoremap <silent> <Space>P kVp
-vnoremap <silent> <Space>p p
+xnoremap <silent> <Space>p p
 noremap  <Space>` <C-O>
 noremap  <Space>' <C-I>
 map      <Space>+ <C-A>
@@ -286,7 +290,7 @@ nmap     <Space>w <C-W>
 "hotkey to quickly replace word under cursor
 nnoremap <F2> yiw:tabdo %s/<C-R>"/
 "and quickly replace all occurences of selected text
-vnoremap <F2> y:tabdo %s/<C-R>"/
+xnoremap <F2> y:tabdo %s/<C-R>"/
 
 
 "some remaps to control completion
@@ -304,12 +308,12 @@ nnoremap <silent> <C-W>a :<C-U>call Swap_window_with_prev(0)<CR>
 
 "follow tag under cursor in new tab
 nnoremap <Space>g] yiw:tab tjump <C-R>"<CR>
-vnoremap <Space>g] y:tab tjump <C-R>"<CR>
+xnoremap <Space>g] y:tab tjump <C-R>"<CR>
 
 
 "quickly paste register contents with ' (as i only use ` for marks)
 nnoremap <expr> ' '"' . nr2char(getchar()) . 'P'
-vnoremap <expr> ' '"' . nr2char(getchar()) . 'P'
+xnoremap <expr> ' '"' . nr2char(getchar()) . 'P'
 
 
 "fast macro definition/usage
@@ -321,6 +325,11 @@ nnoremap <S-BS> @q
 "quickly move between windows (i never move between paragraphs)
 nnoremap { <C-W>W
 nnoremap } <C-W>w
+
+
+"text-object for whole file
+onoremap af :<C-U>keepjumps normal! ggvG<CR>
+xnoremap af :<C-U>keepjumps normal! ggvG<CR>
 
 
 
