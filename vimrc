@@ -55,7 +55,7 @@ Plug 'tommcdo/vim-exchange'
 
 call plug#end()
 
-filetype indent off
+filetype indent on
 filetype plugin on
 
 set number
@@ -87,6 +87,8 @@ set lazyredraw
 "there's a fishy thing going on with selections; disable it
 set guioptions-=a
 set clipboard-=autoselect
+"when beginning of line was aligned with spaces, copy them
+set copyindent
 
 "set matchpairs+=<:>
 "moving left and right can move past the line
