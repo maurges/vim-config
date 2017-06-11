@@ -335,6 +335,9 @@ onoremap af :<C-U>keepjumps normal! ggvG<CR>
 xnoremap af :<C-U>keepjumps normal! ggvG<CR>
 
 
+"toggle visibility of some characters
+nnoremap <silent> <Leader><Leader>l :let &list = !&list<CR>
+
 
 "for when i have to edit other man's file
 silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
@@ -352,7 +355,7 @@ augroup end
 "keep folds and other stuff when closing file
 augroup autoview
 	autocmd!
-	autocmd BufWritePre ?* call s:make_view()
+	autocmd BufWinLeave ?* call s:make_view()
 	autocmd BufWinEnter ?* call s:load_view()
 augroup end
 fun! s:make_view() abort
