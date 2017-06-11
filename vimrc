@@ -65,6 +65,7 @@ set autoindent
 set noexpandtab
 set mouse=a
 set ruler
+set foldmethod=syntax
 "blink screen on errors
 set visualbell
 "bash-like tab behavior
@@ -89,17 +90,15 @@ set guioptions-=a
 set clipboard-=autoselect
 "when beginning of line was aligned with spaces, copy them
 set copyindent
-
-"set matchpairs+=<:>
+"this preview is shite, especially with my stupidcomplete
+set completeopt-=preview
 "moving left and right can move past the line
 set whichwrap=b,s,<,>,[,]
 "re-read modified file
 set autoread
 "showing non-printable characters: i don't need it right now
-"set list
-"set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
-
-set foldmethod=syntax
+set nolist
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 "splitting windows prioritizes right>below>rest
 set splitright
 set splitbelow
@@ -171,16 +170,16 @@ noremap <BS> q
 
 
 "faster navigation in insert mode
-inoremap <M-H> <Left>
+inoremap <A-H> <Left>
 inoremap è <Left>
-inoremap <M-L> <Right>
+inoremap <A-L> <Right>
 inoremap ì <Right>
-imap     <M-O> <Esc>o
+imap     <A-O> <Esc>o
 imap     ï <Esc>o
-imap     <M-A> <End>
+imap     <A-A> <End>
 imap     á <End>
 "also this is a very good map, useful in normal mode too
-nmap     <M-A> A
+nmap     <A-A> A
 nmap     á A
 
 
@@ -246,6 +245,8 @@ onoremap <Space>e $
 "easily add new lines
 nnoremap <CR> o<Esc>k
 nnoremap <S-CR> O<Esc>j
+"a kostyl for terminal vim: <A-]> is what i would never press
+nnoremap Ý O<Esc>j
 "easily split lines
 nnoremap <C-O> i<CR><Esc>
 
@@ -255,8 +256,8 @@ nnoremap <silent> æ :<C-U>NERDTreeToggle<CR>
 nnoremap <silent> <A-F> :<C-U>NERDTreeToggle<CR>
 nnoremap <silent> í :<C-U>TagbarOpenAutoClose<CR>
 nnoremap <silent> <A-M> :<C-U>TagbarOpenAutoClose<CR>
-nnoremap <silent> <A-U> :<C-U>UndotreeToggle<CR>
 nnoremap <silent> õ :<C-U>UndotreeToggle<CR>
+nnoremap <silent> <A-U> :<C-U>UndotreeToggle<CR>
 
 
 "helpful for search and regexps
@@ -296,7 +297,7 @@ xnoremap <F2> y:tabdo %s/<C-R>"/
 
 
 "some remaps to control completion
-inoremap <expr> <ESC> pumvisible() ? "\<C-E>" : "\<C-C>"
+inoremap <expr> <C-C> pumvisible() ? "\<C-E>" : "\<C-C>"
 inoremap <expr> <CR>  pumvisible() ? "\<C-Y>" : "\<CR>"
 inoremap <expr> <A-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
 inoremap <expr> ê     pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"

@@ -1,4 +1,8 @@
-inoremap <buffer> <silent> <S-CR> <End><CR>{<CR>}<Up><CR><Tab>
+if exists('b:did_indent') && b:did_indent
+	inoremap <buffer> <silent> <S-CR> <End><CR>{<CR>}<Up><CR>
+else
+	inoremap <buffer> <silent> <S-CR> <End><CR>{<CR>}<Up><CR><Tab>
+endif
 iabbrev  <buffer> and &&
 iabbrev  <buffer> or \|\|
 

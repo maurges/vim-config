@@ -1,4 +1,8 @@
-inoremap <buffer> <silent> <S-CR> <End><CR>end<Up><End><CR>
+if exists('b:did_indent') && b:did_indent
+	inoremap <buffer> <silent> <S-CR> <End><CR>end<Up><End><CR>
+else
+	inoremap <buffer> <silent> <S-CR> <End><CR>end<Up><End><CR><Tab>
+endif
 
 set omnifunc=rubycomplete#Complete
 
