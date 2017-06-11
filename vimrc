@@ -92,6 +92,8 @@ set clipboard-=autoselect
 set copyindent
 "this preview is shite, especially with my stupidcomplete
 set completeopt-=preview
+"when starting completion, show options and fill the longest common
+set completeopt+=longest
 "moving left and right can move past the line
 set whichwrap=b,s,<,>,[,]
 "re-read modified file
