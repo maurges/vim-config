@@ -229,8 +229,10 @@ inoremap <A-Z> <C-O>zz
 inoremap ú <C-O>zz
 
 "other movement
-noremap  k gk
-noremap  j gj
+"if moving more than 3 lines at once, populate the jumplist
+"also move by true lines when count given, and by screen lines otherwise
+noremap <expr> k v:count ? (v:count > 3 ? ("m'" . v:count) : '') . 'k' : 'gk'
+noremap <expr> j v:count ? (v:count > 3 ? ("m'" . v:count) : '') . 'j' : 'gj'
 "because 0 is easier to press
 noremap  0 ^
 onoremap 0 ^
