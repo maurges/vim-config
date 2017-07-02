@@ -1,9 +1,11 @@
 if exists('b:did_indent') && b:did_indent
 	inoremap <buffer> <silent> <S-CR> <End><CR>{<CR>}<Up><CR>
 	inoremap <buffer> <silent> Ý <End><CR>{<CR>}<Up><CR>
+	inoremap <buffer> <silent> � <End><CR>{<CR>}<Up><CR>
 else
 	inoremap <buffer> <silent> <S-CR> <End><CR>{<CR>}<Up><CR><Tab>
 	inoremap <buffer> <silent> Ý <End><CR>{<CR>}<Up><CR><Tab>
+	inoremap <buffer> <silent> � <End><CR>{<CR>}<Up><CR><Tab>
 endif
 iabbrev  <buffer> and &&
 iabbrev  <buffer> or \|\|

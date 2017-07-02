@@ -261,13 +261,14 @@ nnoremap <CR> o<Esc>k
 nnoremap <S-CR> O<Esc>j
 "a kostyl for terminal vim: <A-]> is what i would never press
 nnoremap Ý O<Esc>j
+nnoremap � O<Esc>j
 "easily split lines
 nnoremap <C-O> i<CR><Esc>
 
 
 "all those helping windows
-nnoremap <silent> æ :<C-U>NERDTreeToggle<CR>
-nnoremap <silent> <A-F> :<C-U>NERDTreeToggle<CR>
+"nnoremap <silent> æ :<C-U>NERDTreeToggle<CR>
+"nnoremap <silent> <A-F> :<C-U>NERDTreeToggle<CR>
 nnoremap <silent> í :<C-U>TagbarOpenAutoClose<CR>
 nnoremap <silent> <A-M> :<C-U>TagbarOpenAutoClose<CR>
 nnoremap <silent> õ :<C-U>UndotreeToggle<CR>
