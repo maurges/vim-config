@@ -5,10 +5,13 @@
 
 
 "the maps
-nnoremap <silent> q :exec "s/^\\V\\(".b:cs."\\)\\?/".b:cs."/"<CR>
+"in normal mode: substitute from current line to current line + count
+"supplied, changing the initial comment string or nothing to commentstring
+nnoremap <silent> q :<C-U>exec ".,.+" . (v:count - 1) ."s/^\\V\\(".b:cs."\\)\\?/".b:cs."/"<CR>
+"similar in insert mode, but substitute over range supplied
 vnoremap <silent> q <C-C>:exec "'<,'>s/^\\V\\(".b:cs."\\)\\?/".b:cs."/"<CR>
-"uncommenting
-nnoremap <silent> Q :exec "s/^\\V\\(".b:cs."\\)\\?//"<CR>
+"uncommenting: similar to commenting, but substitute to nothing
+nnoremap <silent> Q :<C-U>exec ".,.+" . (v:count - 1) ."s/^\\V\\(".b:cs."\\)\\?//"<CR>
 vnoremap <silent> Q <C-C>:exec "'<,'>s/^\\V\\(".b:cs."\\)\\?//"<CR>
 "setting the string to comment with
 augroup commentstring_set
