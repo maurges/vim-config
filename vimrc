@@ -11,7 +11,7 @@ Plug 'Raimondi/delimitMate'
 "regexes in search
 Plug 'haya14busa/incsearch.vim'
 "file tree
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
 "rust colors, syntax, ftplugin
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 "quick reformat
@@ -104,6 +104,16 @@ set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 "splitting windows prioritizes right>below>rest
 set splitright
 set splitbelow
+
+"NETRW settings
+"disable banner
+let g:netrw_banner = 0
+"do not show dotfiles except for parent
+let g:netrw_list_hide = '^\.[^\.]'
+"use tree view as default
+let g:netrw_liststyle = 3
+"<C-^> will get you to last edited file, not netrw
+let g:netrw_altfile = 1
 
 "cursor style. The most important are cursor blinking options, others are
 "default
@@ -395,4 +405,3 @@ augroup end
 let delimitMate_matchpairs = "(:),[:],{:}"
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
-
