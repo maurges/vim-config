@@ -4,14 +4,14 @@ fun! s:preserve_line(action) abort
 endfun
 
 fun! s:change_dir() abort
-	unsilent echom "trying to cd..."
+"	unsilent echom "trying to cd..."
 	redir => fileinfo
 	silent normal qf
 	redir end
 	let fullname = split(fileinfo)[-1]
-	unsilent echom "fullname: " . fullname
+"	unsilent echom "fullname: " . fullname
 	let dirname  = fnamemodify(fullname, ':p:h')
-	unsilent echom "moving to " . dirname
+"	unsilent echom "moving to " . dirname
 	unsilent exec "cd " . dirname
 endfun
 

@@ -35,7 +35,7 @@ Plug 'tpope/vim-speeddating'
 "undo tree visualisation
 Plug 'mbbill/undotree'
 "show tab layers
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'nathanaelkane/vim-indent-guides'
 "special symbols for haskell
 Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
 "lots of additional text objects
@@ -104,16 +104,6 @@ set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 "splitting windows prioritizes right>below>rest
 set splitright
 set splitbelow
-
-"NETRW settings
-"disable banner
-let g:netrw_banner = 0
-"do not show dotfiles except for parent
-let g:netrw_list_hide = '^\.[^\.]'
-"use tree view as default
-let g:netrw_liststyle = 3
-"<C-^> will get you to last edited file, not netrw
-let g:netrw_altfile = 1
 
 "cursor style. The most important are cursor blinking options, others are
 "default
@@ -361,10 +351,10 @@ silent! command! Implodetab4 :%s/    /	/g
 
 
 "Close tab if only nerdtree is left
-augroup nerdtreecloser
-	autocmd!
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-augroup end
+"augroup nerdtreecloser
+"	autocmd!
+"	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"augroup end
 
 
 "keep folds and other stuff when closing file
