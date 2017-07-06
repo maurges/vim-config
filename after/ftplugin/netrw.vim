@@ -3,12 +3,17 @@ fun! s:preserve_line(action) abort
 	return a:action . ":if &filetype == 'netrw' | exec 'normal! " . l . "gg' | endif\<CR>"
 endfun
 
-fun! s:change_dir() abort
-"	unsilent echom "trying to cd..."
+fun! s:get_full_name_under_cursor() abort
 	redir => fileinfo
 	silent normal qf
 	redir end
 	let fullname = split(fileinfo)[-1]
+	return fullname
+endfun
+
+fun! s:change_dir() abort
+"	unsilent echom "trying to cd..."
+	let fullname = s:get_full_name_under_cursor()
 "	unsilent echom "fullname: " . fullname
 	let dirname  = fnamemodify(fullname, ':p:h')
 "	unsilent echom "moving to " . dirname
@@ -22,8 +27,15 @@ nmap <buffer> T tgT
 "make current folder the new root (a new base, if you will)
 nmap <silent> <buffer> B :Ntree<CR>
 "try to cd to directory/file under cursor
-nmap <buffer> C :call <SID>change_dir()<CR>
+nmap <buffer> C :<C-U>call <SID>change_dir()<CR>
 
 "disable (slow) incsearch
 nnoremap <buffer> / /
 nnoremap <buffer> ? ?
+"copy full path
+nnoremap <buffer> yy :call <SID>copy_path()<CR>
+
+fun! s:copy_path() abort
+	setreg(v:register, s:get_full_name_under_cursor())
+	"was it worth it to write a function? Maybe.
+endfun
