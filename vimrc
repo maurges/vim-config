@@ -52,6 +52,8 @@ Plug 'metakirby5/codi.vim'
 Plug 'danro/rename.vim'
 "exchange two regions
 Plug 'tommcdo/vim-exchange'
+"haskell syntax highlight and indentation
+Plug 'neovimhaskell/haskell-vim'
 
 call plug#end()
 
@@ -188,6 +190,7 @@ nmap     á A
 "yeah i edit vimrc a lot
 nnoremap <F10> :<C-U>tabe ~/.vim/vimrc<CR>
 nnoremap <F9>  :<C-U>tabe ~/.vim/after/ftplugin/
+nnoremap <Leader><F9> :<C-U>tabe ~/.vim/plugin/
 "sources from selected ftplugin
 nnoremap <C-F9>   :<C-U>source ~/.vim/after/ftplugin/
 nnoremap <C-S-F9> :<C-U>source ~/.vim/after/ftplugin/
