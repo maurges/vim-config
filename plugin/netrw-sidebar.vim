@@ -14,7 +14,7 @@ fun! s:netrw_sidebar_open_at(place)
 	endif
 	"open, go to it, resize and set variables
 	exec "Lexplore " . a:place
-	vertical resize g:netrw_sidebar_width
+	exec "vertical resize" . g:netrw_sidebar_width
 	let t:netrw_sidebar_id = winnr()
 	let b:is_netrw_sidebar = 1
 endfun
