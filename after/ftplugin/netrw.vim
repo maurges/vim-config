@@ -26,7 +26,7 @@ fun! s:change_dir() abort
 	let fullname = s:get_full_name_under_cursor()
 "	unsilent echom "fullname: " . fullname
 	let dirname  = fnamemodify(fullname, ':p:h')
-"	unsilent echom "moving to " . dirname
+	unsilent echom "moving to " . dirname
 	unsilent exec "cd " . dirname
 endfun
 
@@ -40,23 +40,20 @@ fun! s:is_directory_under_cursor()
 endfun
 "an integral part of netrw sidebar
 fun! s:open_file()
-	if s:is_directory_under_cursor()
-		return s:preserve_line("\<CR>")
+	if exists('w:is_netrw_sidebar') && w:is_netrw_sidebar
+		let g:netrw_browse_split = 4
 	else
-		if exists('b:is_netrw_sidebar') && b:is_netrw_sidebar
-			return s:preserve_line("P")
-		else
-			return s:preserve_line("\<CR>")
-		endif
+		let g:netrw_browse_split = 0
 	endif
+	return s:preserve_line("\<CR>")
 endfun
 
 "BECAUSE IT DOESN'T FUCKING WORK
 nmap gn <NOP>
 
 "opening node resets cursor position (why?)
-nmap <buffer> <silent> <expr> o <SID>preserve_line("\<CR>")
-"nmap <buffer> <silent> <expr> o <SID>open_file()
+"nmap <buffer> <silent> <expr> o <SID>preserve_line("\<CR>")
+nmap <buffer> <silent> <expr> o <SID>open_file()
 "open in background tab
 nmap <buffer> T tgT
 "make current folder the new root (a new base, if you will)
