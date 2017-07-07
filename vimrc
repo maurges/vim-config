@@ -260,8 +260,8 @@ nnoremap <C-O> i<CR><Esc>
 
 
 "all those helping windows
-"nnoremap <silent> æ :<C-U>NERDTreeToggle<CR>
-"nnoremap <silent> <A-F> :<C-U>NERDTreeToggle<CR>
+nnoremap <silent> æ :<C-U>NetrwSidebarToggle<CR>
+nnoremap <silent> <A-F> :<C-U>NetrwSidebarToggle<CR>
 nnoremap <silent> í :<C-U>TagbarOpenAutoClose<CR>
 nnoremap <silent> <A-M> :<C-U>TagbarOpenAutoClose<CR>
 nnoremap <silent> õ :<C-U>UndotreeToggle<CR>
@@ -353,11 +353,11 @@ silent! command! Implodetab2 :%s/  /	/g
 silent! command! Implodetab4 :%s/    /	/g
 
 
-"Close tab if only nerdtree is left
-"augroup nerdtreecloser
-"	autocmd!
-"	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"augroup end
+"Close tab if only netrwsidebar is left
+augroup nerdtreecloser
+	autocmd!
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:is_netrw_sidebar")) | q | endif
+augroup end
 
 
 "keep folds and other stuff when closing file
