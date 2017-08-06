@@ -34,8 +34,6 @@ Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-speeddating'
 "undo tree visualisation
 Plug 'mbbill/undotree'
-"show tab layers
-"Plug 'nathanaelkane/vim-indent-guides'
 "special symbols for haskell
 Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
 "lots of additional text objects
@@ -54,6 +52,8 @@ Plug 'danro/rename.vim'
 Plug 'tommcdo/vim-exchange'
 "haskell syntax highlight and indentation
 Plug 'neovimhaskell/haskell-vim'
+"qml syntax highlight and indentation
+Plug 'peterhoeg/vim-qml'
 
 call plug#end()
 
@@ -339,8 +339,8 @@ nnoremap } <C-W>w
 
 
 "text-object for whole file
-onoremap af :<C-U>keepjumps normal! ggvG<CR>
-xnoremap af :<C-U>keepjumps normal! ggvG<CR>
+onoremap af :<C-U>keepjumps normal! gg0vG$<CR>
+xnoremap af :<C-U>keepjumps normal! gg0vG$<CR>
 
 
 "toggle visibility of some characters
