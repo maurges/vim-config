@@ -299,9 +299,15 @@ nmap     <Space>w <C-W>
 
 
 "hotkey to quickly replace word under cursor
-nnoremap <F2> yiw:tabdo %s/<C-R>"/
+nnoremap <F2> yiw:call s:replace_all(<C-R>")<CR>
 "and quickly replace all occurences of selected text
-xnoremap <F2> y:tabdo %s/<C-R>"/
+xnoremap <F2> y:call s:replace_all(<C-R>")<CR>
+
+fun! s:replace_all(word) abort
+	let prompt = "Replace: " . a:word . " --> "
+	let repl = input(prompt)
+	exec "tabdo %s/".a:word."/".repl."/gc"
+endfun
 
 
 "some remaps to control completion
