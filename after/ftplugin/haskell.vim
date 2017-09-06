@@ -24,3 +24,4 @@ nnoremap <buffer> <Leader>gt :GhcModType<CR>
 nnoremap <buffer> <Leader>gi :GhcModInfo<CR>
 nnoremap <buffer> <Leader>go :GhcModTypeInsert<CR>
 "nmap     <buffer> <silent> <Esc> <Esc>:GhcModTypeClear<CR>
+exec AddMap("\<Esc>", ":GhcModTypeClear\<CR>", "n")
