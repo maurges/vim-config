@@ -17,7 +17,7 @@ fun! s:embrace()
 		return cmdstart . "0wywO; \<C-R>\" {{{\<C-C>joendfun\<CR>; }}}\<C-C>kO\<Tab>"
 	elseif l =~ "^%macro"
 		return cmdstart . "o%endmacro\<C-C>O    "
-	elseif l =~ "^; .* {{{"
+	elseif l =~ "; .* {{{"
 		return cmdstart . "o; }}}\<C-C>O"
 	else
 		return "\<CR>"
