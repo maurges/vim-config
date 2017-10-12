@@ -2,6 +2,8 @@ setlocal commentstring=;%s
 setlocal tabstop=10
 setlocal shiftwidth=10
 
+setlocal textwidth=78
+
 setlocal foldmethod=marker
 
 nnoremap <buffer> <F6> :w<CR>:make %:r.o<CR>
@@ -19,6 +21,10 @@ fun! s:embrace()
 		return cmdstart . "o%endmacro\<C-C>O    "
 	elseif l =~ "; .* {{{"
 		return cmdstart . "o; }}}\<C-C>O"
+	elseif l =~ "section \..*"
+		return cmdstart . "$yiwo; \<C-R>\" {{{\<CR>\<CR>; }}}\<C-C>kO"
+	elseif l =~ "%ifndef [A-Z_]*"
+		return cmdstart . "0wwywo%define \<C-R>\"\<CR>\<CR>\<CR>\<CR>%endif\<C-C>kkA"
 	else
 		return "\<CR>"
 	endif
