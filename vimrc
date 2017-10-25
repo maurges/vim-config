@@ -113,7 +113,7 @@ if !has("nvim")
 	set guicursor=n-v-c:block-blinkon0-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-blinkon925-blinkoff700-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 endif
 
-"beautiful line wrapping
+"more beautiful line wrapping
 if exists("&breakindent")
 	set breakindent
 endif
@@ -135,11 +135,7 @@ endif
 set completefunc=Stupidcomplete
 
 
-"a new colorscheme in town
-"colo vorange
-"if !has("gui_running")
-	colo blues
-"endif
+colo blues
 
 
 
@@ -147,7 +143,6 @@ set completefunc=Stupidcomplete
 noremap  <Space> <nop>
 noremap  K <nop>
 noremap  Q <nop>
-noremap  q <nop>
 noremap  R <nop>
 noremap  S <nop>
 "don't want that annoying help window
@@ -168,9 +163,6 @@ nnoremap Y y$
 nnoremap K kJ
 "this doesn\t make sense on another level
 inoremap <C-R> <C-R><C-P>
-
-"i'm too used to q to comment, but macros are nice
-noremap <BS> q
 
 
 "faster navigation in insert mode
@@ -224,8 +216,8 @@ silent! imap <unique> <buffer> <Space> <Plug>delimitMateSpace
 "screen movement
 noremap  = 3<C-E>
 noremap  - 3<C-Y>
-noremap  + <C-W>p3<C-E><C-W>w
-noremap  _ <C-W>p3<C-Y><C-W>w
+noremap  + <C-W>p3<C-E><C-W>p
+noremap  _ <C-W>p3<C-Y><C-W>p
 inoremap <C-E> <C-X><C-E><C-X><C-E>a<BS>
 inoremap <C-Y> <C-X><C-Y><C-X><C-Y>a<BS>
 inoremap <A-Z> <C-O>zz
@@ -333,10 +325,8 @@ nnoremap <expr> ' '"' . nr2char(getchar()) . 'P'
 xnoremap <expr> ' '"' . nr2char(getchar()) . 'P'
 
 
-"fast macro definition/usage
-nnoremap <BS><BS> qq
-nnoremap <BS><S-BS> qQ
-nnoremap <S-BS> @q
+"shortcut to quickly use macro in q
+nnoremap Q @q
 
 
 "quickly move between windows (i never move between paragraphs)
