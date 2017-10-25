@@ -54,6 +54,8 @@ Plug 'tommcdo/vim-exchange'
 Plug 'neovimhaskell/haskell-vim'
 "qml syntax highlight and indentation
 Plug 'peterhoeg/vim-qml'
+"Syntax checker plugin
+Plug 'vim-syntastic/syntastic'
 
 call plug#end()
 
