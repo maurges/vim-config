@@ -11,7 +11,7 @@ Plug 'Raimondi/delimitMate'
 "regexes in search
 Plug 'haya14busa/incsearch.vim'
 "file tree
-"Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 "rust colors, syntax, ftplugin
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 "quick reformat
@@ -252,8 +252,8 @@ nnoremap <C-O> i<CR><Esc>
 
 
 "all those helping windows
-nnoremap <silent> æ :<C-U>NetrwSidebarToggle<CR>
-nnoremap <silent> <A-F> :<C-U>NetrwSidebarToggle<CR>
+nnoremap <silent> æ :<C-U>NERDTreeToggle<CR>
+nnoremap <silent> <A-F> :<C-U>NERDTreeToggle<CR>
 nnoremap <silent> í :<C-U>TagbarOpenAutoClose<CR>
 nnoremap <silent> <A-M> :<C-U>TagbarOpenAutoClose<CR>
 nnoremap <silent> õ :<C-U>UndotreeToggle<CR>
