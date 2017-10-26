@@ -108,6 +108,10 @@ set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 "splitting windows prioritizes right>below>rest
 set splitright
 set splitbelow
+"commands like :find will search all subdirectories
+set path+=**
+"show characters typed for current command
+set showcmd
 
 "cursor style. The most important are cursor blinking options, others are
 "default
