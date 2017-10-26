@@ -56,6 +56,8 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'peterhoeg/vim-qml'
 "Syntax checker plugin
 Plug 'vim-syntastic/syntastic'
+"highlight lines changed since last commit
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
