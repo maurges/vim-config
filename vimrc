@@ -127,12 +127,6 @@ augroup comment_formatoptions
 augroup end
 
 
-"open the largest possible window when is gvim
-if has("gui_running")
-	set lines=9999 columns=9999
-endif
-
-
 "using stupidcomplete as usercomplete function
 set completefunc=Stupidcomplete
 
