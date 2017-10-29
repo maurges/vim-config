@@ -74,8 +74,6 @@ set ruler
 set foldmethod=syntax
 "blink screen on errors
 set visualbell
-"bash-like tab behavior
-set wildmode=list:longest
 "yank can be redone with .
 set cpoptions+=y
 "don't save options with views
@@ -114,6 +112,13 @@ set splitbelow
 set path+=**
 "show characters typed for current command
 set showcmd
+"bash-like tab behavior
+set wildmode=longest,list
+set wildmenu
+"use shift-tab to start usual command-line completion
+set wildchar=<s-tab>
+"use an unused character to start command-line completion in maps
+set wildcharm=<c-d>
 
 "cursor style. The most important are cursor blinking options, others are
 "default
@@ -310,6 +315,10 @@ inoremap <expr> <A-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
 inoremap <expr> ê     pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
 inoremap <expr> <A-K> pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 inoremap <expr> ë     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
+
+
+"when completing in command line with tab, redraw the screen (buggy)
+cnoremap <tab> a<bs><c-c>:redraw<cr>:<up><C-d>a<bs>
 
 
 "a map to the swapwins plugin (for more info see plugin/swapwindows.vim)
