@@ -45,14 +45,13 @@ fun! s:open_file()
 	else
 		let g:netrw_browse_split = 0
 	endif
+	"opening node resets cursor position (why?)
 	return s:preserve_line("\<CR>")
 endfun
 
 "BECAUSE IT DOESN'T FUCKING WORK
 nmap gn <NOP>
 
-"opening node resets cursor position (why?)
-"nmap <buffer> <silent> <expr> o <SID>preserve_line("\<CR>")
 nmap <buffer> <silent> <expr> o <SID>open_file()
 "open in background tab
 nmap <buffer> T tgT
