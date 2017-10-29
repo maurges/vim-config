@@ -361,9 +361,9 @@ augroup END
 "keep folds and other stuff when closing file
 augroup autoview
 	autocmd!
-	autocmd BufWinLeave ?* call s:make_view()
-	autocmd BufWinEnter ?* call s:load_view()
-augroup end
+	autocmd BufWinLeave ?* call <SID>make_view()
+	autocmd BufWinEnter ?* call <SID>load_view()
+augroup END
 fun! s:make_view() abort
 	if @% != ""
 		mkview!
