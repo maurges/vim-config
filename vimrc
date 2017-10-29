@@ -130,7 +130,7 @@ endif
 augroup comment_formatoptions
 	autocmd!
 	autocmd FileType * setlocal formatoptions-=r formatoptions-=o
-augroup end
+augroup END
 
 
 "using stupidcomplete as usercomplete function
@@ -355,7 +355,7 @@ silent! command! Implodetab4 :%s/    /	/g
 augroup nerdtreecloser
 	autocmd!
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:is_netrw_sidebar")) | q | endif
-augroup end
+augroup END
 
 
 "keep folds and other stuff when closing file
@@ -380,7 +380,7 @@ endfun
 augroup omniclose
 	autocmd!
 	autocmd CompleteDone * pclose
-augroup end
+augroup END
 
 
 
@@ -390,7 +390,7 @@ augroup end
 augroup sneak_color
 	autocmd!
 	autocmd ColorScheme * hi! link Sneak Normal
-augroup end
+augroup END
 
 
 "delimitmate settings
