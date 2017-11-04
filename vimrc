@@ -136,8 +136,8 @@ augroup comment_formatoptions
 augroup END
 
 
-"using stupidcomplete as usercomplete function
-set completefunc=Stupidcomplete
+"using completion-aggregator as usercomplete function
+set completefunc=CompletionAggreg
 
 
 colo blues
