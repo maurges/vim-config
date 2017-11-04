@@ -60,6 +60,8 @@ Plug 'vim-syntastic/syntastic'
 Plug 'airblade/vim-gitgutter'
 "show git status of files in nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'
+"haskell completion engine
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 
 call plug#end()
 

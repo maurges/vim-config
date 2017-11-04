@@ -1,3 +1,4 @@
+"option for \ before (
 setlocal cpoptions+=M
 
 setlocal softtabstop=4
@@ -23,5 +24,6 @@ nnoremap <buffer> <F8> :w<CR>:GhcModLint<CR>
 nnoremap <buffer> <Leader>gt :GhcModType<CR>
 nnoremap <buffer> <Leader>gi :GhcModInfo<CR>
 nnoremap <buffer> <Leader>go :GhcModTypeInsert<CR>
-"nmap     <buffer> <silent> <Esc> <Esc>:GhcModTypeClear<CR>
 exec AddMap("\<Esc>", ":GhcModTypeClear\<CR>", "n")
+
+set omnifunc=necoghc#omnifunc
