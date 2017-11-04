@@ -115,8 +115,6 @@ set showcmd
 "bash-like tab behavior
 set wildmode=longest,list
 set wildmenu
-"use shift-tab to start usual command-line completion
-set wildchar=<s-tab>
 "use an unused character to start command-line completion in maps
 set wildcharm=<c-d>
 
@@ -317,8 +315,14 @@ inoremap <expr> <A-K> pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 inoremap <expr> ë     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 
 
-"when completing in command line with tab, redraw the screen (buggy)
-cnoremap <tab> a<bs><c-c>:redraw<cr>:<up><C-d>a<bs>
+"when completing in command line with tab, redraw the screen
+fun! CompleteRedraw()
+	redraw
+	return nr2char(&wcm)
+endfun
+cnoremap <expr> <tab> CompleteRedraw()
+"use shift-tab to start usual command-line completion
+set wildchar=<s-tab>
 
 
 "a map to the swapwins plugin (for more info see plugin/swapwindows.vim)
