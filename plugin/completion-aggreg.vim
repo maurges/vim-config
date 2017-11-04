@@ -74,7 +74,20 @@ fun! CompletionAggreg(findstart, base) abort
 			let base = s:bases[Func]
 			let prefix = s:prefixes[Func]
 
-			let words = s:strings2dicts(function(Func)(0, base).words, 'word')
+			if exists('r') | unlet r | endif
+			let r = function(Func)(0, base)
+
+			if type(r) == type([])
+				let pre_words = r
+			elseif type(r) == type({})
+				let pre_words = r.words
+			else
+				echo "pre_words: "
+				echo r
+				echoerr "^^^ unexpected type of return value"
+			endif
+
+			let words = s:strings2dicts(pre_words, 'word')
 
 			"add prefix to each word
 			for word in words
@@ -93,6 +106,10 @@ endfun
 
 " convert list of strings to list of dicts if it is indeed of strings
 fun! s:strings2dicts(arr, key) abort
+	if len(a:arr) == 0
+		return []
+	endif
+
 	if type(a:arr[0]) == type({})
 		return a:arr
 	endif
