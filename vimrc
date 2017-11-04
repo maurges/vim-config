@@ -58,6 +58,8 @@ Plug 'peterhoeg/vim-qml'
 Plug 'vim-syntastic/syntastic'
 "highlight lines changed since last commit
 Plug 'airblade/vim-gitgutter'
+"show git status of files in nerdtree
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 call plug#end()
 
