@@ -1,5 +1,5 @@
 "disable all mappings
-let g:AutoPairsShortcutToggle = '<Leader>ap'
+let g:AutoPairsShortcutToggle = ''
 let g:AutoPairsShortcutFastWrap = ''
 let g:AutoPairsShortcutJump = ''
 let g:AutoPairsMapCR = 0
