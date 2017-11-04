@@ -7,7 +7,7 @@ Plug 'tpope/vim-surround'
 "requirement for some other plugins
 Plug 'xolox/vim-misc'
 "auto-closing brackets
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 "regexes in search
 Plug 'haya14busa/incsearch.vim'
 "file tree
@@ -212,11 +212,6 @@ nnoremap <silent> <C-N> :<C-U>cn<CR>
 nnoremap <silent> <C-P> :<C-U>cp<CR>
 
 
-"delimitmate maps for expanding space and enter
-silent! imap <unique> <buffer> <CR> <Plug>delimitMateCR
-silent! imap <unique> <buffer> <Space> <Plug>delimitMateSpace
-
-
 "screen movement
 noremap  = 3<C-E>
 noremap  - 3<C-Y>
@@ -308,11 +303,12 @@ endfun
 
 "some remaps to control completion
 inoremap <expr> <C-C> pumvisible() ? "\<C-E>" : "\<C-C>"
-inoremap <expr> <CR>  pumvisible() ? "\<C-Y>" : "\<CR>"
 inoremap <expr> <A-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
 inoremap <expr> ê     pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
 inoremap <expr> <A-K> pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 inoremap <expr> ë     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
+"changed to use autopairs plugin closing behavior after cr
+imap <silent> <expr> <CR>  pumvisible() ? "\<C-Y>" : "\<CR>\<Plug>AutoPairsReturn"
 
 
 "when completing in command line with tab, redraw the screen
@@ -403,9 +399,3 @@ augroup sneak_color
 	autocmd!
 	autocmd ColorScheme * hi! link Sneak Normal
 augroup END
-
-
-"delimitmate settings
-let delimitMate_matchpairs = "(:),[:],{:}"
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
