@@ -30,6 +30,7 @@ map т n
 map ь m
 map б ,
 map ю .
+map ё `
 
 map Й Q
 map Ц W
@@ -61,6 +62,8 @@ map Т N
 map Ь M
 map Б <
 map Ю >
+map Ё ~
+map Ж :echo "Can't start command in russian layout"<CR>
 
 omap й q
 omap ц w
@@ -94,6 +97,7 @@ omap т n
 omap ь m
 omap б ,
 omap ю .
+omap ё `
 
 omap Й Q
 omap Ц W
@@ -125,3 +129,4 @@ omap Т N
 omap Ь M
 omap Б <
 omap Ю >
+omap Ё ~
