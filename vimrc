@@ -343,11 +343,6 @@ xnoremap <expr> ' '"' . nr2char(getchar()) . 'P'
 nnoremap Q @q
 
 
-"quickly move between windows (i never move between paragraphs)
-nnoremap { <C-W>W
-nnoremap } <C-W>w
-
-
 "text-object for whole file
 onoremap af :<C-U>keepjumps normal! gg0vG$<CR>
 xnoremap af :<C-U>keepjumps normal! gg0vG$<CR>
