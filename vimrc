@@ -352,6 +352,12 @@ xnoremap af :<C-U>keepjumps normal! gg0vG$<CR>
 nnoremap <silent> <Leader><Leader>l :let &list = !&list<CR>
 
 
+"more user-friendly enter ex mode
+nnoremap q: q:a
+nnoremap q/ q/a
+nnoremap q? q?a
+
+
 "for when i have to edit other man's file
 silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
 silent! command! Implodetab2 :%s/  /	/g
