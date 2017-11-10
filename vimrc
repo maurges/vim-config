@@ -209,8 +209,8 @@ nnoremap <C-F1> :<C-U>set filetype?<CR>
 nnoremap <F5> :<C-U>wa<CR>:make<CR>
 
 "quickly enter and leave quickfix mode
-nnoremap <silent> <F4>   :EnterQuickfix
-nnoremap <silent> <C-F4> :LeaveQuickfix
+nnoremap <silent> <F4>   :EnterQuickfix<cr>
+nnoremap <silent> <C-F4> :LeaveQuickfix<cr>
 "fast moving between errors
 nnoremap <silent> <C-N> :<C-U>cn<CR>
 nnoremap <silent> <C-P> :<C-U>cp<CR>
