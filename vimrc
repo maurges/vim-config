@@ -2,18 +2,25 @@ set nocompatible
 
 call plug#begin('~/.vim/bundle')
 
-"essentiol
-Plug 'tpope/vim-surround'
+" Dependencies
+
 "requirement for some other plugins
 Plug 'xolox/vim-misc'
+"smarter .: aware of plugins
+Plug 'tpope/vim-repeat'
+"plugin for asynchronous code execution
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
+" General
+
+"essentiol
+Plug 'tpope/vim-surround'
 "auto-closing brackets
 Plug 'jiangmiao/auto-pairs'
 "regexes in search
 Plug 'haya14busa/incsearch.vim'
 "file tree
 Plug 'scrooloose/nerdtree'
-"rust colors, syntax, ftplugin
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 "quick reformat
 Plug 'godlygeek/tabular'
 "source code browsing bar
@@ -26,20 +33,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-easytags'
 "indent text-object
 Plug 'michaeljsmith/vim-indent-object'
-"smarter .
-Plug 'tpope/vim-repeat'
 "fast search by two characters
 Plug 'justinmk/vim-sneak'
-"change date with only a few keystrokes!
-Plug 'tpope/vim-speeddating'
 "undo tree visualisation
 Plug 'mbbill/undotree'
 "special symbols for haskell
 Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
 "lots of additional text objects
 Plug 'wellle/targets.vim'
-"plugin for asynchronous code execution (for other plugins)
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 "stuff mainly to hot typechek haskell code
 Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 "best autocompletion evaaaar
@@ -48,12 +49,6 @@ Plug 'd86leader/vim-stupidcomplete'
 Plug 'metakirby5/codi.vim'
 "rename opened file
 Plug 'danro/rename.vim'
-"exchange two regions
-Plug 'tommcdo/vim-exchange'
-"haskell syntax highlight and indentation
-Plug 'neovimhaskell/haskell-vim'
-"qml syntax highlight and indentation
-Plug 'peterhoeg/vim-qml'
 "Syntax checker plugin
 Plug 'vim-syntastic/syntastic'
 "highlight lines changed since last commit
@@ -62,6 +57,12 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 "haskell completion engine
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+
+" Language support plugins
+
+Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 call plug#end()
 
