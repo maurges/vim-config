@@ -1,11 +1,11 @@
 " Description: a simple way to decorate a mapping
 
 " remaps lhs in mode: will execute rhs before it's initial mapping
-fun! AddMap(lhs, rhs, mode) abort
+fun! AddMap(lhs, rhs, mode, options) abort
 	let d = maparg(a:lhs, a:mode, 0, 1)
 	"if mapping does not exists, make the most basic map
 	if d == {}
-		command = a:mode . "noremap " . a:lhs . " " . a:rhs
+		command = a:mode . "noremap ". a:options . " " . a:lhs . " " . a:rhs
 		exec command
 		return
 	endif
