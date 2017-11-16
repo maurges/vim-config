@@ -397,11 +397,14 @@ augroup omniclose
 augroup END
 
 
-
-" Some setting which can't be set in plugin-settings for some reason
-
-"this will get rid of the fucking sneak highlight
-augroup sneak_color
+"when leaving window, disable relativenumber
+augroup relativenumber
 	autocmd!
-	autocmd ColorScheme * hi! link Sneak Normal
+	autocmd WinEnter * call <sid>set_relativenumber()
+	autocmd WinLeave * set norelativenumber
 augroup END
+fun! s:set_relativenumber()
+	if &filetype != 'help'
+		set relativenumber
+	endif
+endfun
