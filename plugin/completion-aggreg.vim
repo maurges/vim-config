@@ -2,6 +2,8 @@
 " sources and aggregate them into one. Behaves as usercomplete function
 " Completion sources are: omnifunc and list of other functions
 
+let s:debug = 0
+
 "list of names of completion functions
 if !exists('g:completion_aggreg_functions')
 	let g:completion_aggreg_functions = []
@@ -39,7 +41,7 @@ fun! CompletionAggreg(findstart, base) abort
 			let start = function(Func)(1, 0)
 			let starts += [[Func, start]]
 
-			if min == -1 || min > start
+			if min == -1 || (start >=0 && min > start)
 				let min = start
 			endif
 		endfor
@@ -66,7 +68,12 @@ fun! CompletionAggreg(findstart, base) abort
 
 	else
 
+		if s:debug
+			let g:log = ""
+		endif
+
 		let matches = []
+		let max_r_len = 0
 
 		" SECOND INVOCATION
 		for Func in b:funcs
@@ -75,7 +82,17 @@ fun! CompletionAggreg(findstart, base) abort
 			let prefix = s:prefixes[Func]
 
 			if exists('r') | unlet r | endif
+			if s:debug
+				echo "calling " . Func . " on 0 " . base
+				let g:log .= "calling " . Func . " on 0 " . base . "\n"
+			endif
+
 			let r = function(Func)(0, base)
+
+			if s:debug
+				echo "result: "
+				echo r
+			endif
 
 			if type(r) == type([])
 				let pre_words = r
@@ -87,6 +104,14 @@ fun! CompletionAggreg(findstart, base) abort
 				echoerr "^^^ unexpected type of return value"
 			endif
 
+			if s:debug
+				echo "converting to:"
+				echo pre_words
+
+				let max_r_len = max([len(pre_words), max_r_len])
+			endif
+
+
 			let words = s:strings2dicts(pre_words, 'word')
 
 			"add prefix to each word
@@ -97,6 +122,10 @@ fun! CompletionAggreg(findstart, base) abort
 			let matches += words
 
 		endfor
+
+		if s:debug && max_r_len > len(matches)
+			echoerr "Error: some words were lost!"
+		endif
 
 		return {'words' : matches}
 
