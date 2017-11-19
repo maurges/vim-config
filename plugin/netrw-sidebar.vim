@@ -6,41 +6,8 @@
 let g:netrw_sidebar_width = 30
 
 
-fun! s:netrw_sidebar_open_at(place)
-	if exists('t:netrw_sidebar_id')
-		"go to it if exists
-		exec t:netrw_sidebar_id . "wincmd w"
-		return
-	endif
-	"open, go to it, resize and set variables
-	exec "Lexplore " . a:place
-	exec "vertical resize" . g:netrw_sidebar_width
-	"unset the variable controlling where the opening takes place
-	let g:netrw_chgwin = -1
-	"set technical info
-	let t:netrw_sidebar_id = winnr()
-	let w:is_netrw_sidebar = 1
-endfun
+command!                         NetrwSidebar   :call netrw_sidebar#open_at('./')
+command! -nargs=1 -complete=file NetrwSidebarAt :call netrw_sidebar#open_at(<args>)
 
-fun! s:netrw_sidebar_close()
-	if !exists('t:netrw_sidebar_id')
-		return
-	endif
-	exec  t:netrw_sidebar_id . "wincmd q"
-	unlet t:netrw_sidebar_id 
-endfun
-
-fun! s:netrw_sidebar_toggle()
-	if exists('t:netrw_sidebar_id')
-		call s:netrw_sidebar_close()
-	else
-		call s:netrw_sidebar_open_at('./')
-	endif
-endfun
-
-
-command!                         NetrwSidebar   :call <SID>netrw_sidebar_open_at('./')
-command! -nargs=1 -complete=file NetrwSidebarAt :call <SID>netrw_sidebar_open_at(<args>)
-
-command! NetrwSidebarClose  :call <SID>netrw_sidebar_close()
-command! NetrwSidebarToggle :call <SID>netrw_sidebar_toggle()
+command! NetrwSidebarClose  :call netrw_sidebar#close()
+command! NetrwSidebarToggle :call netrw_sidebar#toggle()
