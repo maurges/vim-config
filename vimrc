@@ -122,6 +122,8 @@ set wildmode=longest,list
 set wildmenu
 "use an unused character to start command-line completion in maps
 set wildcharm=<c-d>
+"when using x on a combination of symbols, delete only one of combo
+set delcombine
 
 "cursor style. The most important are cursor blinking options, others are
 "default
