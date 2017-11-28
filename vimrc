@@ -214,9 +214,6 @@ nnoremap <F5> :<C-U>wa<CR>:make<CR>
 "quickly enter and leave quickfix mode
 nnoremap <silent> <F4>   :EnterQuickfix<cr>
 nnoremap <silent> <C-F4> :LeaveQuickfix<cr>
-"fast moving between errors
-nnoremap <silent> <C-N> :<C-U>cn<CR>
-nnoremap <silent> <C-P> :<C-U>cp<CR>
 
 
 "screen movement
