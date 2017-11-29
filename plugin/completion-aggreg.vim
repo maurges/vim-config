@@ -53,8 +53,9 @@ fun! CompletionAggreg(findstart, base) abort
 		let s:bases    = {}
 
 		for [Func, start] in starts
-			"include both ends
-			let len  = pos - start + 1
+			"as of now i don't completely understand what this line means, but it
+			"doesn't include last char, i suppose
+			let len  = pos - start
 			let base = strpart(line, start, len)
 			"don't include last char
 			let prlen  = start - min
