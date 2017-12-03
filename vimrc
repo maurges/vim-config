@@ -57,6 +57,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 "haskell completion engine
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+"better netrw
+Plug 'd86leader/vim-netrwild'
 
 " Language support plugins
 
