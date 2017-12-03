@@ -71,13 +71,19 @@ call plug#end()
 filetype indent on
 filetype plugin on
 
+"i have an autocmd below that turns relativenumber off, so number is set
+set relativenumber
 set number
+"tab stuff, mostly overwritten for filetypes
 set tabstop=4
 set shiftwidth=4
 set autoindent
 set noexpandtab
+"can click, drag and other things with mouse i all modes
 set mouse=a
+"for terminal vim without airline
 set ruler
+"fold nicely
 set foldmethod=syntax
 "blink screen on errors
 set visualbell
@@ -85,8 +91,6 @@ set visualbell
 set cpoptions+=y
 "don't save options with views
 set viewoptions-=options
-"good shit
-set relativenumber
 "searching is smart about case
 set ignorecase
 set smartcase
