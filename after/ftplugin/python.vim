@@ -4,7 +4,11 @@ iabbrev <buffer> read_array# map(int, raw_input().strip().split(' '))
 
 setlocal noexpandtab shiftwidth=4 tabstop=4 
 
-setlocal omnifunc=python3complete#Complete
+if has('python3')
+	setlocal omnifunc=python3complete#Complete
+else
+	setlocal omnifunc=pythoncomplete#Complete
+endif
 
 nmap <Leader>pb <Space>siwbhx
 vmap <Leader>pb <Space>sbhx
