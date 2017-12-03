@@ -109,7 +109,7 @@ set whichwrap=b,s,<,>,[,]
 set autoread
 "show trailing whitespace and non-breakable space, but don't show tab
 set list
-set listchars=tab:  ,trail:⋅,nbsp:⋅
+set listchars=tab:\ \ ,trail:⋅,nbsp:⋅
 "splitting windows prioritizes right>below>rest
 set splitright
 set splitbelow
