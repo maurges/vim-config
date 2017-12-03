@@ -107,9 +107,9 @@ set completeopt+=longest
 set whichwrap=b,s,<,>,[,]
 "re-read modified file
 set autoread
-"showing non-printable characters: i don't need it right now
-set nolist
-set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+"show trailing whitespace and non-breakable space, but don't show tab
+set list
+set listchars=tab:  ,trail:⋅,nbsp:⋅
 "splitting windows prioritizes right>below>rest
 set splitright
 set splitbelow
