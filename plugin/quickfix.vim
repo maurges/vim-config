@@ -94,7 +94,11 @@ augroup quickfix_closer
 augroup END
 fun! s:close_qf()
 	if winnr("$") == 1 && &buftype == "quickfix"
-		cclose
+		if s:use_loc_list()
+			lclose
+		else
+			cclose
+		endif
 	endif
 endfun
 
