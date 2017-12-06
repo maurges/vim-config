@@ -32,8 +32,8 @@ nnoremap <silent> <Leader>t- :Tabularize /-/<CR>
 vnoremap <silent> <Leader>t+ :Tabularize /+/<CR>
 nnoremap <silent> <Leader>t+ :Tabularize /+/<CR>
 
-vnoremap <silent> <Leader>t| :Tabularize /|/<CR>
-nnoremap <silent> <Leader>t| :Tabularize /|/<CR>
+vnoremap <silent> <Leader>t<bar> :Tabularize /<bar>/<CR>
+nnoremap <silent> <Leader>t<bar> :Tabularize /<bar>/<CR>
 
 vnoremap <silent> <Leader>t/ :Tabularize /\//<CR>
 nnoremap <silent> <Leader>t/ :Tabularize /\//<CR>
