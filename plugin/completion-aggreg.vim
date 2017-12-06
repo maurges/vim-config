@@ -115,9 +115,11 @@ fun! CompletionAggreg(findstart, base) abort
 
 			let words = s:strings2dicts(pre_words, 'word')
 
-			"add prefix to each word
+			"modify returned words: add prefix to each word and run some function on
+			"each (currently it removes opening bracket)
 			for word in words
 				let word.word = prefix . word.word
+				let word.word = s:post_change_word(word.word)
 			endfor
 
 			let matches += words
@@ -131,6 +133,15 @@ fun! CompletionAggreg(findstart, base) abort
 		return {'words' : matches}
 
 	endif
+endfun
+
+
+fun! s:post_change_word(word) abort
+	"strip the word of opening bracket
+	if len(a:word) > 0 && a:word[len(a:word)-1] == '('
+		return a:word[0:-2]
+	endif
+	return a:word
 endfun
 
 
