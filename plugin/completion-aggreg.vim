@@ -68,32 +68,18 @@ fun! CompletionAggreg(findstart, base) abort
 		return min
 
 	else
-
-		if s:debug
-			let g:log = ""
-		endif
+		" SECOND INVOCATION
 
 		let matches = []
-		let max_r_len = 0
 
-		" SECOND INVOCATION
 		for Func in b:funcs
 
 			let base = s:bases[Func]
 			let prefix = s:prefixes[Func]
 
 			if exists('r') | unlet r | endif
-			if s:debug
-				echo "calling " . Func . " on 0 " . base
-				let g:log .= "calling " . Func . " on 0 " . base . "\n"
-			endif
 
 			let r = function(Func)(0, base)
-
-			if s:debug
-				echo "result: "
-				echo r
-			endif
 
 			if type(r) == type([])
 				let pre_words = r
@@ -104,14 +90,6 @@ fun! CompletionAggreg(findstart, base) abort
 				echo r
 				echoerr "^^^ unexpected type of return value"
 			endif
-
-			if s:debug
-				echo "converting to:"
-				echo pre_words
-
-				let max_r_len = max([len(pre_words), max_r_len])
-			endif
-
 
 			let words = s:strings2dicts(pre_words, 'word')
 
@@ -125,10 +103,6 @@ fun! CompletionAggreg(findstart, base) abort
 			let matches += words
 
 		endfor
-
-		if s:debug && max_r_len > len(matches)
-			echoerr "Error: some words were lost!"
-		endif
 
 		return {'words' : matches}
 
