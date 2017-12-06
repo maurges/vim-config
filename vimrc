@@ -162,7 +162,6 @@ colo blues
 noremap  <Space> <nop>
 noremap  K <nop>
 noremap  Q <nop>
-noremap  R <nop>
 noremap  S <nop>
 "don't want that annoying help window
 nnoremap <F1> <NOP>
@@ -180,8 +179,10 @@ nnoremap x "_x
 "it doesn't make sense by default
 nnoremap Y y$
 nnoremap K kJ
-"this doesn\t make sense on another level
+"this doesn't make sense in another way
 inoremap <C-R> <C-R><C-P>
+"this is ehh fine by default, but following is way better
+vnoremap Y y`>
 
 
 "faster navigation in insert mode
