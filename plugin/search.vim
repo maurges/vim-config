@@ -5,6 +5,9 @@
 " without highlights by using <Space>/ and <Space>?
 
 
+"disable highlighting when nothing's entered
+set nohlsearch
+
 "highlights words as i search
 nmap / :let @/=""<CR>:set hlsearch<CR><Plug>(incsearch-forward)
 nmap ? :let @/=""<CR>:set hlsearch<CR><Plug>(incsearch-backward)
