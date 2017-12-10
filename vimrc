@@ -1,3 +1,4 @@
+"dab on the haters
 set nocompatible
 
 call plug#begin('~/.vim/bundle')
@@ -57,6 +58,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 "haskell completion engine
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+"better netrw
+Plug 'd86leader/vim-netrwild'
 
 " Language support plugins
 
@@ -69,13 +72,19 @@ call plug#end()
 filetype indent on
 filetype plugin on
 
+"i have an autocmd below that turns relativenumber off, so number is set
+set relativenumber
 set number
+"tab stuff, mostly overwritten for filetypes
 set tabstop=4
 set shiftwidth=4
 set autoindent
 set noexpandtab
+"can click, drag and other things with mouse i all modes
 set mouse=a
+"for terminal vim without airline
 set ruler
+"fold nicely
 set foldmethod=syntax
 "blink screen on errors
 set visualbell
@@ -83,8 +92,6 @@ set visualbell
 set cpoptions+=y
 "don't save options with views
 set viewoptions-=options
-"good shit
-set relativenumber
 "searching is smart about case
 set ignorecase
 set smartcase
@@ -107,9 +114,9 @@ set completeopt+=longest
 set whichwrap=b,s,<,>,[,]
 "re-read modified file
 set autoread
-"showing non-printable characters: i don't need it right now
-set nolist
-set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+"show trailing whitespace and non-breakable space, but don't show tab
+set list
+set listchars=tab:\ \ ,trail:⋅,nbsp:⋅
 "splitting windows prioritizes right>below>rest
 set splitright
 set splitbelow
@@ -155,7 +162,6 @@ colo blues
 noremap  <Space> <nop>
 noremap  K <nop>
 noremap  Q <nop>
-noremap  R <nop>
 noremap  S <nop>
 "don't want that annoying help window
 nnoremap <F1> <NOP>
@@ -173,8 +179,10 @@ nnoremap x "_x
 "it doesn't make sense by default
 nnoremap Y y$
 nnoremap K kJ
-"this doesn\t make sense on another level
+"this doesn't make sense in another way
 inoremap <C-R> <C-R><C-P>
+"this is ehh fine by default, but following is way better
+vnoremap Y y`>
 
 
 "faster navigation in insert mode
@@ -217,10 +225,14 @@ nnoremap <silent> <C-F4> :LeaveQuickfix<cr>
 
 
 "screen movement
-noremap  = 3<C-E>
-noremap  - 3<C-Y>
-noremap  + <C-W>p3<C-E><C-W>p
-noremap  _ <C-W>p3<C-Y><C-W>p
+nnoremap  = 3<C-E>
+xnoremap  = 3<C-E>
+nnoremap  - 3<C-Y>
+xnoremap  - 3<C-Y>
+nnoremap  + <C-W>p3<C-E><C-W>p
+xnoremap  + <C-W>p3<C-E><C-W>p
+nnoremap  _ <C-W>p3<C-Y><C-W>p
+xnoremap  _ <C-W>p3<C-Y><C-W>p
 inoremap <C-E> <C-X><C-E><C-X><C-E>a<BS>
 inoremap <C-Y> <C-X><C-Y><C-X><C-Y>a<BS>
 inoremap <A-Z> <C-O>zz
@@ -229,12 +241,16 @@ inoremap ú <C-O>zz
 "other movement
 "if moving more than 3 lines at once, populate the jumplist
 "also move by true lines when count given, and by screen lines otherwise
-noremap <expr> k v:count ? (v:count > 3 ? ("m'" . v:count) : '') . 'k' : 'gk'
-noremap <expr> j v:count ? (v:count > 3 ? ("m'" . v:count) : '') . 'j' : 'gj'
+nnoremap <expr> k v:count ? (v:count > 3 ? ("m'" . v:count) : '') . 'k' : 'gk'
+xnoremap <expr> k v:count ? (v:count > 3 ? ("m'" . v:count) : '') . 'k' : 'gk'
+nnoremap <expr> j v:count ? (v:count > 3 ? ("m'" . v:count) : '') . 'j' : 'gj'
+xnoremap <expr> j v:count ? (v:count > 3 ? ("m'" . v:count) : '') . 'j' : 'gj'
 "because 0 is easier to press
-noremap  0 ^
+nnoremap  0 ^
+xnoremap  0 ^
 onoremap 0 ^
-noremap  ^ 0
+nnoremap  ^ 0
+xnoremap  ^ 0
 onoremap ^ 0
 "also home should go to the first non-blank character, not just first
 noremap  <Home> ^
@@ -278,14 +294,17 @@ nnoremap <silent> gmT :<C-U>tabm -1<CR>
 nnoremap <silent> <Space>p Vp
 nnoremap <silent> <Space>P kVp
 xnoremap <silent> <Space>p p
-noremap  <Space>` <C-O>
-noremap  <Space>' <C-I>
+nnoremap  <Space>` <C-O>
+xnoremap  <Space>` <C-O>
+nnoremap  <Space>' <C-I>
+xnoremap  <Space>' <C-I>
 map      <Space>+ <C-A>
 map      <Space>- <C-X>
 "took me a long time to think of it
 nnoremap <Space>t gT
 
-noremap  <Space>] g<C-]>
+nnoremap  <Space>] g<C-]>
+xnoremap  <Space>] g<C-]>
 "if i knew more i maybe would like to delete it
 nnoremap <Space>[ <C-T>
 

@@ -68,32 +68,18 @@ fun! CompletionAggreg(findstart, base) abort
 		return min
 
 	else
-
-		if s:debug
-			let g:log = ""
-		endif
+		" SECOND INVOCATION
 
 		let matches = []
-		let max_r_len = 0
 
-		" SECOND INVOCATION
 		for Func in b:funcs
 
 			let base = s:bases[Func]
 			let prefix = s:prefixes[Func]
 
 			if exists('r') | unlet r | endif
-			if s:debug
-				echo "calling " . Func . " on 0 " . base
-				let g:log .= "calling " . Func . " on 0 " . base . "\n"
-			endif
 
 			let r = function(Func)(0, base)
-
-			if s:debug
-				echo "result: "
-				echo r
-			endif
 
 			if type(r) == type([])
 				let pre_words = r
@@ -105,32 +91,31 @@ fun! CompletionAggreg(findstart, base) abort
 				echoerr "^^^ unexpected type of return value"
 			endif
 
-			if s:debug
-				echo "converting to:"
-				echo pre_words
-
-				let max_r_len = max([len(pre_words), max_r_len])
-			endif
-
-
 			let words = s:strings2dicts(pre_words, 'word')
 
-			"add prefix to each word
+			"modify returned words: add prefix to each word and run some function on
+			"each (currently it removes opening bracket)
 			for word in words
 				let word.word = prefix . word.word
+				let word.word = s:post_change_word(word.word)
 			endfor
 
 			let matches += words
 
 		endfor
 
-		if s:debug && max_r_len > len(matches)
-			echoerr "Error: some words were lost!"
-		endif
-
 		return {'words' : matches}
 
 	endif
+endfun
+
+
+fun! s:post_change_word(word) abort
+	"strip the word of opening bracket
+	if len(a:word) > 0 && a:word[len(a:word)-1] == '('
+		return a:word[0:-2]
+	endif
+	return a:word
 endfun
 
 
