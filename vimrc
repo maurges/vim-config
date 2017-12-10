@@ -301,7 +301,7 @@ xnoremap <F2> y:call <sid>replace_all('<C-R>"')<CR>
 fun! s:replace_all(word) abort
 	let prompt = "Replace: " . a:word . " --> "
 	let repl = input(prompt)
-	exec "tabdo %s/".a:word."/".repl."/gc"
+	exec "bufdo %s/".a:word."/".repl."/gc"
 endfun
 
 
