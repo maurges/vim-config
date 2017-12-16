@@ -377,6 +377,18 @@ nnoremap q/ q/a
 nnoremap q? q?a
 
 
+"ubuntu has escape-sequence stuff going on ruining everything
+noremap <expr> <Esc>[< <SID>ubuntu_termcodes_fix()
+fun! s:ubuntu_termcodes_fix()
+	echo "fixing ubuntu shit..."
+	let c = nr2char(getchar())
+	while c != 'c'
+		let c = nr2char(getchar())
+	endwhile
+	return ''
+endfun
+
+
 "for when i have to edit other man's file
 silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
 silent! command! Implodetab2 :%s/  /	/g
