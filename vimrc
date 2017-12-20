@@ -174,6 +174,7 @@ vnoremap <F1> <NOP>
 vnoremap <S-F1> <NOP>
 "hate that small deletes overwrite unnamed
 nnoremap x "_x
+nnoremap s "_s
 
 
 "it doesn't make sense by default
