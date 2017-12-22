@@ -54,8 +54,6 @@ Plug 'danro/rename.vim'
 Plug 'vim-syntastic/syntastic'
 "highlight lines changed since last commit
 Plug 'airblade/vim-gitgutter'
-"show git status of files in nerdtree
-Plug 'Xuyuanp/nerdtree-git-plugin'
 "haskell completion engine
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 "better netrw
