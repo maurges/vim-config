@@ -95,8 +95,8 @@ set ignorecase
 set smartcase
 "keep two lines before cursor
 set scrolloff=2
-"quickfix windows searches for open tab, splits if not found
-set switchbuf=usetab,newtab
+"quickfix opens next result in current buffer
+set switchbuf=
 "don't redraw screen when executing untyped commands
 set lazyredraw
 "there's a fishy thing going on with selections; disable it
