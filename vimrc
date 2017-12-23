@@ -408,7 +408,7 @@ augroup autoview
 	autocmd BufWinEnter ?* call <SID>load_view()
 augroup END
 fun! s:make_view() abort
-	if @% != ""
+	if @% != "" && &foldmethod != 'diff'
 		mkview!
 	endif
 endfun
