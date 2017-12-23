@@ -51,3 +51,6 @@ vnoremap <silent> <Leader>tb :Tabularize /(/l1r0<CR>
 
 nnoremap <silent> <Leader>t[ :Tabularize /[/l1r0<CR>
 vnoremap <silent> <Leader>t[ :Tabularize /[/l1r0<CR>
+
+nnoremap <silent> <Leader>t{ :Tabularize /{/l1r0<CR>
+vnoremap <silent> <Leader>t{ :Tabularize /{/l1r0<CR>
