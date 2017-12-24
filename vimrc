@@ -97,8 +97,8 @@ set ignorecase
 set smartcase
 "keep two lines before cursor
 set scrolloff=2
-"quickfix windows searches for open tab, splits if not found
-set switchbuf=usetab,newtab
+"let's see what i like
+set switchbuf=usetab
 "don't redraw screen when executing untyped commands
 set lazyredraw
 "there's a fishy thing going on with selections; disable it
@@ -310,6 +310,12 @@ nnoremap <Space>[ <C-T>
 
 "found i use <C-W> a lot, but it's a pain to press
 nmap     <Space>w <C-W>
+
+"quickly move between windows
+nnoremap <Space>h <C-W>h
+nnoremap <Space>j <C-W>j
+nnoremap <Space>k <C-W>k
+nnoremap <Space>l <C-W>l
 
 
 "hotkey to quickly replace word under cursor
