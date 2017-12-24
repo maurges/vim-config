@@ -54,8 +54,6 @@ Plug 'danro/rename.vim'
 Plug 'vim-syntastic/syntastic'
 "highlight lines changed since last commit
 Plug 'airblade/vim-gitgutter'
-"show git status of files in nerdtree
-Plug 'Xuyuanp/nerdtree-git-plugin'
 "haskell completion engine
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 "better netrw
@@ -97,8 +95,8 @@ set ignorecase
 set smartcase
 "keep two lines before cursor
 set scrolloff=2
-"let's see what i like
-set switchbuf=usetab
+"quickfix opens next result in current buffer
+set switchbuf=
 "don't redraw screen when executing untyped commands
 set lazyredraw
 "there's a fishy thing going on with selections; disable it
@@ -174,6 +172,7 @@ vnoremap <F1> <NOP>
 vnoremap <S-F1> <NOP>
 "hate that small deletes overwrite unnamed
 nnoremap x "_x
+nnoremap s "_s
 
 
 "it doesn't make sense by default
@@ -383,6 +382,18 @@ nnoremap q/ q/a
 nnoremap q? q?a
 
 
+"ubuntu has escape-sequence stuff going on ruining everything
+noremap <expr> <Esc>[< <SID>ubuntu_termcodes_fix()
+fun! s:ubuntu_termcodes_fix()
+	echo "fixing ubuntu shit..."
+	let c = nr2char(getchar())
+	while c != 'c'
+		let c = nr2char(getchar())
+	endwhile
+	return ''
+endfun
+
+
 "for when i have to edit other man's file
 silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
 silent! command! Implodetab2 :%s/  /	/g
@@ -403,7 +414,7 @@ augroup autoview
 	autocmd BufWinEnter ?* call <SID>load_view()
 augroup END
 fun! s:make_view() abort
-	if @% != ""
+	if @% != "" && &foldmethod != 'diff'
 		mkview!
 	endif
 endfun
