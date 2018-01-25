@@ -6,10 +6,12 @@ call plug#begin('~/.vim/bundle')
 " Dependencies
 
 "requirement for some other plugins
+"required by easytags
 Plug 'xolox/vim-misc'
 "smarter .: aware of plugins
 Plug 'tpope/vim-repeat'
 "plugin for asynchronous code execution
+"required by ghc-mod
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 " General
@@ -34,8 +36,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-easytags'
 "indent text-object
 Plug 'michaeljsmith/vim-indent-object'
-"fast search by two characters
-Plug 'justinmk/vim-sneak'
 "undo tree visualisation
 Plug 'mbbill/undotree'
 "special symbols for haskell
@@ -58,6 +58,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 "better netrw
 Plug 'd86leader/vim-netrwild'
+"easier c++ writing
+Plug 'd86leader/vim-cpp-helper'
 
 " Language support plugins
 
