@@ -8,3 +8,5 @@ inoreabbrev <buffer> main# int main(int argc, char** argv)<CR>{<CR>}<Up>
 
 "make current file
 nnoremap <buffer> <F6> :w<CR>:make %:r.o<CR>
+
+set omnifunc=ClangComplete

@@ -60,6 +60,8 @@ Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'd86leader/vim-netrwild'
 "easier c++ writing
 Plug 'd86leader/vim-cpp-helper'
+"c++ completion
+Plug 'Rip-Rip/clang_complete'
 
 " Language support plugins
 
