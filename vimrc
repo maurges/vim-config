@@ -432,7 +432,7 @@ augroup relativenumber
 	autocmd WinLeave * set norelativenumber
 augroup END
 fun! s:set_relativenumber()
-	if &filetype != 'help'
+	if &l:number
 		set relativenumber
 	endif
 endfun
