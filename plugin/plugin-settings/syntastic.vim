@@ -4,8 +4,11 @@ let g:syntastic_cpp_compiler_options = ' -std=c++1y'
 "fix so nasm uses 64 bit
 let g:syntastic_nasm_nasm_args = '-f elf64'
 
+"disable red snake highlighting errors
+let g:syntastic_enable_highlighting = 0
+
 "automatically populate location list with errors
-let syntastic_always_populate_loc_list = 1
+let g:syntastic_always_populate_loc_list = 1
 
 "don't check when exiting window
-let syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 0
