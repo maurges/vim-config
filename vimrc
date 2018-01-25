@@ -317,18 +317,6 @@ nnoremap <Space>k <C-W>k
 nnoremap <Space>l <C-W>l
 
 
-"hotkey to quickly replace word under cursor
-nnoremap <F2> yiw:call <sid>replace_all('<C-R>"')<CR>
-"and quickly replace all occurences of selected text
-xnoremap <F2> y:call <sid>replace_all('<C-R>"')<CR>
-
-fun! s:replace_all(word) abort
-	let prompt = "Replace: " . a:word . " --> "
-	let repl = input(prompt)
-	exec "bufdo %s/".a:word."/".repl."/gc"
-endfun
-
-
 "some remaps to control completion
 inoremap <expr> <C-C> pumvisible() ? "\<C-E>" : "\<C-C>"
 inoremap <expr> <A-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
