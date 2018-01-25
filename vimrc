@@ -391,6 +391,9 @@ silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
 silent! command! Implodetab2 :%s/  /	/g
 silent! command! Implodetab4 :%s/    /	/g
 
+"create a clang-complete file with gcc options for includes
+silent! command! ClangCreateIncludes :make CC='~/.vim/bundle/clang_complete/bin/cc_args.py gcc' CXX='~/.vim/bundle/clang_complete/bin/cc_args.py g++' -B
+
 
 "Close tab if only netrwsidebar is left
 augroup nerdtreecloser
