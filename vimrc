@@ -145,6 +145,11 @@ if exists("&breakindent")
 	set breakindent
 endif
 
+"preview changes done by :s command
+if exists("&inccommand")
+	set inccommand=nosplit
+endif
+
 "don't insert comment leader when creating a new line
 augroup comment_formatoptions
 	autocmd!
