@@ -61,7 +61,7 @@ Plug 'd86leader/vim-netrwild'
 "easier c++ writing
 Plug 'd86leader/vim-cpp-helper'
 "c++ completion
-Plug 'Rip-Rip/clang_complete'
+Plug 'd86leader/clang_complete'
 
 " Language support plugins
 
