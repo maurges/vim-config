@@ -9,4 +9,7 @@ inoreabbrev <buffer> main# int main(int argc, char** argv)<CR>{<CR>}<Up>
 "make current file
 nnoremap <buffer> <F6> :w<CR>:make %:r.o<CR>
 
+"split source file
+nnoremap <buffer> <silent> <localleader>s :vsplit %:r.cpp<CR>
+
 setlocal omnifunc=ClangComplete
