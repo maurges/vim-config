@@ -379,6 +379,10 @@ nnoremap q/ q/a
 nnoremap q? q?a
 
 
+"close all top-level folds
+nnoremap <silent> zg :%foldc<CR>
+
+
 "ubuntu has escape-sequence stuff going on ruining everything
 noremap <expr> <Esc>[< <SID>ubuntu_termcodes_fix()
 fun! s:ubuntu_termcodes_fix()
