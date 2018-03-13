@@ -25,6 +25,8 @@ fun! s:embrace()
 		return cmdstart . "$yiwo; \<C-R>\" {{{\<CR>\<CR>; }}}\<C-C>kO"
 	elseif l =~ "%ifndef [A-Z_]*"
 		return cmdstart . "0wwywo%define \<C-R>\"\<CR>\<CR>\<CR>\<CR>%endif\<C-C>kkA"
+	elseif l =~ '^\k\+:'
+		return cmdstart . "0yiwO; \<C-R>\" {{{\<C-C>jo; }}}\<C-C>O\<Tab>"
 	else
 		return "\<CR>"
 	endif
