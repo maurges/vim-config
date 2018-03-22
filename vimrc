@@ -383,12 +383,14 @@ nnoremap q? q?a
 nnoremap <silent> zg :%foldc<CR>
 
 
-"ubuntu has escape-sequence stuff going on ruining everything
-noremap <expr> <Esc>[< <SID>ubuntu_termcodes_fix()
-fun! s:ubuntu_termcodes_fix()
-	echo "fixing ubuntu shit..."
+"there is a vanilla vim problem with termcodes
+if !has('nvim')
+	noremap <expr> <Esc>[ <SID>termcodes_fix()
+endif
+fun! s:termcodes_fix()
+	echo "fixing termcode shit..."
 	let c = nr2char(getchar())
-	while c != 'c'
+	while c != 'c' && c != "\<c-c>"
 		let c = nr2char(getchar())
 	endwhile
 	return ''
