@@ -393,6 +393,7 @@ fun! s:termcodes_fix()
 	while c != 'c' && c != "\<c-c>"
 		let c = nr2char(getchar())
 	endwhile
+	echo ""
 	return ''
 endfun
 
