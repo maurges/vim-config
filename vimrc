@@ -23,7 +23,7 @@ Plug 'jiangmiao/auto-pairs'
 "regexes in search
 Plug 'haya14busa/incsearch.vim'
 "file tree
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
 "quick reformat
 Plug 'godlygeek/tabular'
 "source code browsing bar
