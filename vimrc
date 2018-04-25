@@ -133,6 +133,11 @@ set wildmenu
 set wildcharm=<c-d>
 "when using x on a combination of symbols, delete only one of combo
 set delcombine
+"use cyrillic keymap for alternative layout
+set keymap=russian-jcukenwin
+"use latinic keymap by default
+set iminsert=0
+set imsearch=0
 
 "cursor style. The most important are cursor blinking options, others are
 "default
