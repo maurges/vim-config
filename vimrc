@@ -387,7 +387,7 @@ nnoremap <silent> zg :%foldc<CR>
 
 
 "there is a vanilla vim problem with termcodes
-if !has('nvim')
+if !has('nvim') && !has('gui')
 	noremap <expr> <Esc>[ <SID>termcodes_fix()
 endif
 fun! s:termcodes_fix()
