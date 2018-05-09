@@ -68,6 +68,9 @@ Plug 'd86leader/clang_complete'
 Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+if !has("nvim")
+	Plug 'd86leader/vim-go-syntax', { 'for': 'go' }
+endif
 
 call plug#end()
 
