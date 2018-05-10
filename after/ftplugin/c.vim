@@ -2,7 +2,7 @@ inoremap <buffer> <silent> <S-CR> <End><CR>{<CR>}<Up><CR>
 inoremap <buffer> <silent> Ý <End><CR>{<CR>}<Up><CR>
 inoremap <buffer> <silent> � <End><CR>{<CR>}<Up><CR>
 
-set tags+=~/.vim/cpptags
+setlocal tags+=~/.vim/cpptags
 
 inoreabbrev <buffer> main# int main(int argc, char** argv)<CR>{<CR>}<Up>
 
