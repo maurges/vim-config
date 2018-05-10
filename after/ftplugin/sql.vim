@@ -1,5 +1,5 @@
 "disable not working omnifunc
-set omnifunc=
+setlocal omnifunc=
 
 "disable not working foldmethod
-set foldmethod=marker
+setlocal foldmethod=marker
