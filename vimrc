@@ -412,6 +412,9 @@ silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
 "create a clang-complete file with gcc options for includes
 silent! command! ClangCreateIncludes :make CC='~/.vim/bundle/clang_complete/bin/cc_args.py gcc' CXX='~/.vim/bundle/clang_complete/bin/cc_args.py g++' -B
 
+"abbreviation for easier topleft window opening
+cabbrev <expr> tl (getcmdpos() == 3 && getcmdtype() == ":") ? "topleft" : "tl"
+
 
 "Close tab if only netrwsidebar is left
 augroup nerdtreecloser
