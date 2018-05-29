@@ -363,11 +363,6 @@ nnoremap <Space>g] yiw:tab tjump <C-R>"<CR>
 xnoremap <Space>g] y:tab tjump <C-R>"<CR>
 
 
-"quickly paste register contents with ' (as i only use ` for marks)
-nnoremap <expr> ' '"' . nr2char(getchar()) . 'P'
-xnoremap <expr> ' '"' . nr2char(getchar()) . 'P'
-
-
 "shortcut to quickly use macro in q
 nnoremap Q @q
 
