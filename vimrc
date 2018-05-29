@@ -390,21 +390,6 @@ nnoremap <silent> zg :%foldc<CR>
 inoremap <C-BS> <C-W>
 
 
-"there is a vanilla vim problem with termcodes
-if !has('nvim') && !has('gui')
-	noremap <expr> <Esc>[ <SID>termcodes_fix()
-endif
-fun! s:termcodes_fix()
-	echo "fixing termcode shit..."
-	let c = nr2char(getchar())
-	while c != 'c' && c != "\<c-c>"
-		let c = nr2char(getchar())
-	endwhile
-	echo ""
-	return ''
-endfun
-
-
 "for when i have to edit other man's file
 silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
 
