@@ -391,6 +391,10 @@ nnoremap q? q?a
 nnoremap <silent> zg :%foldc<CR>
 
 
+"browser-like delete word i became familiar with
+inoremap <C-BS> <C-W>
+
+
 "there is a vanilla vim problem with termcodes
 if !has('nvim') && !has('gui')
 	noremap <expr> <Esc>[ <SID>termcodes_fix()
