@@ -365,6 +365,7 @@ xnoremap <Space>g] y:tab tjump <C-R>"<CR>
 
 "shortcut to quickly use macro in q
 nnoremap Q @q
+xnoremap Q @q
 
 
 "text-object for whole file
