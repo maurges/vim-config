@@ -391,6 +391,11 @@ nnoremap <silent> zg :%foldc<CR>
 inoremap <C-BS> <C-W>
 
 
+"an easier map to change langmap, also it's in normal mode
+inoremap <C-Space> <C-^>
+nnoremap <C-Space> a<C-^><C-C>
+
+
 "for when i have to edit other man's file
 silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
 
