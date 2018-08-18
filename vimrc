@@ -398,6 +398,12 @@ inoremap <C-Space> <C-^>
 nnoremap <C-Space> a<C-^><C-C>
 
 
+"fill a part of the path to vim files
+cnoremap <F9> ~/.vim/
+cnoremap <F10> ~/.vim/vimrc
+cnoremap <Leader><F9> ~/.vim/plugin
+
+
 "for when i have to edit other man's file
 silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
 
