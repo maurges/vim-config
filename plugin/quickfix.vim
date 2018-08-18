@@ -9,6 +9,8 @@ command! -nargs=0  QuickfixWinOpen    :call <SID>win_open()
 command! -nargs=0  QuickfixWinClose   :call <SID>win_close()
 
 command! -nargs=?  QuickfixUseLocList :call <SID>command_set_loc_list(<args>)
+command! -nargs=0  Quickfixqf         :QuickfixUseLocList 0
+command! -nargs=0  Quickfixloc        :QuickfixUseLocList 1
 
 let g:quickfix_use_loc_list = 1
 
