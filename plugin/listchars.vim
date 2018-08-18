@@ -16,3 +16,5 @@ fun! s:toggle_listchars() abort
 endfun
 
 nnoremap <silent> <Leader><Tab> :call <SID>toggle_listchars()<CR>
+"toggle visibility at all
+nnoremap <silent> <Leader><Leader>l :let &list = !&list<CR>

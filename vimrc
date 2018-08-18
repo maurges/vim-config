@@ -9,6 +9,7 @@ call plug#begin('~/.vim/bundle')
 "required by easytags
 Plug 'xolox/vim-misc'
 "smarter .: aware of plugins
+"used by vim-surround and maybe others
 Plug 'tpope/vim-repeat'
 "plugin for asynchronous code execution
 "required by ghc-mod
@@ -50,7 +51,7 @@ Plug 'd86leader/vim-stupidcomplete'
 Plug 'metakirby5/codi.vim'
 "rename opened file
 Plug 'danro/rename.vim'
-"Syntax checker plugin
+"Syntax checker plugin (kinda shit)
 Plug 'vim-syntastic/syntastic'
 "highlight lines changed since last commit
 Plug 'airblade/vim-gitgutter'
@@ -87,7 +88,7 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 set noexpandtab
-"can click, drag and other things with mouse i all modes
+"can click, drag and other things with mouse in all modes
 set mouse=a
 "for terminal vim without airline
 set ruler
@@ -117,8 +118,8 @@ set copyindent
 set completeopt-=preview
 "when starting completion, show options and fill the longest common
 set completeopt+=longest
-"moving left and right can move past the line
-set whichwrap=b,s,<,>,[,]
+"moving left and right with arrows can move past the line
+set whichwrap=<,>,[,]
 "re-read modified file
 set autoread
 "show trailing whitespace and non-breakable space, but don't show tab
@@ -200,7 +201,7 @@ nnoremap K kJ
 "this doesn't make sense in another way
 inoremap <C-R> <C-R><C-P>
 "this is ehh fine by default, but following is way better
-vnoremap Y y`>
+xnoremap Y y`>
 
 
 "faster navigation in insert mode
@@ -266,10 +267,10 @@ xnoremap <expr> j v:count ? (v:count > 3 ? ("m'" . v:count) : '') . 'j' : 'gj'
 "because 0 is easier to press
 nnoremap  0 ^
 xnoremap  0 ^
-onoremap 0 ^
+onoremap  0 ^
 nnoremap  ^ 0
 xnoremap  ^ 0
-onoremap ^ 0
+onoremap  ^ 0
 "also home should go to the first non-blank character, not just first
 noremap  <Home> ^
 inoremap <Home> <C-O>^
@@ -281,20 +282,14 @@ onoremap <Space>e $
 "easily add new lines
 nnoremap <CR> o<Esc>k
 nnoremap <S-CR> O<Esc>j
-"a kostyl for terminal vim: <A-]> is what i would never press
+"for terminal vim we use <a-]>
 nnoremap Ý O<Esc>j
 nnoremap � O<Esc>j
-"easily split lines
-nnoremap <C-O> i<CR><Esc>
 
 
 "all those helping windows
-nnoremap <silent> æ :<C-U>NERDTreeToggle<CR>
-nnoremap <silent> <A-F> :<C-U>NERDTreeToggle<CR>
 nnoremap <silent> í :<C-U>TagbarOpenAutoClose<CR>
 nnoremap <silent> <A-M> :<C-U>TagbarOpenAutoClose<CR>
-nnoremap <silent> õ :<C-U>UndotreeToggle<CR>
-nnoremap <silent> <A-U> :<C-U>UndotreeToggle<CR>
 
 
 "helpful for search and regexps
@@ -306,25 +301,26 @@ cnoremap ;> \<\><Left><Left>
 "hotkeys for moving tabs
 nnoremap <silent> gmt :<C-U>tabm +1<CR>
 nnoremap <silent> gmT :<C-U>tabm -1<CR>
+"Fucking Nice (took me a long time to think of it)
+nnoremap <Space>t gT
 
-
-"i want space to be a g-like modifier for useful stuff
+"paste and replace line
 nnoremap <silent> <Space>p Vp
 nnoremap <silent> <Space>P kVp
 xnoremap <silent> <Space>p p
+
+"easily split lines
+nnoremap <Space>o i<CR><Esc>
+
+"[avaits removing] go through history
 nnoremap  <Space>` <C-O>
 xnoremap  <Space>` <C-O>
 nnoremap  <Space>' <C-I>
 xnoremap  <Space>' <C-I>
-map      <Space>+ <C-A>
-map      <Space>- <C-X>
-"took me a long time to think of it
-nnoremap <Space>t gT
 
+"open tag and let you choose the location
 nnoremap  <Space>] g<C-]>
 xnoremap  <Space>] g<C-]>
-"if i knew more i maybe would like to delete it
-nnoremap <Space>[ <C-T>
 
 "found i use <C-W> a lot, but it's a pain to press
 nmap     <Space>w <C-W>
@@ -375,10 +371,6 @@ onoremap af :<C-U>keepjumps normal! gg0vG$<CR>
 xnoremap af :<C-U>keepjumps normal! gg0vG$<CR>
 
 
-"toggle visibility of some characters
-nnoremap <silent> <Leader><Leader>l :let &list = !&list<CR>
-
-
 "more user-friendly enter ex mode
 nnoremap q: q:a
 nnoremap q/ q/a
@@ -399,9 +391,8 @@ nnoremap <C-Space> a<C-^><C-C>
 
 
 "fill a part of the path to vim files
-cnoremap <F9> ~/.vim/
+cnoremap <F9> ~/.vim/plugin
 cnoremap <F10> ~/.vim/vimrc
-cnoremap <Leader><F9> ~/.vim/plugin
 
 
 "for when i have to edit other man's file
@@ -410,15 +401,11 @@ silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
 "create a clang-complete file with gcc options for includes
 silent! command! ClangCreateIncludes :make CC='~/.vim/bundle/clang_complete/bin/cc_args.py gcc' CXX='~/.vim/bundle/clang_complete/bin/cc_args.py g++' -B
 
+"enter tagbar
+silent! command! Tagbar :TagbarOpenAutoClose
+
 "abbreviation for easier topleft window opening
 cabbrev <expr> tl (getcmdpos() == 3 && getcmdtype() == ":") ? "topleft" : "tl"
-
-
-"Close tab if only netrwsidebar is left
-augroup nerdtreecloser
-	autocmd!
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:is_netrw_sidebar")) | q | endif
-augroup END
 
 
 "keep folds and other stuff when closing file
