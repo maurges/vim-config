@@ -38,13 +38,21 @@ fun! CompletionAggreg(findstart, base) abort
 
 		"initialize them all and find minimum
 		for Func in b:funcs
-			let start = function(Func)(1, 0)
-			let starts += [[Func, start]]
+			try
+				let start = function(Func)(1, 0)
+				let starts += [[Func, start]]
 
-			if min == -1 || (start >=0 && min > start)
-				let min = start
-			endif
+				if min == -1 || (start >=0 && min > start)
+					let min = start
+				endif
+			catch
+				"do nothing
+			endtry
 		endfor
+
+		if min == -1
+			echoerr "CompletionAggreg could not call any function to complete"
+		endif
 
 		" as all functions start in different places, but the resulting should
 		" start at one, it will manually start them with their bases and add
@@ -73,35 +81,39 @@ fun! CompletionAggreg(findstart, base) abort
 		let matches = []
 
 		for Func in b:funcs
+			try
 
-			let base = s:bases[Func]
-			let prefix = s:prefixes[Func]
+				let base = s:bases[Func]
+				let prefix = s:prefixes[Func]
 
-			if exists('r') | unlet r | endif
+				if exists('r') | unlet r | endif
 
-			let r = function(Func)(0, base)
+				let r = function(Func)(0, base)
 
-			if type(r) == type([])
-				let pre_words = r
-			elseif type(r) == type({})
-				let pre_words = r.words
-			else
-				echo "pre_words: "
-				echo r
-				echoerr "^^^ unexpected type of return value"
-			endif
+				if type(r) == type([])
+					let pre_words = r
+				elseif type(r) == type({})
+					let pre_words = r.words
+				else
+					echo "pre_words: "
+					echo r
+					echoerr "^^^ unexpected type of return value"
+				endif
 
-			let words = s:strings2dicts(pre_words, 'word')
+				let words = s:strings2dicts(pre_words, 'word')
 
-			"modify returned words: add prefix to each word and run some function on
-			"each (currently it removes opening bracket)
-			for word in words
-				let word.word = prefix . word.word
-				let word.word = s:post_change_word(word.word)
-			endfor
+				"modify returned words: add prefix to each word and run some function on
+				"each (currently it removes opening bracket)
+				for word in words
+					let word.word = prefix . word.word
+					let word.word = s:post_change_word(word.word)
+				endfor
 
-			let matches += words
+				let matches += words
 
+			catch
+				"do nothing
+			endtry
 		endfor
 
 		return {'words' : matches}
