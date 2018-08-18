@@ -24,6 +24,6 @@ nnoremap <buffer> <F8> :w<CR>:GhcModLint<CR>
 nnoremap <buffer> <Leader>gt :GhcModType<CR>
 nnoremap <buffer> <Leader>gi :GhcModInfo<CR>
 nnoremap <buffer> <Leader>go :GhcModTypeInsert<CR>
-call AddMap("\<Esc>", ":GhcModTypeClear\<CR>", "n", "<buffer> <silent>")
+call add_map#add_map("\<Esc>", ":GhcModTypeClear\<CR>", "n", "<buffer> <silent>")
 
 setlocal omnifunc=necoghc#omnifunc
