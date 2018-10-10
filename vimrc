@@ -52,7 +52,7 @@ Plug 'metakirby5/codi.vim'
 "rename opened file
 Plug 'danro/rename.vim'
 "Syntax checker plugin (kinda shit)
-Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
 "highlight lines changed since last commit
 Plug 'airblade/vim-gitgutter'
 "haskell completion engine
