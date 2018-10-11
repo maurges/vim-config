@@ -6,6 +6,10 @@
 let s:listchars_option = 0
 
 fun! s:toggle_listchars() abort
+	if !&list
+		set list
+		return
+	endif
 	if s:listchars_option == 1
 		set listchars=tab:\ \ ,trail:⋅,nbsp:⋅
 		let s:listchars_option = 0
