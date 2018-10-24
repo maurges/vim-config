@@ -36,7 +36,7 @@ fun! s:command_set_loc_list(...) abort
 	endif
 endfun
 
-fun! s:use_loc_list(...) abort
+fun! s:use_loc_list() abort
 	if exists('b:quickfix_use_loc_list')
 		if b:quickfix_use_loc_list
 			return 1
@@ -106,9 +106,19 @@ fun! s:on_tab_enter() abort
 		let t:quickfix_entered = 1
 	endif
 endfun
+"close quickfix or loclist window if it's the last left in tab
+fun! s:close_qf()
+	if winnr("$") == 1 && &buftype == "quickfix"
+		if s:use_loc_list()
+			lclose
+		else
+			cclose
+		endif
+	endif
+endfun
 
 
-"on creating a new window, execute function above
+"on creating a new window, open quickfix window if mode is set
 augroup quickfix_on_new_tab
 	autocmd!
 	autocmd TabEnter * call <SID>on_tab_enter()
@@ -119,15 +129,6 @@ augroup quickfix_closer
 	autocmd!
 	autocmd BufEnter * call <SID>close_qf()
 augroup END
-fun! s:close_qf()
-	if winnr("$") == 1 && &buftype == "quickfix"
-		if s:use_loc_list()
-			lclose
-		else
-			cclose
-		endif
-	endif
-endfun
 
 
 "commands for functions above
