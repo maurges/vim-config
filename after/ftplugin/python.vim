@@ -3,7 +3,7 @@ setlocal foldmethod=indent
 
 "some snippets (i should create a little plugin for them)
 iabbrev <buffer> main: if __name__ == "__main__":
-iabbrev <buffer> header# #!/usr/bin/env python2<CR>from sys import argv
+iabbrev <buffer> header# #!/usr/bin/env python3<CR>from sys import argv
 iabbrev <buffer> read_array# map(int, raw_input().strip().split(' '))
 
 if has('python3')
