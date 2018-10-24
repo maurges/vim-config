@@ -13,7 +13,7 @@
 " is no right tab, the left tab is merged.
 "
 " The location specifies where in the current tab to merge the windows.
-" Defaults to "top".
+" Defaults to "right".
 "
 " Limitations:
 "
@@ -45,7 +45,7 @@ function! Tabmerge(...)  " {{{1
 	endif
 
 	if !exists('l:where')
-		let where = 'top'
+		let where = 'right'
 	endif
 
 	if !exists('l:tabnr')
