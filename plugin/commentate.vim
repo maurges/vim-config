@@ -19,6 +19,9 @@ nmap <BS> <Plug>CommentateComment
 vmap <BS> <Plug>CommentateComment
 nmap <S-BS> <Plug>CommentateUncomment
 vmap <S-BS> <Plug>CommentateUncomment
+"other maps for unconfigured terminals
+nmap <Leader><BS> <Plug>CommentateUncomment
+vmap <Leader><BS> <Plug>CommentateUncomment
 
 "use some nonsense key-combination for terminal
 nmap ý <S-BS>
