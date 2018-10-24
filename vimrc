@@ -21,8 +21,6 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'tpope/vim-surround'
 "auto-closing brackets
 Plug 'jiangmiao/auto-pairs'
-"regexes in search
-Plug 'haya14busa/incsearch.vim'
 "file tree
 "Plug 'scrooloose/nerdtree'
 "quick reformat

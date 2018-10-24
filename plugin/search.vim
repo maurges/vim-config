@@ -9,8 +9,8 @@
 set nohlsearch
 
 "highlights words as i search
-nmap / :let @/=""<CR>:set hlsearch<CR><Plug>(incsearch-forward)
-nmap ? :let @/=""<CR>:set hlsearch<CR><Plug>(incsearch-backward)
+nmap / :let @/=""<CR>:set hlsearch<CR>/
+nmap ? :let @/=""<CR>:set hlsearch<CR>?
 nnoremap <silent> * :set hlsearch<CR>*
 nnoremap <silent> # :set hlsearch<CR>#
 
