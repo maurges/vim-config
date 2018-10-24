@@ -33,8 +33,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "automatic tag creation
 Plug 'xolox/vim-easytags'
-"indent text-object
-Plug 'michaeljsmith/vim-indent-object'
 "undo tree visualisation
 Plug 'mbbill/undotree'
 "special symbols for haskell
@@ -45,8 +43,6 @@ Plug 'wellle/targets.vim'
 Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 "best autocompletion evaaaar
 Plug 'd86leader/vim-stupidcomplete'
-"hacker scratchpad plugin
-Plug 'metakirby5/codi.vim'
 "rename opened file
 Plug 'danro/rename.vim'
 "Syntax checker plugin (kinda shit)
