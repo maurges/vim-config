@@ -12,9 +12,6 @@ else
 	setlocal omnifunc=pythoncomplete#Complete
 endif
 
-nmap <Leader>pb <Space>siwbhx
-vmap <Leader>pb <Space>sbhx
-
 "set syntastic checker for appropriate python
 fun! PythonSetSyntasticChecker()
 	if getline(1) =~ 'python3'

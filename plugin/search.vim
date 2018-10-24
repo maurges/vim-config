@@ -20,10 +20,10 @@ noremap <Space>? ?
 
 "highlights the word under cursor
 nnoremap <silent> g* yiw:let @/=@"<CR>:set hlsearch<CR>
-vnoremap <silent> g* <C-C>yiw:let @/=@"<CR>:set hlsearch<CR>gv
+xnoremap <silent> g* <C-C>yiw:let @/=@"<CR>:set hlsearch<CR>gv
 
 "highlights selected text
-vnoremap <silent> g/ y/<C-R>"<CR>:set hlsearch<CR>
+xnoremap <silent> g/ y/<C-R>"<CR>:set hlsearch<CR>
 
 "highlights previously highlighted text
 nnoremap <silent> g/ :set hlsearch<CR>
