@@ -130,7 +130,11 @@ set showcmd
 set wildmode=longest,list
 set wildmenu
 "use an unused character to start command-line completion in maps
-set wildcharm=<c-d>
+set wildcharm=<c-o>
+"use another useless character to start normal command-line completion
+set wildchar=<C-Y>
+"preview matches as i search
+set incsearch
 "when using x on a combination of symbols, delete only one of combo
 set delcombine
 "use cyrillic keymap for alternative layout
@@ -334,16 +338,6 @@ inoremap <expr> <A-K> pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 inoremap <expr> ë     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 "changed to use autopairs plugin closing behavior after cr
 imap <silent> <expr> <CR>  pumvisible() ? "\<C-Y>" : "\<CR>\<Plug>AutoPairsReturn"
-
-
-"when completing in command line with tab, redraw the screen
-fun! CompleteRedraw()
-	redraw
-	return nr2char(&wcm)
-endfun
-cnoremap <expr> <tab> CompleteRedraw()
-"use shift-tab to start usual command-line completion
-set wildchar=<s-tab>
 
 
 "a map to the swapwins plugin (for more info see plugin/swapwindows.vim)
