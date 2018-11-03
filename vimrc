@@ -342,6 +342,8 @@ imap <silent> <expr> <CR>  pumvisible() ? "\<C-Y>" : "\<CR>\<Plug>AutoPairsRetur
 
 "a map to the swapwins plugin (for more info see plugin/swapwindows.vim)
 nnoremap <silent> <C-W>a :<C-U>call Swap_window_with_prev(0)<CR>
+"a map to copy buffer in new tab plugin (see plugin/tabcopybuffer.vim)
+nnoremap <C-W>t :<C-U>call TabCopyBuffer()<CR>
 
 
 "follow tag under cursor in new tab
