@@ -346,11 +346,6 @@ nnoremap <silent> <C-W>a :<C-U>call Swap_window_with_prev(0)<CR>
 nnoremap <C-W>t :<C-U>call TabCopyBuffer()<CR>
 
 
-"follow tag under cursor in new tab
-nnoremap <Space>g] yiw:tab tjump <C-R>"<CR>
-xnoremap <Space>g] y:tab tjump <C-R>"<CR>
-
-
 "shortcut to quickly use macro in q
 nnoremap Q @q
 xnoremap Q @q
