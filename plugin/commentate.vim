@@ -6,51 +6,11 @@
 
 "the maps
 "in normal mode: substitute from current line to current line + count
-nnoremap <silent> <Plug>CommentateComment :<C-U>call CommentateNormal(v:count)<CR>
-xnoremap <silent> <Plug>CommentateComment :call CommentateVisual<CR>
-nnoremap <silent> <Plug>CommentateUncomment :<C-U>call CommentateUncommentNormal(v:count)<CR>
-xnoremap <silent> <Plug>CommentateUncomment :call CommentateUncommentVisual(v:count)<CR>
+nnoremap <silent> <Plug>CommentateComment :<C-U>call commentate#CommentateNormal(v:count)<CR>
+xnoremap <silent> <Plug>CommentateComment :call commentate#CommentateVisual<CR>
+nnoremap <silent> <Plug>CommentateUncomment :<C-U>call commentate#CommentateUncommentNormal(v:count)<CR>
+xnoremap <silent> <Plug>CommentateUncomment :call commentate#CommentateUncommentVisual(v:count)<CR>
 
-"argument tells whether to insert or delete commentstring
-fun! s:prepare_command(first_line, last_line, insert) abort
-	"range
-	let cmd = a:first_line . "," . a:last_line
-	"substitute, absolutely no magic
-	let cmd .= "s/^\\V"
-	"maybe comment string
-	let cmd .= "\\(" . b:cs . "\\)\\?"
-	"substitute separator
-	let cmd .= "/"
-	"with commentstring or with nothing
-	if a:insert
-		let cmd .= b:cs
-	endif
-	"substitute end
-	let cmd .= "/"
-
-	return cmd
-endfun
-
-fun! CommentateNormal(count) abort
-	let firstline = "."
-	let lastline = ".+" . a:count
-	let cmd = s:prepare_command(firstline, lastline, 1)
-	exec cmd
-endfun
-fun! CommentateVisual(count) range abort
-	let cmd = s:prepare_command(a:firstline, a:lastline, 1)
-	exec cmd
-endfun
-fun! CommentateUncommentNormal(count) abort
-	let firstline = "."
-	let lastline = ".+" . a:count
-	let cmd = s:prepare_command(firstline, lastline, 0)
-	exec cmd
-endfun
-fun! CommentateUncommentVisual(count) range abort
-	let cmd = s:prepare_command(a:firstline, a:lastline, 0)
-	exec cmd
-endfun
 
 "maps for me
 nmap <BS> <Plug>CommentateComment

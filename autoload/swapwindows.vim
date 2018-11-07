@@ -1,7 +1,7 @@
 " Description: a small function to swap current and previous windows' places
 
 " stay declares whether to stay in the previous window or not
-fun! Swap_window_with_prev(stay) abort
+fun! swapwindows#with_prev(stay) abort
 	"obtain current buffer and window ids
 	let cbuf = bufnr("%")
 	let cwin = winnr()
@@ -21,5 +21,5 @@ fun! Swap_window_with_prev(stay) abort
 endfun
 
 " i suggest current mapping (as it is in my vimrc):
-"nnoremap <C-W>a :call Swap_window_with_prev(0)<CR>
+"nnoremap <C-W>a :call swapwindows#with_prev(0)<CR>
 " where 'a' in mapping stands for 'alternate'

@@ -1,13 +1,4 @@
-" Description: when completion is invoked, it will go through all completion
-" sources and aggregate them into one. Behaves as usercomplete function
-" Completion sources are: omnifunc and list of other functions
-
-let s:debug = 0
-
-"list of names of completion functions
-if !exists('g:completion_aggreg_functions')
-	let g:completion_aggreg_functions = []
-endif
+" See description in plugin/completion_aggreg.vim
 
 "returns complete functions local for buffer
 fun! s:local_funcs() abort
@@ -24,7 +15,7 @@ fun! s:local_funcs() abort
 endfun
 
 
-fun! CompletionAggreg(findstart, base) abort
+fun! completion_aggreg#complete(findstart, base) abort
 	if a:findstart
 		" FISRT INVOCATION
 		let pos  = col('.') - 1
