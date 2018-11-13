@@ -7,9 +7,9 @@
 "the maps
 "in normal mode: substitute from current line to current line + count
 nnoremap <silent> <Plug>CommentateComment :<C-U>call commentate#CommentateNormal(v:count)<CR>
-xnoremap <silent> <Plug>CommentateComment :call commentate#CommentateVisual<CR>
+xnoremap <silent> <Plug>CommentateComment :call commentate#CommentateVisual()<CR>
 nnoremap <silent> <Plug>CommentateUncomment :<C-U>call commentate#CommentateUncommentNormal(v:count)<CR>
-xnoremap <silent> <Plug>CommentateUncomment :call commentate#CommentateUncommentVisual(v:count)<CR>
+xnoremap <silent> <Plug>CommentateUncomment :call commentate#CommentateUncommentVisual()<CR>
 
 
 "maps for me

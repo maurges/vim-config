@@ -26,7 +26,7 @@ fun! commentate#CommentateNormal(count) abort
 	let cmd = s:prepare_command(firstline, lastline, 1)
 	exec cmd
 endfun
-fun! commentate#CommentateVisual(count) range abort
+fun! commentate#CommentateVisual() range abort
 	let cmd = s:prepare_command(a:firstline, a:lastline, 1)
 	exec cmd
 endfun
@@ -36,7 +36,7 @@ fun! commentate#CommentateUncommentNormal(count) abort
 	let cmd = s:prepare_command(firstline, lastline, 0)
 	exec cmd
 endfun
-fun! commentate#CommentateUncommentVisual(count) range abort
+fun! commentate#CommentateUncommentVisual() range abort
 	let cmd = s:prepare_command(a:firstline, a:lastline, 0)
 	exec cmd
 endfun
