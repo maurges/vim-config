@@ -3,8 +3,12 @@ setlocal cpoptions+=M
 
 setlocal softtabstop=4
 setlocal expandtab
+setlocal foldmethod=indent
 
-setlocal makeprg=ghc\ --make\ -Wall\ -fno-warn-tabs
+"compiler options
+setlocal makeprg=stack\ build
+setlocal errorformat=%f:%l:%v:%m
+
 let g:ghcmod_ghc_options=['-Wall', '-fno-warn-tabs', '-fno-warn-missing-signatures']
 
 nnoremap <buffer> <F5> :wa<CR>:make *.hs -o main<CR>
@@ -24,6 +28,6 @@ nnoremap <buffer> <F8> :w<CR>:GhcModLint<CR>
 nnoremap <buffer> <Leader>gt :GhcModType<CR>
 nnoremap <buffer> <Leader>gi :GhcModInfo<CR>
 nnoremap <buffer> <Leader>go :GhcModTypeInsert<CR>
-call add_map#add_map("\<Esc>", ":GhcModTypeClear\<CR>", "n", "<buffer> <silent>")
+"call add_map#add_map("\<Esc>", ":GhcModTypeClear\<CR>", "n", "<buffer> <silent>")
 
 setlocal omnifunc=necoghc#omnifunc
