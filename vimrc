@@ -13,7 +13,7 @@ Plug 'xolox/vim-misc'
 Plug 'tpope/vim-repeat'
 "plugin for asynchronous code execution
 "required by ghc-mod
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 " General
 
@@ -21,12 +21,8 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'tpope/vim-surround'
 "auto-closing brackets
 Plug 'jiangmiao/auto-pairs'
-"file tree
-"Plug 'scrooloose/nerdtree'
 "quick reformat
 Plug 'godlygeek/tabular'
-"source code browsing bar
-Plug 'majutsushi/tagbar'
 "beautiful status line
 Plug 'vim-airline/vim-airline'
 "beatiful themes for beatiful airline (they mostly ugly tho)
@@ -35,18 +31,16 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-easytags'
 "undo tree visualisation
 Plug 'mbbill/undotree'
-"special symbols for haskell
-Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
 "lots of additional text objects
 Plug 'wellle/targets.vim'
 "stuff mainly to hot typechek haskell code
-Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
+"Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 "best autocompletion evaaaar
 Plug 'd86leader/vim-stupidcomplete'
 "rename opened file
 Plug 'danro/rename.vim'
 "Syntax checker plugin (kinda shit)
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 "highlight lines changed since last commit
 Plug 'airblade/vim-gitgutter'
 "haskell completion engine
@@ -62,12 +56,10 @@ Plug 'sjl/splice.vim'
 
 " Language support plugins
 
-Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-if !has("nvim")
-	Plug 'd86leader/vim-go-syntax', { 'for': 'go' }
-endif
+Plug 'peterhoeg/vim-qml'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'rust-lang/rust.vim'
+Plug 'momota/cisco.vim'
 
 call plug#end()
 
