@@ -51,8 +51,8 @@ Plug 'd86leader/vim-netrwild'
 Plug 'd86leader/vim-cpp-helper'
 "c++ completion
 Plug 'd86leader/clang_complete'
-"a real nice git mergetool
-Plug 'sjl/splice.vim'
+"a real nice git mergetool that i never used still. When time comes..
+"Plug 'sjl/splice.vim'
 
 " Language support plugins
 
@@ -372,12 +372,6 @@ cnoremap <F10> ~/.vim/vimrc
 
 "for when i have to edit other man's file
 silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
-
-"create a clang-complete file with gcc options for includes
-silent! command! ClangCreateIncludes :make CC='~/.vim/bundle/clang_complete/bin/cc_args.py gcc' CXX='~/.vim/bundle/clang_complete/bin/cc_args.py g++' -B
-
-"enter tagbar
-silent! command! Tagbar :TagbarOpenAutoClose
 
 "abbreviation for easier topleft window opening
 cabbrev <expr> tl (getcmdpos() == 3 && getcmdtype() == ":") ? "topleft" : "tl"
