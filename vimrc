@@ -297,11 +297,6 @@ nnoremap <silent> gmT :<C-U>tabm -1<CR>
 "Fucking Nice (took me a long time to think of it)
 nnoremap <Space>t gT
 
-"paste and replace line
-nnoremap <silent> <Space>p Vp
-nnoremap <silent> <Space>P kVp
-xnoremap <silent> <Space>p p
-
 "easily split lines
 nnoremap <Space>o i<CR><Esc>
 
