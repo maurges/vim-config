@@ -5,9 +5,8 @@ view
 .netrwhist
 init.vim
 
-.*.swp
-after/ftplugin/.*.swp
-colors/.*.swp
+**/.*.swp
+*.un~
 
 colors/Tomorrow-Night.vim
 colors/hybrid.vim
@@ -16,5 +15,4 @@ colors/jellybeans.vim
 colors/one.vim
 colors/paramount.vim
 
-colors/.tags
-after/ftplugin/.tags
+**/.tags
