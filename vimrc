@@ -134,6 +134,9 @@ set keymap=russian-jcukenwin
 "use latinic keymap by default
 set iminsert=0
 set imsearch=0
+"use persistent undo
+set undofile
+set undodir=.
 
 "cursor style. The most important are cursor blinking options, others are
 "default
