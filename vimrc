@@ -332,8 +332,8 @@ imap <silent> <expr> <CR>  pumvisible() ? "\<C-Y>" : "\<CR>\<Plug>AutoPairsRetur
 
 "a map to the swapwins plugin (for more info see plugin/swapwindows.vim)
 nnoremap <silent> <C-W>a :<C-U>call swapwindows#with_prev(0)<CR>
-"a map to copy buffer in new tab plugin (see plugin/tabcopybuffer.vim)
-nnoremap <C-W>t :<C-U>call tabcopybuffer#open()<CR>
+"a map to copy buffer in new tab
+nnoremap <C-W>t :tab split<CR>
 
 
 "shortcut to quickly use macro in q
