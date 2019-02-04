@@ -19,8 +19,8 @@ noremap <Space>/ /
 noremap <Space>? ?
 
 "highlights the word under cursor
-nnoremap <silent> g* yiw:let @/=@"<CR>:set hlsearch<CR>
-xnoremap <silent> g* <C-C>yiw:let @/=@"<CR>:set hlsearch<CR>gv
+nnoremap <silent> g* :let @/=expand("<cword>")<CR>:set hlsearch<CR>
+xnoremap <silent> g* <C-C>:let @/=expand("<cword>")<CR>:set hlsearch<CR>gv
 
 "highlights selected text
 xnoremap <silent> g/ y/<C-R>"<CR>:set hlsearch<CR>
