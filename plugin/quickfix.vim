@@ -12,7 +12,7 @@ command! -nargs=?  QuickfixUseLocList :call <SID>command_set_loc_list(<args>)
 command! -nargs=0  Quickfixqf         :QuickfixUseLocList 0
 command! -nargs=0  Quickfixloc        :QuickfixUseLocList 1
 
-let g:quickfix_use_loc_list = 1
+let g:quickfix_use_loc_list = 0
 
 fun! s:command_set_loc_list(...) abort
 	"set to use
