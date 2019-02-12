@@ -16,3 +16,6 @@ setlocal omnifunc=ClangComplete
 
 "disable clang linters
 let b:ale_linters = ['clang', 'clangcheck', 'gcc']
+
+syn keyword  cCppLetDeclaration  let
+hi def link cCppLetDeclaration cppType
