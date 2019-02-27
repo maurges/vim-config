@@ -51,10 +51,6 @@ Plug 'd86leader/vim-netrwild'
 Plug 'd86leader/vim-cpp-helper'
 "c++ completion
 Plug 'd86leader/clang_complete'
-"a real nice git mergetool that i never used still. When time comes..
-if exists('g:activated_splice')
-	Plug 'sjl/splice.vim'
-endif
 
 " Language support plugins
 
