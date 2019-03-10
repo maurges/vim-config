@@ -373,6 +373,8 @@ silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
 
 "abbreviation for easier topleft window opening
 cabbrev <expr> tl (getcmdpos() == 3 && getcmdtype() == ":") ? "topleft" : "tl"
+"abbreviation for vertical split and find
+cabbrev vsf vert sfind
 
 
 "keep folds and other stuff when closing file
