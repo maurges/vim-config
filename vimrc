@@ -368,6 +368,11 @@ cnoremap <F9> ~/.vim/plugin
 cnoremap <F10> ~/.vim/vimrc
 
 
+"search for a name under cursor. Don't forget to change c-o to something when
+"i change wildcharm
+nnoremap gF :find <C-R>=expand("<cword>")<CR><C-O>
+
+
 "for when i have to edit other man's file
 silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
 
