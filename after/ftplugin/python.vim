@@ -1,3 +1,12 @@
+" Determine which python we're using
+let b:python_version = 0
+if getline(1) =~ 'python3'
+	let b:python_version = 3
+elseif getline(1) =~ 'python[^3]\?$'
+	let b:python_version = 2
+endif
+
+
 "syntax folding doesn't work for some reason
 setlocal foldmethod=indent
 
@@ -14,9 +23,9 @@ endif
 
 "set syntastic checker for appropriate python
 fun! PythonSetSyntasticChecker()
-	if getline(1) =~ 'python3'
+	if b:python_version == 3
 		let g:syntastic_python_python_exec = '/usr/bin/python3'
-	elseif getline(1) =~ 'python[^3]\?$'
+	elseif b:python_version == 2
 		let g:syntastic_python_python_exec = '/usr/bin/python2'
 	endif
 	return ""
@@ -24,3 +33,10 @@ endfun
 
 call PythonSetSyntasticChecker()
 nnoremap <expr> <Leader>sc PythonSetSyntasticChecker()
+
+" set typechecker to appropriate python version
+if b:python_version == 2
+	setlocal makeprg=mypy\ --py2
+else
+	setlocal makeprg=mypy
+endif
