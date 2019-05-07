@@ -134,7 +134,20 @@ set iminsert=0
 set imsearch=0
 "use persistent undo
 set undofile
-set undodir=.
+"directories for temp files
+if has("nvim")
+	set undodir=~/.local/share/nvim/undo/
+	set dir=~/.local/share/nvim/swap/
+else
+	if !isdirectory($HOME . "/.local/share/vim/undo/")
+		call mkdir($HOME . "/.local/share/vim/undo/", "p", 0755)
+	endif
+	if !isdirectory($HOME . "/.local/share/vim/swap/")
+		call mkdir($HOME . "/.local/share/vim/swap/", "p", 0755)
+	endif
+	set undodir=~/.local/share/vim/undo/
+	set dir=~/.local/share/vim/swap/
+endif
 
 "cursor style. The most important are cursor blinking options, others are
 "default
