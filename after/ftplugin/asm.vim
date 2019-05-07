@@ -8,6 +8,7 @@ setlocal foldmethod=marker
 
 nnoremap <buffer> <F6> :w<CR>:make %:r.o<CR>
 
+xnoremap <buffer> <Leader>s <C-C>`<O; {{{<Esc>`>o; }}}<Esc>
 inoremap <buffer> <expr> <S-CR> <SID>embrace()
 
 fun! s:embrace()
