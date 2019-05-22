@@ -51,6 +51,8 @@ Plug 'd86leader/vim-netrwild'
 Plug 'd86leader/vim-cpp-helper'
 "c++ completion
 Plug 'd86leader/clang_complete'
+"git diff buffer
+Plug 'jreybert/vimagit'
 
 " Language support plugins
 
