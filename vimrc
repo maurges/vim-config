@@ -39,8 +39,6 @@ Plug 'wellle/targets.vim'
 Plug 'd86leader/vim-stupidcomplete'
 "rename opened file
 Plug 'danro/rename.vim'
-"Syntax checker plugin (kinda shit)
-"Plug 'w0rp/ale'
 "highlight lines changed since last commit
 Plug 'airblade/vim-gitgutter'
 "haskell completion engine
@@ -51,8 +49,6 @@ Plug 'd86leader/vim-netrwild'
 Plug 'd86leader/vim-cpp-helper'
 "c++ completion
 Plug 'd86leader/clang_complete'
-"git diff buffer
-Plug 'jreybert/vimagit'
 
 " Language support plugins
 
