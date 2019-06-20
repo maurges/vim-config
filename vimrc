@@ -396,6 +396,10 @@ cabbrev <expr> tl (getcmdpos() == 3 && getcmdtype() == ":") ? "topleft" : "tl"
 "abbreviation for vertical split and find
 cabbrev vsf vert sfind
 
+"quickly diff files in split windows
+silent! command! -nargs=0 Diff   :windo setlocal diff cursorbind scrollbind
+silent! command! -nargs=0 Nodiff :windo setlocal nodiff nocursorbind noscrollbind
+
 
 "keep folds and other stuff when closing file
 augroup autoview
