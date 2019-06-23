@@ -13,8 +13,10 @@ fun! s:embrace()
 	let cmdstart = "\<C-C>"
 	let l = getline(line('.'))
 	if l =~ '.*\\begin{.\+}'
-		return cmdstart . "yyp0f\\lceend\<C-C>O"
+		return cmdstart . "yyp$F\\lceend\<C-C>O"
 	else
 		return "\<CR>"
 	endif
 endfun
+
+iabbrev -и \item
