@@ -1,0 +1,20 @@
+" indent plugin inserts two shiftwidths instead of one tab, so i set it so low
+setlocal tabstop=4
+setlocal shiftwidth=2
+setlocal expandtab
+
+setlocal foldmethod=marker
+setlocal foldmarker=[[[,]]]
+
+xnoremap <buffer> <Leader>s <C-C>`<O% [[[<Esc>`>o% ]]]<Esc>
+inoremap <buffer> <expr> <S-CR> <SID>embrace()
+
+fun! s:embrace()
+	let cmdstart = "\<C-C>"
+	let l = getline(line('.'))
+	if l =~ '.*\\begin{.\+}'
+		return cmdstart . "yyp0f\\lceend\<C-C>O"
+	else
+		return "\<CR>"
+	endif
+endfun
