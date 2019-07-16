@@ -391,6 +391,8 @@ silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
 cabbrev <expr> tl (getcmdpos() == 3 && getcmdtype() == ":") ? "topleft" : "tl"
 "abbreviation for vertical split and find
 cabbrev vsf vert sfind
+"remake
+cabbrev wmake w <bar> make
 
 "quickly diff files in split windows
 silent! command! -nargs=0 Diff   :windo setlocal diff cursorbind scrollbind
