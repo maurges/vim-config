@@ -1,7 +1,10 @@
 " indent plugin inserts two shiftwidths instead of one tab, so i set it so low
-setlocal tabstop=4
+setlocal tabstop=2
 setlocal shiftwidth=2
 setlocal expandtab
+
+setlocal suffixesadd=.sty,.tex,.cls
+setlocal iskeyword+=:
 
 setlocal foldmethod=marker
 setlocal foldmarker=[[[,]]]
