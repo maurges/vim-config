@@ -13,7 +13,11 @@ Plug 'xolox/vim-misc'
 Plug 'tpope/vim-repeat'
 "plugin for asynchronous code execution
 "required by ghc-mod
-"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+if !has("windows")
+  "Plug 'Shougo/vimproc.vim', {'do': 'make'}
+else
+  "Plug 'Shougo/vimproc.vim'
+endif
 
 " General
 
