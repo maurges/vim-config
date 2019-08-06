@@ -66,10 +66,11 @@ filetype plugin on
 set relativenumber
 set number
 "tab stuff, mostly overwritten for filetypes
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set autoindent
-set noexpandtab
+set expandtab
 "can click, drag and other things with mouse in all modes
 set mouse=a
 "for terminal vim without airline
