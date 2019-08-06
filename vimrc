@@ -386,11 +386,6 @@ inoremap <C-Space> <C-^>
 nnoremap <C-Space> a<C-^><C-C>
 
 
-"fill a part of the path to vim files
-cnoremap <F9> ~/.vim/plugin
-cnoremap <F10> ~/.vim/vimrc
-
-
 "search for a name under cursor. Don't forget to change c-o to something when
 "i change wildcharm
 nnoremap gF :find <C-R>=expand("<cword>")<CR><C-O>
