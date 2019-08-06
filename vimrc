@@ -107,7 +107,12 @@ set whichwrap=<,>,[,]
 set autoread
 "show trailing whitespace and non-breakable space, but don't show tab
 set list
-set listchars=tab:\ \ ,trail:⋅,nbsp:⋅
+if has("windows")
+	set list
+	set listchars=tab:>-,trail:*
+else
+	set listchars=tab:\ \ ,trail:⋅,nbsp:⋅
+endif
 "splitting windows prioritizes right>below>rest
 set splitright
 set splitbelow
@@ -134,18 +139,22 @@ set imsearch=0
 "use persistent undo
 set undofile
 "directories for temp files
-if has("nvim")
-	set undodir=~/.local/share/nvim/undo/
-	set dir=~/.local/share/nvim/swap/
+if has("windows")
+	"let it do its own thing
 else
-	if !isdirectory($HOME . "/.local/share/vim/undo/")
-		call mkdir($HOME . "/.local/share/vim/undo/", "p", 0755)
+	if has("nvim")
+		set undodir=~/.local/share/nvim/undo/
+		set dir=~/.local/share/nvim/swap/
+	else
+		if !isdirectory($HOME . "/.local/share/vim/undo/")
+			call mkdir($HOME . "/.local/share/vim/undo/", "p", 0755)
+		endif
+		if !isdirectory($HOME . "/.local/share/vim/swap/")
+			call mkdir($HOME . "/.local/share/vim/swap/", "p", 0755)
+		endif
+		set undodir=~/.local/share/vim/undo/
+		set dir=~/.local/share/vim/swap/
 	endif
-	if !isdirectory($HOME . "/.local/share/vim/swap/")
-		call mkdir($HOME . "/.local/share/vim/swap/", "p", 0755)
-	endif
-	set undodir=~/.local/share/vim/undo/
-	set dir=~/.local/share/vim/swap/
 endif
 
 "cursor style. The most important are cursor blinking options, others are
@@ -162,6 +171,11 @@ endif
 "preview changes done by :s command
 if exists("&inccommand")
 	set inccommand=nosplit
+endif
+
+"windows terminal uses unicode
+if has("windows") && !has("gui")
+  set encoding=utf8
 endif
 
 "don't insert comment leader when creating a new line
@@ -222,15 +236,12 @@ nmap     á A
 
 
 "yeah i edit vimrc a lot
-nnoremap <F10> :<C-U>tabe ~/.vim/vimrc<CR>
-nnoremap <F9>  :<C-U>tabe ~/.vim/after/ftplugin/
-nnoremap <Leader><F9> :<C-U>tabe ~/.vim/plugin/
-"sources from selected ftplugin
-nnoremap <C-F9>   :<C-U>source ~/.vim/after/ftplugin/
-nnoremap <C-S-F9> :<C-U>source ~/.vim/after/ftplugin/
-"sources from vimrc and required ftplugin if it exists
-nnoremap <C-F10>   :<C-U>source ~/.vim/vimrc<CR>:if filereadable("~/.vim/after/ftplugin/".&filetype.".vim") <Bar> :exec "source ~/.vim/after/ftplugin/".&filetype.".vim" <Bar> :endif<CR>
-nnoremap <C-S-F10> :<C-U>source ~/.vim/vimrc<CR>:if filereadable("~/.vim/after/ftplugin/".&filetype.".vim") <Bar> :exec "source ~/.vim/after/ftplugin/".&filetype.".vim" <Bar> :endi<CR>
+nnoremap <F10> :<C-U>tabe $MYVIMRC<CR>
+nnoremap <F9>  :<C-U>tabe <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/after/ftplugin/
+nnoremap <Leader><F9> :<C-U>tabe <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/plugin/
+"fill a part of the path to vim files
+cnoremap <F9> <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/plugin/
+cnoremap <F10> <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/vimrc/
 
 
 "found out I also set the filetype a lot
@@ -401,11 +412,13 @@ silent! command! -nargs=0 Nodiff :windo setlocal nodiff nocursorbind noscrollbin
 
 
 "keep folds and other stuff when closing file
-augroup autoview
-	autocmd!
-	autocmd BufWinLeave ?* call <SID>make_view()
-	autocmd BufWinEnter ?* call <SID>load_view()
-augroup END
+if !has("windows")
+	augroup autoview
+		autocmd!
+		autocmd BufWinLeave ?* call <SID>make_view()
+		autocmd BufWinEnter ?* call <SID>load_view()
+	augroup END
+endif
 fun! s:make_view() abort
 	if @% != "" && &foldmethod != 'diff'
 		mkview!

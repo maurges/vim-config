@@ -8,7 +8,11 @@ fun! listchars#toggle_listchars() abort
 		return
 	endif
 	if s:listchars_option == 1
-		set listchars=tab:\ \ ,trail:⋅,nbsp:⋅
+	  if has("windows")
+      set listchars=tab:>-,trail:*
+    else
+      set listchars=tab:\ \ ,trail:⋅,nbsp:⋅
+    endif
 		let s:listchars_option = 0
 	else
 		set listchars=tab:▷-,trail:⋅,nbsp:⋅
