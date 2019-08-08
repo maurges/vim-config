@@ -75,6 +75,8 @@ set softtabstop=2
 set shiftwidth=2
 set autoindent
 set expandtab
+"can backspace over start of insertion and automatic indent
+set backspace=start,indent
 "can click, drag and other things with mouse in all modes
 set mouse=a
 "for terminal vim without airline
@@ -217,6 +219,7 @@ vnoremap <F1> <NOP>
 vnoremap <S-F1> <NOP>
 "hate that small deletes overwrite unnamed
 nnoremap x "_x
+nnoremap X "_X
 nnoremap s "_s
 
 
@@ -395,6 +398,10 @@ nnoremap <C-Space> a<C-^><C-C>
 "search for a name under cursor. Don't forget to change c-o to something when
 "i change wildcharm
 nnoremap gF :find <C-R>=expand("<cword>")<CR><C-O>
+
+
+"reset relative number, sometimes it just isn't set
+nnoremap <Leader>rn :setlocal relativenumber<CR>
 
 
 "for when i have to edit other man's file
