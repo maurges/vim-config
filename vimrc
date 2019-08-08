@@ -14,9 +14,9 @@ Plug 'tpope/vim-repeat'
 "plugin for asynchronous code execution
 "required by ghc-mod
 if !has("windows")
-  "Plug 'Shougo/vimproc.vim', {'do': 'make'}
+	Plug 'Shougo/vimproc.vim', {'do': 'make'}
 else
-  "Plug 'Shougo/vimproc.vim'
+	Plug 'Shougo/vimproc.vim'
 endif
 
 " General
@@ -177,10 +177,14 @@ if exists("&inccommand")
 	set inccommand=nosplit
 endif
 
-"windows terminal uses unicode
-if has("windows") && !has("gui")
-  set encoding=utf8
+if has("windows")
+	"windows terminal uses unicode
+	set encoding=utf8
+	"windows uses wrong grep. It's still wrong after this option, but better
+	set grepprg=grep\ -n
 endif
+
+
 
 "don't insert comment leader when creating a new line
 augroup comment_formatoptions
@@ -409,13 +413,11 @@ silent! command! -nargs=0 Nodiff :windo setlocal nodiff nocursorbind noscrollbin
 
 
 "keep folds and other stuff when closing file
-if !has("windows")
-	augroup autoview
-		autocmd!
-		autocmd BufWinLeave ?* call <SID>make_view()
-		autocmd BufWinEnter ?* call <SID>load_view()
-	augroup END
-endif
+augroup autoview
+	autocmd!
+	autocmd BufWinLeave ?* call <SID>make_view()
+	autocmd BufWinEnter ?* call <SID>load_view()
+augroup END
 fun! s:make_view() abort
 	if @% != "" && &foldmethod != 'diff'
 		mkview!
