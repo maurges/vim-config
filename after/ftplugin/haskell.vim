@@ -1,20 +1,21 @@
 "option for \ before (
 setlocal cpoptions+=M
 
-setlocal softtabstop=4
+setlocal softtabstop=2
+setlocal shiftwidth=2
 setlocal expandtab
 setlocal foldmethod=indent
 
 "compiler options
-setlocal makeprg=stack\ build
+setlocal makeprg=.\\Build.cmd
 setlocal errorformat=%f:%l:%v:%m
-
-let g:ghcmod_ghc_options=['-Wall', '-fno-warn-tabs', '-fno-warn-missing-signatures']
 
 nnoremap <buffer> <F5> :wa<CR>:make *.hs -o main<CR>
 nnoremap <buffer> <F6> :w<CR>:make %<CR>
 nnoremap <buffer> <F7> :w<CR>:GhcModCheck<CR>
 nnoremap <buffer> <F8> :w<CR>:GhcModLint<CR>
+
+nnoremap <buffer> <silent> gF :call haskell#open_module(expand("<cWORD>"))<CR>
 
 
 "creates quickfix window to the right
@@ -31,3 +32,6 @@ nnoremap <buffer> <Leader>go :GhcModTypeInsert<CR>
 "call add_map#add_map("\<Esc>", ":GhcModTypeClear\<CR>", "n", "<buffer> <silent>")
 
 setlocal omnifunc=necoghc#omnifunc
+
+
+set grepprg=grep\ -In\ --exclude-dir='.stack-work'\ $*\ -r\ .
