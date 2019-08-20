@@ -131,14 +131,25 @@ endfun
 fun! s:check_errors() abort
   call s:run_cmd(":reload")
   sleep 3
+  call s:populate_qf()
+endfun
+fun! s:populate_qf() abort
   let info = s:get_output()
   let lines = split(info, "\n")
   call setqflist([], "r", {'lines':lines})
 endfun
 
+fun! s:output_open() abort
+  let info = s:get_defined(s:get_last_line(), v:false)
+  exec "edit " . info[0]
+  exec "normal! " . info[1] . "gg" . info[2] . "|"
+endfun
+
 
 command! Output    :echo <SID>get_output()
 command! PutInfo   :call <SID>run_cmd(":info " . expand("<cword>"))
+command! Populate  :call <SID>populate_qf()
 command! Info      :call <SID>get_info_output()
 command! Check     :call <SID>check_errors()
+command! Reload    :call <SID>run_cmd(":reload")
 command! -nargs=1  GHCI :call <SID>run_cmd(<q-args>)
