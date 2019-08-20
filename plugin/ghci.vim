@@ -19,9 +19,11 @@ fun! s:start_ghci() abort
   endif
 
   exec "terminal " . s:start_cmd
-  normal! <C-\><C-N>
   let s:bufid = term_list()[0]
   return s:bufid
+endfun
+fun! GHCIStart() abort
+  call s:start_ghci()
 endfun
 
 fun! s:stop_ghci() abort
@@ -31,6 +33,9 @@ fun! s:stop_ghci() abort
 
   call term_sendkeys(s:bufid, ":quit\<CR>")
   let s:bufid = -1
+endfun
+fun! GHCIStop() abort
+  call s:stop_ghci()
 endfun
 
 " Running functions
@@ -48,6 +53,7 @@ fun! LastTermLine() abort
   return s:get_last_line()
 endfun
 
+" get output of last cmd (everything between two prompts)
 fun! s:get_output() abort
   let linenr = term_getsize(s:bufid)[0]
   if s:is_prompt_line(linenr) | let linenr -= 1 | endif
@@ -71,6 +77,7 @@ fun! s:is_error_line(line) abort
   return a:line =~# "<interactive>:1:1: error: "
 endfun
 
+" matches the last :info line to get filename and line of where symbol defined
 fun! s:get_defined(line, erraction) abort " :: String -> (String, Row, Column)
   if s:is_error_line(a:line)
     if erraction
