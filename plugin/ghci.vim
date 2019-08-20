@@ -80,7 +80,7 @@ endfun
 " matches the last :info line to get filename and line of where symbol defined
 fun! s:get_defined(line, erraction) abort " :: String -> (String, Row, Column)
   if s:is_error_line(a:line)
-    if erraction
+    if a:erraction
       echoerr "Couldn't find definition: not in scope"
     endif
     return []
@@ -90,7 +90,7 @@ fun! s:get_defined(line, erraction) abort " :: String -> (String, Row, Column)
   let matches = matchlist(a:line, re)
 
   if matches == []
-    if erraction
+    if a:erraction
       echoerr "Couldn't find definition: bad parse"
     endif
     return []
