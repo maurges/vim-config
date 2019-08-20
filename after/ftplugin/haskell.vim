@@ -35,3 +35,4 @@ setlocal omnifunc=necoghc#omnifunc
 
 
 set grepprg=grep\ -In\ --exclude-dir='.stack-work'\ $*\ -r\ .
+nnoremap <buffer> <expr> gd GHCIGoToDefinition()
