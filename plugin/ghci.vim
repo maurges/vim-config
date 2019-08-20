@@ -108,7 +108,7 @@ endfun
 fun! s:go_to_definition() abort
   call s:run_cmd(":info " . expand("<cword>"))
   sleep 200m
-  let info = s:get_defined(s:get_last_line(), v:true)
+  let info = s:get_defined(s:get_last_line(), v:false)
 
   if info == [] | return "gD" | endif
 
