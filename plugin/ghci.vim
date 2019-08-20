@@ -128,8 +128,17 @@ fun! s:get_info_output() abort
   echo s:get_output()
 endfun
 
+fun! s:check_errors() abort
+  call s:run_cmd(":reload")
+  sleep 3
+  let info = s:get_output()
+  let lines = split(info, "\n")
+  call setqflist([], "r", {'lines':lines})
+endfun
+
 
 command! Output    :echo <SID>get_output()
 command! PutInfo   :call <SID>run_cmd(":info " . expand("<cword>"))
 command! Info      :call <SID>get_info_output()
+command! Check     :call <SID>check_errors()
 command! -nargs=1  GHCI :call <SID>run_cmd(<q-args>)
