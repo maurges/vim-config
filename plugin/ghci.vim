@@ -147,6 +147,7 @@ endfun
 
 
 command! Output    :echo <SID>get_output()
+command! Open      :call <SID>output_open()
 command! PutInfo   :call <SID>run_cmd(":info " . expand("<cword>"))
 command! Populate  :call <SID>populate_qf()
 command! Info      :call <SID>get_info_output()
