@@ -52,7 +52,9 @@ Plug 'd86leader/vim-netrwild'
 "easier c++ writing
 Plug 'd86leader/vim-cpp-helper'
 "c++ completion
-Plug 'd86leader/clang_complete'
+if has('python')
+  Plug 'd86leader/clang_complete'
+endif
 
 " Language support plugins
 
@@ -60,6 +62,7 @@ Plug 'peterhoeg/vim-qml'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'momota/cisco.vim'
+Plug 'pbrisbin/vim-syntax-shakespeare'
 
 call plug#end()
 
