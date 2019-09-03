@@ -34,5 +34,5 @@ nnoremap <buffer> <Leader>go :GhcModTypeInsert<CR>
 setlocal omnifunc=necoghc#omnifunc
 
 
-set grepprg=grep\ -In\ --exclude-dir='.stack-work'\ $*\ -r\ .
+set grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug}\ $*\ -r\ .
 nnoremap <buffer> <expr> gd GHCIGoToDefinition()
