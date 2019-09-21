@@ -70,9 +70,9 @@ filetype plugin on
 set relativenumber
 set number
 "tab stuff, mostly overwritten for filetypes
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set autoindent
 set expandtab
 "can backspace over start of insertion and automatic indent
