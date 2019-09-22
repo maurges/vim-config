@@ -387,6 +387,11 @@ nnoremap gF :find <C-R>=expand("<cword>")<CR><C-O>
 "for when i have to edit other man's file
 silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
 
+
+"delete old view files
+silent! command! CleanViews :!find .vim/view/ -type f -mtime +7 -exec rm {} \;
+
+
 "abbreviation for easier topleft window opening
 cabbrev <expr> tl (getcmdpos() == 3 && getcmdtype() == ":") ? "topleft" : "tl"
 "abbreviation for vertical split and find
