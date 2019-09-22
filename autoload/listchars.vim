@@ -17,7 +17,7 @@ fun! listchars#toggle_listchars() abort
 endfun
 
 fun! listchars#set() abort
-	if has("windows")
+	if has("win32")
 		set listchars=tab:>-,trail:*,nbsp:*
 	else
 		set listchars=tab:▷-,trail:⋅,nbsp:⋅
@@ -25,7 +25,7 @@ fun! listchars#set() abort
 endfun
 
 fun! listchars#unset() abort
-	if has("windows")
+	if has("win32")
 		set listchars=tab:\ \ ,trail:*,nbsp:*
 	else
 		set listchars=tab:\ \ ,trail:⋅,nbsp:⋅

@@ -13,7 +13,7 @@ Plug 'xolox/vim-misc'
 Plug 'tpope/vim-repeat'
 "plugin for asynchronous code execution
 "required by ghc-mod
-if !has("windows")
+if !has("win32")
 	Plug 'Shougo/vimproc.vim', {'do': 'make'}
 else
 	Plug 'Shougo/vimproc.vim'
@@ -113,10 +113,10 @@ set whichwrap=<,>,[,]
 set autoread
 "show trailing whitespace and non-breakable space, but don't show tab
 set list
-if has("windows")
-  call listchars#set()
+if has("win32")
+	call listchars#set()
 else
-  call listchars#unset()
+	call listchars#unset()
 endif
 "splitting windows prioritizes right>below>rest
 set splitright
@@ -144,7 +144,7 @@ set imsearch=0
 "use persistent undo
 set undofile
 "directories for temp files
-if has("windows")
+if has("win32")
 	"let it do its own thing
 else
 	if has("nvim")
@@ -178,7 +178,7 @@ if exists("&inccommand")
 	set inccommand=nosplit
 endif
 
-if has("windows")
+if has("win32")
 	"windows terminal uses unicode
 	set encoding=utf8
 	"windows uses wrong grep. It's still wrong after this option, but better
