@@ -53,6 +53,8 @@ Plug 'd86leader/vim-netrwild'
 Plug 'd86leader/vim-cpp-helper'
 "c++ completion
 Plug 'd86leader/clang_complete'
+"detect correct tabstop
+Plug 'tpope/vim-sleuth'
 
 " Language support plugins
 
