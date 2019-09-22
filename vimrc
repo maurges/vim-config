@@ -114,10 +114,9 @@ set autoread
 "show trailing whitespace and non-breakable space, but don't show tab
 set list
 if has("windows")
-	set list
-	set listchars=tab:>-,trail:*
+  call listchars#set()
 else
-	set listchars=tab:\ \ ,trail:⋅,nbsp:⋅
+  call listchars#unset()
 endif
 "splitting windows prioritizes right>below>rest
 set splitright
