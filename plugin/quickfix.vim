@@ -12,7 +12,7 @@ command! -nargs=?  QuickfixUseLocList :call <SID>command_set_loc_list(<args>)
 command! -nargs=0  Quickfixqf         :QuickfixUseLocList 0
 command! -nargs=0  Quickfixloc        :QuickfixUseLocList 1
 
-let g:quickfix_use_loc_list = 0
+let g:quickfix_use_loc_list = -1
 
 fun! s:command_set_loc_list(...) abort
 	"set to use
@@ -36,21 +36,24 @@ fun! s:command_set_loc_list(...) abort
 	endif
 endfun
 
-fun! s:use_loc_list() abort
+fun! s:use_loc_list_var() abort
 	if exists('b:quickfix_use_loc_list')
-		if b:quickfix_use_loc_list
-			return 1
-		else
-			return 0
-		endif
-	else "not exists
-		if g:quickfix_use_loc_list
-			return 1
-		else
-			return 0
-		endif
+		return s:use_loc_list(b:quickfix_use_loc_list)
+	else
+		return s:use_loc_list(g:quickfix_use_loc_list)
 	endif
 endfun
+
+fun! s:use_loc_list(loc_mode) abort
+	if a:loc_mode == 1
+		return 1
+	elseif a:loc_mode == 0
+		return 0
+	else
+		return getqflist() == []
+	endif
+endfun
+
 
 fun! s:win_open() "noabort
 	if s:use_loc_list()
@@ -137,5 +140,5 @@ command! -nargs=0  LeaveQuickfix :call LeaveQuickfix()
 
 
 "maps to move between appropriate errors
-nnoremap <expr> <silent> <C-N> <SID>use_loc_list() ? ":lnext\<CR>" : ":cnext\<CR>"
-nnoremap <expr> <silent> <C-P> <SID>use_loc_list() ? ":lprev\<CR>" : ":cprev\<CR>"
+nnoremap <expr> <silent> <C-N> <SID>use_loc_list_var() ? ":lnext\<CR>" : ":cnext\<CR>"
+nnoremap <expr> <silent> <C-P> <SID>use_loc_list_var() ? ":lprev\<CR>" : ":cprev\<CR>"

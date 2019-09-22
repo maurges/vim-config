@@ -2,7 +2,7 @@
 " esc. As i use esc for my mappings, it breaks and deletes my files. So i map
 " this sequence to tame it a bit
 
-if has('nvim') || has('gui')
+if has('nvim') || has('gui') || has('windows')
 	finish
 endif
 

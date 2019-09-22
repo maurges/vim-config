@@ -2,7 +2,7 @@
 "disable ugly error sections
 let g:airline_section_warning = ''
 let g:airline_section_error = ''
-"disable displaying keymap
+"disable showing current keymap
 let g:airline#extensions#keymap#enabled = 0
 
 let g:airline_theme='raven'

@@ -13,7 +13,11 @@ Plug 'xolox/vim-misc'
 Plug 'tpope/vim-repeat'
 "plugin for asynchronous code execution
 "required by ghc-mod
-"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+if !has("windows")
+	Plug 'Shougo/vimproc.vim', {'do': 'make'}
+else
+	Plug 'Shougo/vimproc.vim'
+endif
 
 " General
 
@@ -67,9 +71,12 @@ set relativenumber
 set number
 "tab stuff, mostly overwritten for filetypes
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set autoindent
-set noexpandtab
+set expandtab
+"can backspace over start of insertion and automatic indent
+set backspace=start,indent
 "can click, drag and other things with mouse in all modes
 set mouse=a
 "for terminal vim without airline
@@ -106,7 +113,12 @@ set whichwrap=<,>,[,]
 set autoread
 "show trailing whitespace and non-breakable space, but don't show tab
 set list
-set listchars=tab:\ \ ,trail:⋅,nbsp:⋅
+if has("windows")
+	set list
+	set listchars=tab:>-,trail:*
+else
+	set listchars=tab:\ \ ,trail:⋅,nbsp:⋅
+endif
 "splitting windows prioritizes right>below>rest
 set splitright
 set splitbelow
@@ -133,18 +145,22 @@ set imsearch=0
 "use persistent undo
 set undofile
 "directories for temp files
-if has("nvim")
-	set undodir=~/.local/share/nvim/undo/
-	set dir=~/.local/share/nvim/swap/
+if has("windows")
+	"let it do its own thing
 else
-	if !isdirectory($HOME . "/.local/share/vim/undo/")
-		call mkdir($HOME . "/.local/share/vim/undo/", "p", 0755)
+	if has("nvim")
+		set undodir=~/.local/share/nvim/undo/
+		set dir=~/.local/share/nvim/swap/
+	else
+		if !isdirectory($HOME . "/.local/share/vim/undo/")
+			call mkdir($HOME . "/.local/share/vim/undo/", "p", 0755)
+		endif
+		if !isdirectory($HOME . "/.local/share/vim/swap/")
+			call mkdir($HOME . "/.local/share/vim/swap/", "p", 0755)
+		endif
+		set undodir=~/.local/share/vim/undo/
+		set dir=~/.local/share/vim/swap/
 	endif
-	if !isdirectory($HOME . "/.local/share/vim/swap/")
-		call mkdir($HOME . "/.local/share/vim/swap/", "p", 0755)
-	endif
-	set undodir=~/.local/share/vim/undo/
-	set dir=~/.local/share/vim/swap/
 endif
 
 "cursor style. The most important are cursor blinking options, others are
@@ -162,6 +178,15 @@ endif
 if exists("&inccommand")
 	set inccommand=nosplit
 endif
+
+if has("windows")
+	"windows terminal uses unicode
+	set encoding=utf8
+	"windows uses wrong grep. It's still wrong after this option, but better
+	set grepprg=grep\ -n
+endif
+
+
 
 "don't insert comment leader when creating a new line
 augroup comment_formatoptions
@@ -194,6 +219,7 @@ vnoremap <F1> <NOP>
 vnoremap <S-F1> <NOP>
 "hate that small deletes overwrite unnamed
 nnoremap x "_x
+nnoremap X "_X
 nnoremap s "_s
 
 
@@ -221,15 +247,12 @@ nmap     á A
 
 
 "yeah i edit vimrc a lot
-nnoremap <F10> :<C-U>tabe ~/.vim/vimrc<CR>
-nnoremap <F9>  :<C-U>tabe ~/.vim/after/ftplugin/
-nnoremap <Leader><F9> :<C-U>tabe ~/.vim/plugin/
-"sources from selected ftplugin
-nnoremap <C-F9>   :<C-U>source ~/.vim/after/ftplugin/
-nnoremap <C-S-F9> :<C-U>source ~/.vim/after/ftplugin/
-"sources from vimrc and required ftplugin if it exists
-nnoremap <C-F10>   :<C-U>source ~/.vim/vimrc<CR>:if filereadable("~/.vim/after/ftplugin/".&filetype.".vim") <Bar> :exec "source ~/.vim/after/ftplugin/".&filetype.".vim" <Bar> :endif<CR>
-nnoremap <C-S-F10> :<C-U>source ~/.vim/vimrc<CR>:if filereadable("~/.vim/after/ftplugin/".&filetype.".vim") <Bar> :exec "source ~/.vim/after/ftplugin/".&filetype.".vim" <Bar> :endi<CR>
+nnoremap <F10> :<C-U>tabe $MYVIMRC<CR>
+nnoremap <F9>  :<C-U>tabe <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/after/ftplugin/
+nnoremap <Leader><F9> :<C-U>tabe <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/plugin/
+"fill a part of the path to vim files
+cnoremap <F9> <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/plugin/
+cnoremap <F10> <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/vimrc/
 
 
 "found out I also set the filetype a lot
@@ -335,8 +358,6 @@ inoremap <expr> <A-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
 inoremap <expr> ê     pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
 inoremap <expr> <A-K> pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 inoremap <expr> ë     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
-"changed to use autopairs plugin closing behavior after cr
-imap <silent> <expr> <CR>  pumvisible() ? "\<C-Y>" : "\<CR>\<Plug>AutoPairsReturn"
 
 
 "a map to the swapwins plugin (for more info see plugin/swapwindows.vim)
@@ -374,14 +395,13 @@ inoremap <C-Space> <C-^>
 nnoremap <C-Space> a<C-^><C-C>
 
 
-"fill a part of the path to vim files
-cnoremap <F9> ~/.vim/plugin
-cnoremap <F10> ~/.vim/vimrc
-
-
 "search for a name under cursor. Don't forget to change c-o to something when
 "i change wildcharm
 nnoremap gF :find <C-R>=expand("<cword>")<CR><C-O>
+
+
+"reset relative number, sometimes it just isn't set
+nnoremap <Leader>rn :setlocal relativenumber<CR>
 
 
 "for when i have to edit other man's file
