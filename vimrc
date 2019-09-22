@@ -52,7 +52,7 @@ Plug 'd86leader/clang_complete'
 
 " Language support plugins
 
-Plug 'peterhoeg/vim-qml'
+Plug 'd86leader/vim-qml'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'momota/cisco.vim'
