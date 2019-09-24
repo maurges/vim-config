@@ -5,7 +5,7 @@ setlocal softtabstop=2
 setlocal shiftwidth=2
 setlocal expandtab
 setlocal foldmethod=indent
-setlocal tags+=tags
+setlocal tags+=tags,./tags
 
 "compiler options
 setlocal makeprg=.\\Build.cmd
@@ -37,3 +37,9 @@ setlocal omnifunc=necoghc#omnifunc
 
 set grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug}\ $*\ -r\ .
 nnoremap <buffer> <expr> gd GHCIGoToDefinition()
+
+
+"write tags files
+augroup haskell_tags
+	autocmd BufWritePost *.hs  silent! !fast-tags %
+augroup END
