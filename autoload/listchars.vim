@@ -8,18 +8,26 @@ fun! listchars#toggle_listchars() abort
 		return
 	endif
 	if s:listchars_option == 1
-		if has("windows")
-			set listchars=tab:\ \ ,trail:*,nbsp:*
-		else
-			set listchars=tab:\ \ ,trail:⋅,nbsp:⋅
-		endif
+		call listchars#unset()
 		let s:listchars_option = 0
 	else
-		if has("windows")
-			set listchars=tab:>-,trail:*,nbsp:*
-		else
-			set listchars=tab:▷-,trail:⋅,nbsp:⋅
-			let s:listchars_option = 1
-		endif
+		call listchars#set()
+		let s:listchars_option = 1
+	endif
+endfun
+
+fun! listchars#set() abort
+	if has("win32")
+		set listchars=tab:>-,trail:*,nbsp:*
+	else
+		set listchars=tab:▷-,trail:⋅,nbsp:⋅
+	endif
+endfun
+
+fun! listchars#unset() abort
+	if has("win32")
+		set listchars=tab:\ \ ,trail:*,nbsp:*
+	else
+		set listchars=tab:\ \ ,trail:⋅,nbsp:⋅
 	endif
 endfun
