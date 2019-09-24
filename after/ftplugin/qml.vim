@@ -1,5 +1,5 @@
 setlocal expandtab
-setlocal foldmethod=indent
+setlocal foldmethod=syntax
 
 inoremap <buffer> <silent> <S-CR> <End> {<CR>}<Esc>O
 inoremap <buffer> <silent> Ý <End> {<CR>}<Esc>O

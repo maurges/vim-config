@@ -13,7 +13,7 @@ Plug 'xolox/vim-misc'
 Plug 'tpope/vim-repeat'
 "plugin for asynchronous code execution
 "required by ghc-mod
-if !has("windows")
+if !has("win32")
 	Plug 'Shougo/vimproc.vim', {'do': 'make'}
 else
 	Plug 'Shougo/vimproc.vim'
@@ -53,10 +53,12 @@ Plug 'd86leader/vim-netrwild'
 Plug 'd86leader/vim-cpp-helper'
 "c++ completion
 Plug 'd86leader/clang_complete'
+"detect correct tabstop
+Plug 'tpope/vim-sleuth'
 
 " Language support plugins
 
-Plug 'peterhoeg/vim-qml'
+Plug 'd86leader/vim-qml'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'momota/cisco.vim'
@@ -70,9 +72,9 @@ filetype plugin on
 set relativenumber
 set number
 "tab stuff, mostly overwritten for filetypes
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set autoindent
 set expandtab
 "can backspace over start of insertion and automatic indent
@@ -113,11 +115,10 @@ set whichwrap=<,>,[,]
 set autoread
 "show trailing whitespace and non-breakable space, but don't show tab
 set list
-if has("windows")
-	set list
-	set listchars=tab:>-,trail:*
+if has("win32")
+	call listchars#set()
 else
-	set listchars=tab:\ \ ,trail:⋅,nbsp:⋅
+	call listchars#unset()
 endif
 "splitting windows prioritizes right>below>rest
 set splitright
@@ -145,7 +146,7 @@ set imsearch=0
 "use persistent undo
 set undofile
 "directories for temp files
-if has("windows")
+if has("win32")
 	"let it do its own thing
 else
 	if has("nvim")
@@ -179,7 +180,7 @@ if exists("&inccommand")
 	set inccommand=nosplit
 endif
 
-if has("windows")
+if has("win32")
 	"windows terminal uses unicode
 	set encoding=utf8
 	"windows uses wrong grep. It's still wrong after this option, but better
@@ -406,6 +407,11 @@ nnoremap <Leader>rn :setlocal relativenumber<CR>
 
 "for when i have to edit other man's file
 silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
+
+
+"delete old view files
+silent! command! CleanViews :!find .vim/view/ -type f -mtime +7 -exec rm {} \;
+
 
 "abbreviation for easier topleft window opening
 cabbrev <expr> tl (getcmdpos() == 3 && getcmdtype() == ":") ? "topleft" : "tl"
