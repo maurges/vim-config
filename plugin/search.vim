@@ -33,3 +33,7 @@ nnoremap <silent> <Esc> :let @/=""<CR>:set nohlsearch<CR>
 "remap asterisk and hash
 nnoremap <silent>  * :set hlsearch<CR>:let @/='\C\<' . expand('<cword>') . '\>'<CR>:let v:searchforward=1<CR>n
 nnoremap <silent>  # :set hlsearch<CR>:let @/='\C\<' . expand('<cword>') . '\>'<CR>:let v:searchforward=0<CR>n
+
+
+"show the amount of found
+nnoremap <Leader>/ :redir => temp <bar> :silent %s///gn <bar> redir end <bar> exec "normal! \<c-o>" <bar> echo trim(temp)<CR>
