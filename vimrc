@@ -416,9 +416,9 @@ silent! command! CleanViews :!find .vim/view/ -type f -mtime +7 -exec rm {} \;
 "abbreviation for easier topleft window opening
 cabbrev <expr> tl (getcmdpos() == 3 && getcmdtype() == ":") ? "topleft" : "tl"
 "abbreviation for vertical split and find
-cabbrev vsf vert sfind
+cabbrev <expr> vsf (getcmdpos() == 4 && getcmdtype() == ":") ? "vert sfind" : "vsf"
 "remake
-cabbrev wmake w <bar> make
+cabbrev <expr> wmake (getcmdpos() == 6 && getcmdtype() == ":") ? "w <bar> make" : "wmake"
 
 "quickly diff files in split windows
 silent! command! -nargs=0 Diff   :windo setlocal diff cursorbind scrollbind
