@@ -78,7 +78,7 @@ set shiftwidth=4
 set autoindent
 set expandtab
 "can backspace over start of insertion and automatic indent
-set backspace=start,indent
+set backspace=start,indent,eol
 "can click, drag and other things with mouse in all modes
 set mouse=a
 "for terminal vim without airline
