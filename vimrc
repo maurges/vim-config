@@ -408,6 +408,12 @@ nnoremap gF :find <C-R>=expand("<cword>")<CR><C-O>
 nnoremap <Leader>rn :setlocal relativenumber<CR>
 
 
+"open netrw in current window
+nnoremap <expr> '' (expand("%") == "") ? ":e .\<CR>" : ":e %:h\<CR>"
+"also for other commands this is convenient
+cnoremap <expr> ;; expand("%:h")
+
+
 "for when i have to edit other man's file
 silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
 
