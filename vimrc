@@ -408,6 +408,9 @@ nnoremap <C-Space> a<C-^><C-C>
 "i change wildcharm
 nnoremap gF :find <C-R>=expand("<cword>")<CR><C-O>
 
+"also gF is really useful and should be used everywhere
+nnoremap gf gF
+
 
 "reset relative number, sometimes it just isn't set
 nnoremap <Leader>rn :setlocal relativenumber<CR>
