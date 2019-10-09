@@ -39,6 +39,9 @@ set grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug}\ --exclude=tags\
 nnoremap <buffer> <expr> gd GHCIGoToDefinition()
 
 
+"generate tag files
+command! -nargs=0 HaskellTags !fast-tags -R .
+
 "write tags files
 augroup haskell_tags
 	autocmd!
