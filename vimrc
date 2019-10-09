@@ -147,7 +147,15 @@ set imsearch=0
 set undofile
 "directories for temp files
 if has("win32")
-	"let it do its own thing
+	let prefix = fnamemodify(expand("$MYVIMRC"), ":h") . "/tempfiles/"
+	if !isdirectory(prefix . "undo")
+		call mkdir(prefix . "undo", "p", 0755)
+	endif
+	if !isdirectory(prefix . "swap")
+		call mkdir(prefix . "swap", "p", 0755)
+	endif
+	exec ":set undodir=" . prefix . "undo"
+	exec ":set dir=" . prefix . "swap"
 else
 	if has("nvim")
 		set undodir=~/.local/share/nvim/undo/

@@ -5,8 +5,7 @@ view
 .netrwhist
 init.vim
 
-**/.*.swp
-*.un~
+tempfiles/
 
 colors/Tomorrow-Night.vim
 colors/hybrid.vim
