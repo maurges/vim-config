@@ -150,7 +150,15 @@ set imsearch=0
 set undofile
 "directories for temp files
 if has("win32")
-	"let it do its own thing
+	let prefix = fnamemodify(expand("$MYVIMRC"), ":h") . "/tempfiles/"
+	if !isdirectory(prefix . "undo")
+		call mkdir(prefix . "undo", "p", 0755)
+	endif
+	if !isdirectory(prefix . "swap")
+		call mkdir(prefix . "swap", "p", 0755)
+	endif
+	exec ":set undodir=" . prefix . "undo"
+	exec ":set dir=" . prefix . "swap"
 else
 	if has("nvim")
 		set undodir=~/.local/share/nvim/undo/
@@ -256,7 +264,7 @@ nnoremap <F9>  :<C-U>tabe <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/after/
 nnoremap <Leader><F9> :<C-U>tabe <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/plugin/
 "fill a part of the path to vim files
 cnoremap <F9> <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/plugin/
-cnoremap <F10> <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/vimrc/
+cnoremap <F10> <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/
 
 
 "found out I also set the filetype a lot
@@ -402,6 +410,9 @@ nnoremap <C-Space> a<C-^><C-C>
 "search for a name under cursor. Don't forget to change c-o to something when
 "i change wildcharm
 nnoremap gF :find <C-R>=expand("<cword>")<CR><C-O>
+
+"also gF is really useful and should be used everywhere
+nnoremap gf gF
 
 
 "reset relative number, sometimes it just isn't set
