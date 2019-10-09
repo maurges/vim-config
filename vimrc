@@ -261,7 +261,7 @@ nnoremap <F9>  :<C-U>tabe <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/after/
 nnoremap <Leader><F9> :<C-U>tabe <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/plugin/
 "fill a part of the path to vim files
 cnoremap <F9> <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/plugin/
-cnoremap <F10> <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/vimrc/
+cnoremap <F10> <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/
 
 
 "found out I also set the filetype a lot
