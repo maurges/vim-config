@@ -5,19 +5,9 @@ call plug#begin('~/.vim/bundle')
 
 " Dependencies
 
-"requirement for some other plugins
-"required by easytags
-Plug 'xolox/vim-misc'
 "smarter .: aware of plugins
 "used by vim-surround and maybe others
 Plug 'tpope/vim-repeat'
-"plugin for asynchronous code execution
-"required by ghc-mod
-if !has("win32")
-	Plug 'Shougo/vimproc.vim', {'do': 'make'}
-else
-	Plug 'Shougo/vimproc.vim'
-endif
 
 " General
 
@@ -31,8 +21,6 @@ Plug 'godlygeek/tabular'
 Plug 'vim-airline/vim-airline'
 "beatiful themes for beatiful airline (they mostly ugly tho)
 Plug 'vim-airline/vim-airline-themes'
-"automatic tag creation
-Plug 'xolox/vim-easytags'
 "undo tree visualisation
 Plug 'mbbill/undotree'
 "lots of additional text objects
@@ -55,6 +43,8 @@ Plug 'd86leader/vim-cpp-helper'
 Plug 'd86leader/clang_complete'
 "detect correct tabstop
 Plug 'tpope/vim-sleuth'
+"indent movements
+Plug 'jeetsukumaran/vim-indentwise'
 
 " Language support plugins
 
