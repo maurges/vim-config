@@ -468,3 +468,14 @@ fun! s:set_relativenumber()
 		set relativenumber
 	endif
 endfun
+
+
+"cleanup of temp files
+augroup undofile_cleanup
+	autocmd!
+	autocmd VimLeavePre * call <sid>tempfile_cleanup()
+augroup END
+fun! s:tempfile_cleanup()
+	" remove files older than 30 days
+	exec "!find " . &undodir . " -type f -mtime +30 exec rm {} \\;"
+endfun
