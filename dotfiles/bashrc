@@ -1,0 +1,128 @@
+# The following is a message from SuSE example bashrc
+# Copyright (c) SuSE GmbH Nuernberg
+
+# There are 3 different types of shells in bash: the login shell, normal shell
+# and interactive shell. Login shells read ~/.profile and interactive shells
+# read ~/.bashrc; in our setup, /etc/profile sources ~/.bashrc - thus all
+# settings made here will also take effect in a login shell.
+#
+# NOTE: It is recommended to make language settings in ~/.profile rather than
+# here, since multilingual X sessions would not work properly if LANG is over-
+# ridden in every subshell.
+
+
+# Some applications read the EDITOR variable to determine your favourite text
+# editor. So uncomment the line below and enter the editor of your choice :-)
+export EDITOR=/usr/bin/nvim
+alias vim=nvim
+
+# Enables **/* wildcard
+shopt -s globstar
+
+# colored prompt with color depending on the machine i'm using
+
+ps1_common='\[\e[01;32m\]\u<$SHLVL>@\h-$(jobs | wc -l | tr -d "\\n"):'
+if [[ `hostname` == gypsy ]]; then
+	PS1="\[$(ppwd)\]$ps1_common\[\e[01;33m\]\w\[\e[m\]> "; #yellow
+elif [[ `hostname` == blackwing ]]; then
+	PS1="\[$(ppwd)\]$ps1_common\[\e[01;36m\]\w\[\e[m\]> "; #light blue
+elif [[ `hostname` == labs ]]; then
+	PS1="$ps1_common\[\e[01;34m\]\w\[\e[m\]> "; #deep blue
+elif [[ `hostname` == scw-1632d5-1 ]]; then #dima vps
+	PS1="$ps1_common\[\e[01;35m\]\w\[\e[m\]> "; #pink
+else
+	PS1="$ps1_common\[\e[01;31m\]\w\[\e[m\]> "; #red
+fi
+
+
+# some useful aliases from suse (and more)
+alias :q=exit
+alias gdb='gdb -q'
+alias g?='grep -i'
+alias objdump='objdump --disassembler-options=intel'
+alias find='find 2>/dev/null'
+alias o='less'
+
+#to easily watch twitch broadcasts
+alias livetwitch='livestreamer --http-header Client-ID=jzkbprff40iqj646a697cyrvl0zt2m6'
+
+#faster zypper
+alias zypnr='zypper --no-refresh'
+
+#idaPRO lunchers
+alias ida='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.8/idaq.exe'
+alias ida64='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.8/idaq64.exe'
+
+#easier systemctl usage
+alias sctl='systemctl'
+
+#open files from console without stderr garbage
+alias open='xdg-open 2>/dev/null'
+
+#use clipboard for xclip
+alias xclip='xclip -selection c'
+
+#send json data with curl
+alias jcurl='curl -H "Content-Type: application/json"'
+
+
+#use command completion for stack
+command -v stack >/dev/null 2>/dev/null && \
+	eval "$(stack --bash-completion-script stack)"
+
+
+# Codi - a scripting scratchpad inside vim
+# Usage: codi [filetype] [filename]
+codi() {
+	local syntax="${1:-ruby}"
+	if [ $syntax = "--help" ]; then
+		echo "Codi - a scripting scratchpad inside vim";
+		echo "Usage: codi [filetype] [filename]";
+		return 1
+	fi
+	shift
+	vim -c \
+		"let g:startify_disable_at_vimenter = 1 |\
+		set bt=nofile ls=0 noru |\
+		hi ColorColumn ctermbg=NONE |\
+		hi VertSplit ctermbg=0 ctermfg=0 |\
+		hi NonText ctermfg=0 |\
+		Codi $syntax" "$@"
+}
+
+
+
+# Quickly open objdump with a file
+disas() {
+	objdump --disassembler-options=intel -D "${1}" | o
+}
+
+
+# Run a ruby code similarily to awk
+arb() {
+	if [[ $# -ne 1 ]]; then
+		echo "Usage: arb expression";
+		return 1
+	fi
+	local command=$(echo "${1}" | tr -d '\n')
+	if [[ $command = "--help" ]]; then
+		echo "Arb - quickly run a set of ruby command on each line of input";
+		echo "You can use A - array of words in current line";
+		echo "            prt - print array with items separated by space";
+		return
+	fi
+	ruby -W0 -e "def prt(*a) puts a.join \" \" end; STDIN.read.strip.each_line do |__line| A = __line.split(' '); ${command} end"
+}
+
+exrb() {
+	if [[ $# -ne 1 ]]; then
+		echo "Usage: exrb expression";
+		return 1
+	fi
+	local command=$(echo "${1}" | tr -d '\n')
+	if [[ $command = "--help" ]]; then
+		echo "exrb - quickly run a ruby command and print its output";
+		return
+	fi
+	ruby -e "puts( eval( '${command}' ) )"
+}

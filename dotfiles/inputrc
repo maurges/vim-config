@@ -1,0 +1,70 @@
+################################################################################
+## ~/.inputrc
+##
+## Control the behaviour of the readline library used e.g.
+## by the bash in the interactive mode for line editing.
+##
+################################################################################
+#
+# The bell style used e.g. on error or tab completion, possible values
+# are `none', `visible', and `audible' the ringing the bell.
+#
+set bell-style visible
+
+#
+# If set to on, words which have more than one possible completion without
+# any possible partial completion cause the matches to be listed immediately
+# instead of ringing the bell.
+#
+#set show-all-if-unmodified on
+
+#
+# If set to on, words which have more than one possible completion cause the
+# matches to be listed immediately instead of ringing the bell.
+#
+set show-all-if-ambiguous off
+
+#
+# end
+#
+
+
+# Use vi-like controls for prompt
+set editing-mode vi
+$if mode=vi
+
+
+# symbol for indication
+set vi-ins-mode-string ""
+set vi-cmd-mode-string "$"
+
+
+#
+# Define hotkeys for insert mode
+#
+set keymap vi-insert
+
+# Great keys to search through history
+"\C-r": history-search-backward     
+"\C-f": history-search-forward
+
+# There is no clear screen by default, so map it
+"\C-l": clear-screen
+
+# By-word movement is stragely absent by default
+# Copy and pasted those from stackoverflow. I and they wonder, why there are three of them
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e\e[C": forward-word
+"\e\e[D": backward-word
+
+
+#
+# Define hotkeys for normal mode
+#
+set keymap vi-command
+
+
+$endif
