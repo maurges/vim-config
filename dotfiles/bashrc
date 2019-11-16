@@ -28,7 +28,7 @@ elif [[ `hostname` == blackwing ]]; then
 	PS1="\[$(ppwd)\]$ps1_common\[\e[01;36m\]\w\[\e[m\]> "; #light blue
 elif [[ `hostname` == labs ]]; then
 	PS1="$ps1_common\[\e[01;34m\]\w\[\e[m\]> "; #deep blue
-elif [[ `hostname` == scw-1632d5-1 ]]; then #dima vps
+elif [[ `hostname` == scw-1632d5 ]]; then #dima vps
 	PS1="$ps1_common\[\e[01;35m\]\w\[\e[m\]> "; #pink
 else
 	PS1="$ps1_common\[\e[01;31m\]\w\[\e[m\]> "; #red
