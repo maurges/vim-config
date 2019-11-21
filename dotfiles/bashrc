@@ -74,14 +74,14 @@ command -v stack >/dev/null 2>/dev/null && \
 # Codi - a scripting scratchpad inside vim
 # Usage: codi [filetype] [filename]
 codi() {
-	local syntax="${1:-ruby}"
+	local syntax="${1:-python}"
 	if [ $syntax = "--help" ]; then
 		echo "Codi - a scripting scratchpad inside vim";
 		echo "Usage: codi [filetype] [filename]";
 		return 1
 	fi
 	shift
-	vim -c \
+	/usr/bin/vim -c \
 		"let g:startify_disable_at_vimenter = 1 |\
 		set bt=nofile ls=0 noru |\
 		hi ColorColumn ctermbg=NONE |\

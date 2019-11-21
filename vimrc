@@ -45,6 +45,8 @@ Plug 'd86leader/clang_complete'
 Plug 'tpope/vim-sleuth'
 "indent movements
 Plug 'jeetsukumaran/vim-indentwise'
+"hacker scratchpad
+Plug 'metakirby5/codi.vim'
 
 " Language support plugins
 
