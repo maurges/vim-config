@@ -40,13 +40,15 @@ Plug 'd86leader/vim-netrwild'
 "easier c++ writing
 Plug 'd86leader/vim-cpp-helper'
 "c++ completion
-if has('python')
-  Plug 'd86leader/clang_complete'
+if has("python") || has("python3")
+	Plug 'd86leader/clang_complete'
 endif
 "detect correct tabstop
 Plug 'tpope/vim-sleuth'
 "indent movements
 Plug 'jeetsukumaran/vim-indentwise'
+"hacker scratchpad
+Plug 'metakirby5/codi.vim'
 
 " Language support plugins
 
@@ -470,4 +472,15 @@ fun! s:set_relativenumber()
 	if &l:number
 		set relativenumber
 	endif
+endfun
+
+
+"cleanup of temp files
+augroup undofile_cleanup
+	autocmd!
+	autocmd VimLeavePre * call <sid>tempfile_cleanup()
+augroup END
+fun! s:tempfile_cleanup()
+	" remove files older than 30 days
+	exec "!find " . &undodir . " -type f -mtime +30 -exec rm {} \\;"
 endfun
