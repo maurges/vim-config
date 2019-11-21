@@ -40,7 +40,9 @@ Plug 'd86leader/vim-netrwild'
 "easier c++ writing
 Plug 'd86leader/vim-cpp-helper'
 "c++ completion
-Plug 'd86leader/clang_complete'
+if has("python") || has("python3")
+	Plug 'd86leader/clang_complete'
+endif
 "detect correct tabstop
 Plug 'tpope/vim-sleuth'
 "indent movements
