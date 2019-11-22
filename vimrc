@@ -27,14 +27,14 @@ Plug 'mbbill/undotree'
 Plug 'wellle/targets.vim'
 "stuff mainly to hot typechek haskell code
 "Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
+"haskell completion engine
+"Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 "best autocompletion evaaaar
 Plug 'd86leader/vim-stupidcomplete'
 "rename opened file
 Plug 'danro/rename.vim'
 "highlight lines changed since last commit
 Plug 'airblade/vim-gitgutter'
-"haskell completion engine
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 "better netrw
 Plug 'd86leader/vim-netrwild'
 "easier c++ writing
