@@ -32,3 +32,5 @@ nnoremap <buffer> <Leader>go :GhcModTypeInsert<CR>
 "call add_map#add_map("\<Esc>", ":GhcModTypeClear\<CR>", "n", "<buffer> <silent>")
 
 setlocal omnifunc=necoghc#omnifunc
+
+silent! command! -nargs=0 Format :%!stack exec -- stylish-haskell
