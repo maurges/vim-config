@@ -34,7 +34,6 @@ nnoremap <buffer> <Leader>go :GhcModTypeInsert<CR>
 
 setlocal omnifunc=necoghc#omnifunc
 
-
 set grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug}\ --exclude=tags\ $*\ -r\ .
 nnoremap <buffer> <expr> gd GHCIGoToDefinition()
 
@@ -47,3 +46,6 @@ augroup haskell_tags
 	autocmd!
 	autocmd BufWritePost *.hs  silent! !fast-tags %
 augroup END
+
+
+silent! command! -nargs=0 Format :%!stack exec -- stylish-haskell
