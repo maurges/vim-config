@@ -20,10 +20,10 @@ nnoremap <buffer> <silent> gF :call haskell#open_module(expand("<cWORD>"))<CR>
 
 
 "creates quickfix window to the right
-"augroup haskell_qf
-"	autocmd!
-"	autocmd BufReadPost quickfix exec "normal! \<c-w>L"
-"augroup end
+augroup haskell_qf
+	autocmd!
+	autocmd BufReadPost quickfix exec "normal! \<c-w>L"
+augroup end
 
 
 "ghc-mod bindings
