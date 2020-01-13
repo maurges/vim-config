@@ -19,10 +19,10 @@ nnoremap <buffer> <F8> :w<CR>:GhcModLint<CR>
 
 
 "creates quickfix window to the right
-"augroup haskell_qf
-"	autocmd!
-"	autocmd BufReadPost quickfix exec "normal! \<c-w>L"
-"augroup end
+augroup haskell_qf
+	autocmd!
+	autocmd BufReadPost quickfix exec "normal! \<c-w>L"
+augroup end
 
 
 "ghc-mod bindings
