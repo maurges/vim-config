@@ -5,11 +5,12 @@ setlocal softtabstop=2
 setlocal shiftwidth=2
 setlocal expandtab
 setlocal foldmethod=indent
-setlocal tags+=tags,./tags
 
 "compiler options
 setlocal makeprg=.\\Build.cmd
 setlocal errorformat=%f:%l:%v:%m
+
+let g:ghcmod_ghc_options=['-Wall', '-fno-warn-missing-signatures']
 
 nnoremap <buffer> <F5> :wa<CR>:make *.hs -o main<CR>
 nnoremap <buffer> <F6> :w<CR>:make %<CR>
@@ -34,7 +35,7 @@ nnoremap <buffer> <Leader>go :GhcModTypeInsert<CR>
 
 setlocal omnifunc=necoghc#omnifunc
 
-set grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug}\ --exclude=tags\ $*\ -r\ .
+set grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug}\ --exclude=tags\ $*\
 nnoremap <buffer> <expr> gd GHCIGoToDefinition()
 
 
