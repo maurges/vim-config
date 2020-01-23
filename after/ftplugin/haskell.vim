@@ -33,7 +33,7 @@ nnoremap <buffer> <Leader>go :GhcModTypeInsert<CR>
 
 setlocal omnifunc=necoghc#omnifunc
 
-set grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug}\ --exclude=tags\ $*\
+set grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug}\ --exclude=tags\ $*
 
 
 "generate tag files
