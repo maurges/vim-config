@@ -10,7 +10,7 @@ setlocal foldmethod=indent
 setlocal makeprg=stack\ build
 setlocal errorformat=%f:%l:%v:%m
 
-let g:ghcmod_ghc_options=['-Wall', '-fno-warn-tabs', '-fno-warn-missing-signatures']
+let g:ghcmod_ghc_options=['-Wall', '-fno-warn-missing-signatures']
 
 nnoremap <buffer> <F5> :wa<CR>:make *.hs -o main<CR>
 nnoremap <buffer> <F6> :w<CR>:make %<CR>
@@ -32,5 +32,18 @@ nnoremap <buffer> <Leader>go :GhcModTypeInsert<CR>
 "call add_map#add_map("\<Esc>", ":GhcModTypeClear\<CR>", "n", "<buffer> <silent>")
 
 setlocal omnifunc=necoghc#omnifunc
+
+set grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug}\ --exclude=tags\ $*\
+
+
+"generate tag files
+command! -nargs=0 HaskellTags !fast-tags -R .
+
+"write tags files
+augroup haskell_tags
+	autocmd!
+	autocmd BufWritePost *.hs  silent! !fast-tags %
+augroup END
+
 
 silent! command! -nargs=0 Format :%!stack exec -- stylish-haskell

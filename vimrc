@@ -58,6 +58,7 @@ Plug 'd86leader/vim-qml'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'momota/cisco.vim'
+Plug 'pbrisbin/vim-syntax-shakespeare'
 
 call plug#end()
 
@@ -141,6 +142,8 @@ set iminsert=0
 set imsearch=0
 "use persistent undo
 set undofile
+"more tag files (esp fast-tags)
+set tags+=tags,./tags
 "directories for temp files
 if has("win32")
 	let prefix = fnamemodify(expand("$MYVIMRC"), ":h") . "/tempfiles/"
