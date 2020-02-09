@@ -58,6 +58,7 @@ Plug 'd86leader/vim-qml'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'momota/cisco.vim'
+Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'purescript-contrib/purescript-vim'
 
 call plug#end()
@@ -142,6 +143,8 @@ set iminsert=0
 set imsearch=0
 "use persistent undo
 set undofile
+"more tag files (esp fast-tags)
+set tags+=tags,./tags
 "directories for temp files
 if has("win32")
 	let prefix = fnamemodify(expand("$MYVIMRC"), ":h") . "/tempfiles/"
@@ -213,7 +216,6 @@ colo blues
 noremap  <Space> <nop>
 noremap  K <nop>
 noremap  Q <nop>
-noremap  S <nop>
 "don't want that annoying help window
 nnoremap <F1> <NOP>
 nnoremap <S-F1> <NOP>
@@ -227,7 +229,8 @@ vnoremap <S-F1> <NOP>
 nnoremap x "_x
 nnoremap X "_X
 nnoremap s "_s
-
+"also unify S action with X and s
+nnoremap S "_Xi
 
 "it doesn't make sense by default
 nnoremap Y y$
@@ -239,10 +242,6 @@ xnoremap Y y`>
 
 
 "faster navigation in insert mode
-inoremap <A-H> <Left>
-inoremap è <Left>
-inoremap <A-L> <Right>
-inoremap ì <Right>
 imap     <A-O> <Esc>o
 imap     ï <Esc>o
 imap     <A-A> <End>
@@ -259,19 +258,6 @@ nnoremap <Leader><F9> :<C-U>tabe <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>
 "fill a part of the path to vim files
 cnoremap <F9> <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/plugin/
 cnoremap <F10> <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/
-
-
-"found out I also set the filetype a lot
-nnoremap <F1>   :<C-U>set filetype=
-nnoremap <C-F1> :<C-U>set filetype?<CR>
-
-
-"oftenly used map to make
-nnoremap <F5> :<C-U>wa<CR>:make<CR>
-
-"quickly enter and leave quickfix mode
-nnoremap <silent> <F4>   :EnterQuickfix<cr>
-nnoremap <silent> <C-F4> :LeaveQuickfix<cr>
 
 
 "screen movement
@@ -318,11 +304,6 @@ nnoremap Ý O<Esc>j
 nnoremap � O<Esc>j
 
 
-"all those helping windows
-nnoremap <silent> í :<C-U>TagbarOpenAutoClose<CR>
-nnoremap <silent> <A-M> :<C-U>TagbarOpenAutoClose<CR>
-
-
 "helpful for search and regexps
 cnoremap ;( \(\)<Left><Left>
 cnoremap ;) \(\)<Left><Left>
@@ -337,12 +318,6 @@ nnoremap <Space>t gT
 
 "easily split lines
 nnoremap <Space>o i<CR><Esc>
-
-"[avaits removing] go through history
-nnoremap  <Space>` <C-O>
-xnoremap  <Space>` <C-O>
-nnoremap  <Space>' <C-I>
-xnoremap  <Space>' <C-I>
 
 "open tag and let you choose the location
 nnoremap  <Space>] g<C-]>
@@ -413,18 +388,8 @@ nnoremap gf gF
 nnoremap <Leader>rn :setlocal relativenumber<CR>
 
 
-"open netrw in current window
-nnoremap <expr> '' (expand("%") == "") ? ":e .\<CR>" : ":e %:h\<CR>"
-"also for other commands this is convenient
+"convenient for file commands
 cnoremap <expr> ;; expand("%:h")
-
-
-"for when i have to edit other man's file
-silent! command! Goodstyle :g/) {[^}]*$/execute "normal! ^f{xo{"
-
-
-"delete old view files
-silent! command! CleanViews :!find .vim/view/ -type f -mtime +7 -exec rm {} \;
 
 
 "abbreviation for easier topleft window opening

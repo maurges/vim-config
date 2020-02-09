@@ -16,6 +16,9 @@
 export EDITOR=/usr/bin/nvim
 alias vim=nvim
 
+# Stack and many others install binaries here
+export PATH=$HOME/.local/bin:$PATH
+
 # Enables **/* wildcard
 shopt -s globstar
 
