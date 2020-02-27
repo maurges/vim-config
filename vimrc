@@ -60,6 +60,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'momota/cisco.vim'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'purescript-contrib/purescript-vim'
+Plug 'vmchale/dhall-vim'
 
 call plug#end()
 
