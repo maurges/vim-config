@@ -8,6 +8,8 @@ call plug#begin('~/.vim/bundle')
 "smarter .: aware of plugins
 "used by vim-surround and maybe others
 Plug 'tpope/vim-repeat'
+"used by vim-lsp
+Plug 'prabirshrestha/async.vim'
 
 " General
 
@@ -54,6 +56,7 @@ Plug 'tpope/vim-fugitive'
 
 " Language support plugins
 
+Plug 'prabirshrestha/vim-lsp'
 Plug 'd86leader/vim-qml'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'rust-lang/rust.vim'
