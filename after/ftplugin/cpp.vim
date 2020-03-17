@@ -12,10 +12,5 @@ nnoremap <buffer> <F6> :w<CR>:make %:r.o<CR>
 "split source file
 nnoremap <buffer> <silent> <localleader>s :vsplit %:r.cpp<CR>
 
-setlocal omnifunc=ClangComplete
-
-"disable clang linters
-let b:ale_linters = ['clang', 'clangcheck', 'gcc']
-
 syn keyword  cCppLetDeclaration  let
 hi def link cCppLetDeclaration cppType
