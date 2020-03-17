@@ -19,10 +19,6 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 "quick reformat
 Plug 'godlygeek/tabular'
-"beautiful status line
-Plug 'vim-airline/vim-airline'
-"beatiful themes for beatiful airline (they mostly ugly tho)
-Plug 'vim-airline/vim-airline-themes'
 "undo tree visualisation
 Plug 'mbbill/undotree'
 "lots of additional text objects
