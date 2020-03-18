@@ -451,3 +451,20 @@ fun! s:tempfile_cleanup()
 	" remove files older than 30 days
 	exec "!find " . &undodir . " -type f -mtime +30 -exec rm {} \\;"
 endfun
+
+
+augroup tempalates
+	autocmd!
+	autocmd BufNewFile *.py call <sid>read_template("python.py")
+augroup END
+fun! s:read_template(name, ...) abort
+	exec ':0read ' . fnamemodify(expand("$MYVIMRC"), ":h")
+		\ . '/templates/' . a:name
+
+	if a:0 == 1
+		let linenr = a:1
+		exec 'normal! ' . linenr . 'G'
+	else
+		normal! G
+	endif
+endfun
