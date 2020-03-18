@@ -2,6 +2,11 @@
 let g:lsp_virtual_text_enabled = 0
 let g:lsp_highlights_enabled = 0
 let g:lsp_textprop_enabled = 0
+let g:lsp_diagnostics_echo_cursor = 0
+let g:lsp_diagnostics_float_cursor = 0
+let g:lsp_highlight_references_enabled = 0
+let g:lsp_signature_help_enabled = 0
+let g:lsp_diagnostics_enabled = 0
 
 
 " servers
