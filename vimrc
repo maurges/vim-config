@@ -88,7 +88,7 @@ set visualbell
 "yank can be redone with .
 set cpoptions+=y
 "don't save options with views
-set viewoptions-=options
+set viewoptions-=options,curdir
 "searching is smart about case
 set ignorecase
 set smartcase
@@ -335,8 +335,8 @@ nnoremap <Space>l <C-W>l
 
 "some remaps to control completion
 inoremap <expr> <C-C> pumvisible() ? "\<C-E>" : "\<C-C>"
-inoremap <expr> <A-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
-inoremap <expr> ê     pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>"
+inoremap <expr> <A-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>"
+inoremap <expr> ê     pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>"
 inoremap <expr> <A-K> pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 inoremap <expr> ë     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 
