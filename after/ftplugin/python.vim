@@ -14,6 +14,8 @@ setlocal foldmethod=indent
 iabbrev <buffer> main: if __name__ == "__main__":
 iabbrev <buffer> header# #!/usr/bin/env python3<CR>from sys import argv
 iabbrev <buffer> read_array# map(int, raw_input().strip().split(' '))
+iabbrev <buffer> init# def __init__(self,):<left><left>
+iabbrev <buffer> init: def __init__(self):
 
 if has('python3')
 	setlocal omnifunc=python3complete#Complete

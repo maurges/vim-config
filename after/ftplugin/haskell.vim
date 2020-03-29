@@ -10,30 +10,13 @@ setlocal foldmethod=indent
 setlocal makeprg=stack\ build
 setlocal errorformat=%f:%l:%v:%m
 
-let g:ghcmod_ghc_options=['-Wall', '-fno-warn-missing-signatures']
-
-nnoremap <buffer> <F5> :wa<CR>:make *.hs -o main<CR>
-nnoremap <buffer> <F6> :w<CR>:make %<CR>
-nnoremap <buffer> <F7> :w<CR>:GhcModCheck<CR>
-nnoremap <buffer> <F8> :w<CR>:GhcModLint<CR>
-
-
 "creates quickfix window to the right
 augroup haskell_qf
 	autocmd!
 	autocmd BufReadPost quickfix exec "normal! \<c-w>L"
 augroup end
 
-
-"ghc-mod bindings
-nnoremap <buffer> <Leader>gt :GhcModType<CR>
-nnoremap <buffer> <Leader>gi :GhcModInfo<CR>
-nnoremap <buffer> <Leader>go :GhcModTypeInsert<CR>
-"call add_map#add_map("\<Esc>", ":GhcModTypeClear\<CR>", "n", "<buffer> <silent>")
-
-setlocal omnifunc=necoghc#omnifunc
-
-set grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug}\ --exclude=tags\ $*
+setlocal grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug}\ --exclude=tags\ $*
 
 
 "generate tag files
@@ -47,3 +30,7 @@ augroup END
 
 
 silent! command! -nargs=0 Format :%!stack exec -- stylish-haskell
+
+
+iabbrev <buffer> lang# {-# LANGUAGE #-}<left><left><left><left>
+iabbrev <buffer> lang_os# {-# LANGUAGE OverloadedStrings #-}
