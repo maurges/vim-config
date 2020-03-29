@@ -6,7 +6,6 @@ let g:lsp_diagnostics_echo_cursor = 0
 let g:lsp_diagnostics_float_cursor = 0
 let g:lsp_highlight_references_enabled = 0
 let g:lsp_signature_help_enabled = 0
-let g:lsp_diagnostics_enabled = 0
 
 
 " servers
@@ -39,5 +38,5 @@ augroup END
 
 fun! s:on_lsp_buffer_enabled() abort
 	setlocal omnifunc=lsp#complete
-	nmap gd <plug>(lsp-definition)
+	nmap <buffer> gd <plug>(lsp-definition)
 endfun
