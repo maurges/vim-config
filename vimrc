@@ -9,7 +9,8 @@ call plug#begin('~/.vim/bundle')
 "used by vim-surround and maybe others
 Plug 'tpope/vim-repeat'
 "used by vim-lsp
-Plug 'prabirshrestha/async.vim'
+" changed to my fork while the author is fucking the ox
+Plug 'd86leader/async.vim'
 
 " General
 
@@ -52,7 +53,8 @@ Plug 'tpope/vim-fugitive'
 
 " Language support plugins
 
-Plug 'prabirshrestha/vim-lsp'
+" changed to my fork while the author is fucking the ox
+Plug 'd86leader/vim-lsp'
 Plug 'd86leader/vim-qml'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'rust-lang/rust.vim'
