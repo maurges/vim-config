@@ -458,15 +458,25 @@ endfun
 augroup tempalates
 	autocmd!
 	autocmd BufNewFile *.py call <sid>read_template("python.py")
+	autocmd BufNewFile stack.yaml call <sid>read_template("stack.yaml", 1, 10)
+	autocmd BufNewFile package.yaml call <sid>read_template("package.yaml", 1, 21)
 augroup END
 fun! s:read_template(name, ...) abort
 	exec ':0read ' . fnamemodify(expand("$MYVIMRC"), ":h")
 		\ . '/templates/' . a:name
 
-	if a:0 == 1
+	" arg 1: line number
+	if a:0 >= 1
+		normal! Gdd
 		let linenr = a:1
 		exec 'normal! ' . linenr . 'G'
 	else
 		normal! G
+	endif
+
+	" arg 2: column number
+	if a:0 >= 2
+		let colnr = a:2
+		exec "normal! " . colnr . "\<bar>"
 	endif
 endfun
