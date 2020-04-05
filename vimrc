@@ -90,7 +90,7 @@ set visualbell
 "yank can be redone with .
 set cpoptions+=y
 "don't save options with views
-set viewoptions-=options,curdir
+set viewoptions=folds,cursor
 "searching is smart about case
 set ignorecase
 set smartcase
