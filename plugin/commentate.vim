@@ -46,6 +46,9 @@ fun! s:set_commentstring()
  	elseif &commentstring == "/*%s*/"
 		"use // for C-style
  		let b:cs = "\\/\\/" "why so many backslashes required?
+ 	elseif &commentstring == "{--%s--}"
+		"use -- for haskell-style
+ 		let b:cs = "-- " "why so many backslashes required?
  	elseif &commentstring == ""
 		"use # where unsure V2
  		let b:cs = "#"

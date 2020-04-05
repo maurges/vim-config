@@ -1,6 +1,10 @@
 "option for \ before (
 setlocal cpoptions+=M
 
+setlocal foldmethod=indent
+setlocal indentexpr=
+setlocal smartindent
+
 "compiler options
 let &l:errorformat = '%A%\s%#at %f:%l:%c - %\d%\+:%\d%\+ (%.%#)%\?,%C,%Z%\s%#%m'
 
