@@ -11,7 +11,6 @@ let g:lsp_signature_help_enabled = 0
 " servers
 
 if executable('clangd')
-	" pip install python-language-server
 	au User lsp_setup call lsp#register_server({
 		\ 'name': 'clangd',
 		\ 'cmd': {server_info->['clangd']},
@@ -20,12 +19,21 @@ if executable('clangd')
 endif
 
 if executable('pyls')
-" pip install python-language-server
-au User lsp_setup call lsp#register_server({
-		\ 'name': 'pyls',
-		\ 'cmd': {server_info->['pyls']},
-		\ 'whitelist': ['python'],
-		\ })
+	" pip install python-language-server
+	au User lsp_setup call lsp#register_server({
+			\ 'name': 'pyls',
+			\ 'cmd': {server_info->['pyls']},
+			\ 'whitelist': ['python'],
+			\ })
+endif
+
+if executable('rls')
+	" rustup component add rls rust-analysis rust-src
+	au User lsp_setup call lsp#register_server({
+			\ 'name': 'rls',
+			\ 'cmd': {server_info->['rls']},
+			\ 'whitelist': ['rust'],
+			\ })
 endif
 
 
