@@ -7,8 +7,9 @@ setlocal expandtab
 setlocal foldmethod=indent
 
 "compiler options
-setlocal makeprg=stack\ build
-setlocal errorformat=%f:%l:%v:%m
+"setlocal makeprg=stack\ build
+setlocal makeprg=./build.sh
+let &l:errorformat='%\%%(%[a-zA-Z0-9_-]%\+%\s%#>%\s%#%\)%\?%f:%l:%v:%m'
 
 "creates quickfix window to the right
 augroup haskell_qf
