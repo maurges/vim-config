@@ -395,6 +395,14 @@ nnoremap <Leader>rn :setlocal relativenumber<CR>
 cnoremap <expr> ;; expand("%:h")
 
 
+" make n always search forward and N backward
+nnoremap <expr> n v:searchforward ? 'n' : 'N'
+nnoremap <expr> N v:searchforward ? 'N' : 'n'
+" make ; always search forward and , backward
+nnoremap <expr> ; getcharsearch().forward ? ';' : ','
+nnoremap <expr> , getcharsearch().forward ? ',' : ';'
+
+
 "abbreviation for easier topleft window opening
 cabbrev <expr> tl (getcmdpos() == 3 && getcmdtype() == ":") ? "topleft" : "tl"
 "abbreviation for vertical split and find
