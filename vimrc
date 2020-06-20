@@ -210,6 +210,7 @@ augroup END
 set completefunc=completion_aggreg#complete
 
 
+set termguicolors
 colo blues
 
 
