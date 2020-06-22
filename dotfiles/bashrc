@@ -69,11 +69,6 @@ alias xclip='xclip -selection c'
 alias jcurl='curl -H "Content-Type: application/json"'
 
 
-#use command completion for stack
-command -v stack >/dev/null 2>/dev/null && \
-	eval "$(stack --bash-completion-script stack)"
-
-
 # Codi - a scripting scratchpad inside vim
 # Usage: codi [filetype] [filename]
 codi() {

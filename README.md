@@ -13,3 +13,6 @@ Install with `bash .vim/install-dotfiles.sh`
 
 ## For all installs above
 `bash .vim/install.sh`
+
+## Bash autocompletions
+They go into `.local/share/bash-completion/completions/`
