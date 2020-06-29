@@ -1,6 +1,8 @@
 " Description: Cabal reports errors in a bad way. The path to file is shown
-" not from project root, but from cabal file of submodule. This is a fix for
-" that.
+" not from project root, but from cabal file of submodule. This is
+" inconvenient with :make, so i wrote a fix
+" Usage: call cabal_autocmd() to create an autocommand that redirects you on
+" file misses
 
 if !exists("s:lib_paths")
 	let s:lib_paths = []
