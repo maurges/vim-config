@@ -7,9 +7,10 @@ setlocal expandtab
 setlocal foldmethod=indent
 
 "compiler options
-let &l:errorformat = '%\%%(%[a-zA-Z0-9_-]%\+ %\+> %\)%\?%f:%l:%v:%m'
+let &l:errorformat = '%\%%(%[a-zA-Z0-9_-]%\+ %#> %\)%\?%f:%l:%v:%m'
 if filereadable("./build-remote.sh")
 	setlocal makeprg=./build-remote.sh
+	call hs_cabal#cabal_autocmd()
 elseif filereadable("./build.sh")
 	setlocal makeprg=./build.sh
 else
@@ -31,7 +32,7 @@ command! -nargs=0 HaskellTags !fast-tags -R .
 "write tags files
 augroup haskell_tags
 	autocmd!
-	autocmd BufWritePost *.hs  silent! !fast-tags %
+	autocmd BufWritePost *.hs	silent! !fast-tags %
 augroup END
 
 
@@ -40,3 +41,4 @@ silent! command! -nargs=0 Format :%!stack exec -- stylish-haskell
 
 iabbrev <buffer> lang# {-# LANGUAGE #-}<left><left><left><left>
 iabbrev <buffer> lang_os# {-# LANGUAGE OverloadedStrings #-}
+iabbrev <buffer> opt# {-# OPTIONS_GHC #-}<left><left><left><left>
