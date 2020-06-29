@@ -244,16 +244,6 @@ inoremap <C-R> <C-R><C-P>
 xnoremap Y y`>
 
 
-"faster navigation in insert mode
-imap     <A-O> <Esc>o
-imap     ï <Esc>o
-imap     <A-A> <End>
-imap     á <End>
-"also this is a very good map, useful in normal mode too
-nmap     <A-A> A
-nmap     á A
-
-
 "yeah i edit vimrc a lot
 nnoremap <F10> :<C-U>tabe $MYVIMRC<CR>
 nnoremap <F9>  :<C-U>tabe <C-R>=fnamemodify(expand("$MYVIMRC"), ":h")<CR>/after/ftplugin/
@@ -274,8 +264,6 @@ nnoremap  _ <C-W>p3<C-Y><C-W>p
 xnoremap  _ <C-W>p3<C-Y><C-W>p
 inoremap <C-E> <C-X><C-E><C-X><C-E>a<BS>
 inoremap <C-Y> <C-X><C-Y><C-X><C-Y>a<BS>
-inoremap <A-Z> <C-O>zz
-inoremap ú <C-O>zz
 
 "other movement
 "if moving more than 3 lines at once, populate the jumplist
@@ -340,12 +328,12 @@ nnoremap <Space>l <C-W>l
 inoremap <expr> <C-C> pumvisible() ? "\<C-E>" : "\<C-C>"
 inoremap <expr> <A-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>"
 inoremap <expr> ê     pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>"
+inoremap <expr> Ãª     pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>"
 inoremap <expr> <A-K> pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 inoremap <expr> ë     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
+inoremap <expr> Ã«     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 
 
-"a map to the swapwins plugin (for more info see plugin/swapwindows.vim)
-nnoremap <silent> <C-W>a :<C-U>call swapwindows#with_prev(0)<CR>
 "a map to copy buffer in new tab
 nnoremap <C-W>t :tab split<CR>
 
