@@ -48,8 +48,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'jeetsukumaran/vim-indentwise'
 "hacker scratchpad
 Plug 'metakirby5/codi.vim'
-"git plugin
-Plug 'tpope/vim-fugitive'
 
 " Language support plugins
 
