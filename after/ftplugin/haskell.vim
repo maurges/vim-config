@@ -10,7 +10,6 @@ setlocal foldmethod=indent
 let &l:errorformat = '%\%%(%[a-zA-Z0-9_-]%\+ %#> %\)%\?%f:%l:%v:%m'
 if filereadable("./build-remote.sh")
 	setlocal makeprg=./build-remote.sh
-	call hs_cabal#cabal_autocmd()
 elseif filereadable("./build.sh")
 	setlocal makeprg=./build.sh
 else
@@ -23,7 +22,7 @@ augroup haskell_qf
 	autocmd BufReadPost quickfix exec "normal! \<c-w>L"
 augroup end
 
-setlocal grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug}\ --exclude=tags\ $*
+setlocal grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug,_build}\ --exclude=tags\ $*
 
 
 "generate tag files
@@ -42,3 +41,12 @@ silent! command! -nargs=0 Format :%!stack exec -- stylish-haskell
 iabbrev <buffer> lang# {-# LANGUAGE #-}<left><left><left><left>
 iabbrev <buffer> lang_os# {-# LANGUAGE OverloadedStrings #-}
 iabbrev <buffer> opt# {-# OPTIONS_GHC #-}<left><left><left><left>
+
+
+silent! command! -nargs=+ Stack :call <sid>stack_cmd(<q-args>)
+fun! s:stack_cmd(str) abort
+	let save_mkprg = &l:makeprg
+	setlocal makeprg=stack
+	exec "make " . a:str
+	let &l:makeprg = save_mkprg
+endfun
