@@ -76,6 +76,11 @@ fun! completion_aggreg#complete(findstart, base) abort
 
 				let base = s:bases[Func]
 				let prefix = s:prefixes[Func]
+				if base == ""
+					" Some functions may create a bad completion and pollute the results
+					" with a lot of garbage. This is a way to trim that garbage
+					let base = a:base
+				endif
 
 				if exists('r') | unlet r | endif
 
