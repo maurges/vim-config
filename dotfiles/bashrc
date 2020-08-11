@@ -79,13 +79,7 @@ codi() {
 		return 1
 	fi
 	shift
-	/usr/bin/vim -c \
-		"let g:startify_disable_at_vimenter = 1 |\
-		set bt=nofile ls=0 noru |\
-		hi ColorColumn ctermbg=NONE |\
-		hi VertSplit ctermbg=0 ctermfg=0 |\
-		hi NonText ctermfg=0 |\
-		Codi $syntax" "$@"
+	/usr/bin/nvim -c "Codi $syntax" "$@"
 }
 
 
