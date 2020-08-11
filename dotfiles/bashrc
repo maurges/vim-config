@@ -25,17 +25,26 @@ shopt -s globstar
 # colored prompt with color depending on the machine i'm using
 
 ps1_common='\[\e[01;32m\]\u<$SHLVL>@\h-$(jobs | wc -l | tr -d "\\n"):'
-if [[ `hostname` == gypsy ]]; then
-	PS1="\[$(ppwd)\]$ps1_common\[\e[01;33m\]\w\[\e[m\]> "; #yellow
-elif [[ `hostname` == blackwing ]]; then
-	PS1="\[$(ppwd)\]$ps1_common\[\e[01;36m\]\w\[\e[m\]> "; #light blue
-elif [[ `hostname` == labs ]]; then
+case $(hostname) in
+gypsy)
+	PS1="$ps1_common\[\e[01;33m\]\w\[\e[m\]> "; #yellow
+	;;
+labs)
 	PS1="$ps1_common\[\e[01;34m\]\w\[\e[m\]> "; #deep blue
-elif [[ `hostname` == scw-1632d5 ]]; then #dima vps
+	;;
+scw-1632d5)
 	PS1="$ps1_common\[\e[01;35m\]\w\[\e[m\]> "; #pink
-else
+	;;
+blackwing)
+	PS1="$ps1_common\[\e[01;36m\]\w\[\e[m\]> "; #light blue
+	;;
+workhorse)
+	PS1="$ps1_common\[\e[02;34m\]\w\[\e[m\]> "; #normal blue
+	;;
+*)
 	PS1="$ps1_common\[\e[01;31m\]\w\[\e[m\]> "; #red
-fi
+	;;
+esac
 
 
 # some useful aliases from suse (and more)

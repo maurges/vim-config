@@ -7,6 +7,10 @@ let g:lsp_diagnostics_float_cursor = 0
 let g:lsp_highlight_references_enabled = 0
 let g:lsp_signature_help_enabled = 0
 
+" Disable other stuff
+let g:lsp_diagnostics_enabled = 0
+let g:lsp_signs_enabled = 0
+
 
 " servers
 
