@@ -335,6 +335,9 @@ inoremap <expr> Ã«     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 "a map to copy buffer in new tab
 nnoremap <C-W>t :tab split<CR>
 
+"close current tab
+nnoremap <C-W>c :tabclose<CR>
+
 
 "shortcut to quickly use macro in q
 nnoremap Q @q
