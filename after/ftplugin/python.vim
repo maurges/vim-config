@@ -23,9 +23,6 @@ else
 	setlocal omnifunc=pythoncomplete#Complete
 endif
 
-call PythonSetSyntasticChecker()
-nnoremap <expr> <Leader>sc PythonSetSyntasticChecker()
-
 " set typechecker to appropriate python version
 if b:python_version == 2
 	setlocal makeprg=mypy\ --py2
