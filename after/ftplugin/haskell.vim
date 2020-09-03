@@ -27,13 +27,15 @@ augroup end
 setlocal grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug,_build}\ --exclude=tags\ $*
 
 
+setlocal tags+=.hstags,./.hstags
+
 "generate tag files
-command! -nargs=0 HaskellTags !fast-tags -R .
+command! -nargs=0 HaskellTags !fast-tags -o .hstags -R .
 
 "write tags files
 augroup haskell_tags
 	autocmd!
-	autocmd BufWritePost *.hs	silent! !fast-tags %
+	autocmd BufWritePost *.hs	silent! !fast-tags -o .hstags %
 augroup END
 
 

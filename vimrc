@@ -143,8 +143,6 @@ set iminsert=0
 set imsearch=0
 "use persistent undo
 set undofile
-"more tag files (esp fast-tags)
-set tags+=tags,./tags
 "directories for temp files
 if has("win32")
 	let prefix = fnamemodify(expand("$MYVIMRC"), ":h") . "/tempfiles/"

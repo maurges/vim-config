@@ -2,12 +2,7 @@ inoremap <buffer> <silent> <S-CR> <End><CR>{<CR>}<Up><CR>
 inoremap <buffer> <silent> � <End><CR>{<CR>}<Up><CR>
 inoremap <buffer> <silent> Ý <End><CR>{<CR>}<Up><CR>
 
-setlocal tags+=~/.vim/cpptags
-
 inoreabbrev <buffer> main# int main(int argc, char** argv)<CR>{<CR>}<Up>
-
-"make current file
-nnoremap <buffer> <F6> :w<CR>:make %:r.o<CR>
 
 "split source file
 nnoremap <buffer> <silent> <localleader>s :vsplit %:r.cpp<CR>
@@ -28,3 +23,18 @@ else
 endif
 
 setlocal grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug,_build}\ --exclude=tags\ $*
+
+
+setlocal tags+=.cpptags,./.cpptags
+
+"generate tag files
+command! -nargs=? CppTags !universal-ctags --languages=c++,c -o .cpptags -R <args>
+
+"write tags files
+augroup cpp_tags
+	autocmd!
+	autocmd BufWritePost *.cpp silent !univesal-ctags --append -o .cpptags %
+augroup END
+
+"TODO: dynamically determine ctags executable from ctags and universal-ctags,
+"those two should be compatible
