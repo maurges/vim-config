@@ -23,16 +23,6 @@ else
 	setlocal omnifunc=pythoncomplete#Complete
 endif
 
-"set syntastic checker for appropriate python
-fun! PythonSetSyntasticChecker()
-	if b:python_version == 3
-		let g:syntastic_python_python_exec = '/usr/bin/python3'
-	elseif b:python_version == 2
-		let g:syntastic_python_python_exec = '/usr/bin/python2'
-	endif
-	return ""
-endfun
-
 call PythonSetSyntasticChecker()
 nnoremap <expr> <Leader>sc PythonSetSyntasticChecker()
 

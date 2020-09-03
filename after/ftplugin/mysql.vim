@@ -1,1 +1,1 @@
-source ~/.vim/after/ftplugin/sql.vim
+exec "source " . fnamemodify(expand("$MYVIMRC"), ":h") . "/after/ftplugin/sql.vim"
