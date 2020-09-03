@@ -8,7 +8,9 @@ setlocal foldmethod=indent
 
 "compiler options
 let &l:errorformat = '%\%%(%[a-zA-Z0-9_-]%\+ %#> %\)%\?%f:%l:%v:%m'
-if filereadable("./build-remote.sh")
+if filereadable("./build-remote.json")
+	setlocal makeprg=build-remote.py
+elseif filereadable("./build-remote.sh")
 	setlocal makeprg=./build-remote.sh
 elseif filereadable("./build.sh")
 	setlocal makeprg=./build.sh
