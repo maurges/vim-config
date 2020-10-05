@@ -7,11 +7,15 @@ command! -nargs=0 Gblame :call <SID>gblame()
 
 fun! s:gdiffsplit(spec) abort
 	let ft = &l:filetype
+	let file_path_full = expand("%:p")
+
 	leftabove vertical new
 	setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile
 	let cmd = "++edit #"
 	if a:spec != ""
-		let cmd = "!git -C " . shellescape(fnamemodify(finddir('.git', '.;'), ':p:h:h')) . " show " . a:spec . ":#"
+		let repo_path = fnamemodify(finddir('.git', '.;'), ':p:h:h')
+		let file_path = file_path_full[len(repo_path)+1:]
+		let cmd = "!git -C " . shellescape(repo_path) . " show " . a:spec . ":" . shellescape(file_path)
 	endif
 	execute "read " . cmd
 	silent 0d_
@@ -22,7 +26,7 @@ fun! s:gdiffsplit(spec) abort
 endfun
 
 fun! s:gblame() abort
-	let cmd = "!git -C " . shellescape(expand('%:p:h')) . " blame " . expand('%:t')
+	let cmd = "!git -C " . shellescape(expand('%:p:h')) . " annotate " . expand('%:t')
 	echom cmd
 
 	leftabove vertical new
