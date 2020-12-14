@@ -102,8 +102,8 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
   hi DiffDelete      ctermbg=235  ctermfg=131  guibg=#262626 guifg=#af5f5f cterm=reverse        gui=reverse
   hi DiffText        ctermbg=235  ctermfg=208  guibg=#262626 guifg=#ff8700 cterm=reverse        gui=reverse
 
-  hi IncSearch       ctermbg=131  ctermfg=235  guibg=#af5f5f guifg=#262626 cterm=NONE           gui=NONE
-  hi Search          ctermbg=229  ctermfg=235  guibg=#ffffaf guifg=#262626 cterm=NONE           gui=NONE
+  hi IncSearch       ctermbg=131  ctermfg=235  guibg=#262626 guifg=#af5f5f cterm=NONE           gui=NONE
+  hi Search          ctermbg=229  ctermfg=235  guibg=#262626 guifg=#ffffaf cterm=NONE           gui=NONE
 
   hi Directory       ctermbg=NONE ctermfg=73   guibg=NONE    guifg=#5fafaf cterm=NONE           gui=NONE
 
