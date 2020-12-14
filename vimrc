@@ -47,6 +47,10 @@ Plug 'tpope/vim-sleuth'
 Plug 'jeetsukumaran/vim-indentwise'
 "hacker scratchpad
 Plug 'metakirby5/codi.vim'
+"use nvim in firefox
+if has("nvim-0.4.0")
+	Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+endif
 
 " Language support plugins
 
@@ -476,3 +480,14 @@ fun! s:read_template(name, ...) abort
 		exec "normal! " . colnr . "\<bar>"
 	endif
 endfun
+
+
+if exists('g:started_by_firenvim')
+	colorscheme shine
+	set laststatus=0
+
+	"disable undofile cleanup, it has ugly popup at end
+	augroup undofile_cleanup
+		autocmd!
+	augroup END
+endif
