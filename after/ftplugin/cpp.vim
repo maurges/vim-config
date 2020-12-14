@@ -19,7 +19,7 @@ elseif filereadable("./build-remote.sh")
 elseif filereadable("./build.sh")
 	setlocal makeprg=./build.sh
 else
-	setlocal makeprg=stack\ build
+	setlocal makeprg=make
 endif
 
 setlocal grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug,_build}\ --exclude=tags\ $*
