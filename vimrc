@@ -42,7 +42,7 @@ if has("python") || has("python3")
 	Plug 'd86leader/clang_complete'
 endif
 "detect correct tabstop
-Plug 'tpope/vim-sleuth'
+Plug 'd86leader/vim-sleuth'
 "indent movements
 Plug 'jeetsukumaran/vim-indentwise'
 "hacker scratchpad
