@@ -16,3 +16,8 @@ Install with `bash .vim/install-dotfiles.sh`
 
 ## Bash autocompletions
 They go into `.local/share/bash-completion/completions/`
+
+Instructions for my most common:
+- `stack --bash-completion-script stack > stack`
+- `rustup completions bash > rustup`
+- `rustup completions bash cargo > cargo`
