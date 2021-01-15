@@ -63,6 +63,7 @@ Plug 'momota/cisco.vim'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'vmchale/dhall-vim'
+Plug 'd86leader/idris2-vim'
 
 call plug#end()
 
