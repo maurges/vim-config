@@ -23,3 +23,14 @@ fun! s:embrace()
 endfun
 
 iabbrev -и \item
+
+"compiler options
+if filereadable("./build-remote.json")
+	setlocal makeprg=build-remote.py
+elseif filereadable("./build-remote.sh")
+	setlocal makeprg=./build-remote.sh
+elseif filereadable("./build.sh")
+	setlocal makeprg=./build.sh
+else
+	setlocal makeprg=make
+endif
