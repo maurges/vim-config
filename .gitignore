@@ -7,11 +7,6 @@ init.vim
 
 tempfiles/
 
-colors/Tomorrow-Night.vim
-colors/hybrid.vim
-colors/quantum.vim
-colors/jellybeans.vim
-colors/one.vim
-colors/paramount.vim
+spell/
 
 **/.tags
