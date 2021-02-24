@@ -54,3 +54,21 @@ fun! s:stack_cmd(str) abort
 	exec "make " . a:str
 	let &l:makeprg = save_mkprg
 endfun
+
+cnoremap <buffer> <expr> ;: <sid>find_cabal()
+fun! s:find_cabal() abort
+	let path = expand("%:h")
+	while len(path) > 3 && path != "." && path != "./"
+		echom path
+		let names = glob(path . "/*.cabal", v:false, v:true)
+		echom string(names)
+		if len(names) == 1
+			let fname = names[0]
+			if filereadable(fname)
+				return path
+			endif
+		endif
+		let path = simplify(path . "/..")
+	endwhile
+	return ""
+endfun
