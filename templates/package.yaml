@@ -12,5 +12,6 @@ executables:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
+    - -Wall -Wcompat
     dependencies:
     - base
