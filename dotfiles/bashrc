@@ -32,7 +32,7 @@ gypsy)
 labs)
 	PS1="$ps1_common\[\e[01;34m\]\w\[\e[m\]> "; #deep blue
 	;;
-scw-1632d5)
+algo)
 	PS1="$ps1_common\[\e[01;35m\]\w\[\e[m\]> "; #pink
 	;;
 blackwing)
@@ -48,6 +48,7 @@ esac
 
 
 # some useful aliases from suse (and more)
+alias ls='ls --color=auto'
 alias :q=exit
 alias gdb='gdb -q'
 alias g?='grep -i'
