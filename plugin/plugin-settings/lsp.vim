@@ -40,6 +40,15 @@ if executable('rls')
 			\ })
 endif
 
+if executable('ocamllsp')
+	" opam install ocaml-lsp-server
+	au User lsp_setup call lsp#register_server({
+			\ 'name': 'ocamllsp',
+			\ 'cmd': {server_info->['ocamllsp']},
+			\ 'whitelist': ['ocaml'],
+			\ })
+endif
+
 
 " set settings if lsp is enabled in buffer
 
