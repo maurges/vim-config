@@ -1,0 +1,4 @@
+editMode: Vi
+historyDuplicates: IgnoreConsecutive
+bind: ctrl-r meta-k
+bind: ctrl-f meta-j
