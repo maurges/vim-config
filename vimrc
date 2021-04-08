@@ -394,6 +394,10 @@ nnoremap <expr> ; getcharsearch().forward ? ';' : ','
 nnoremap <expr> , getcharsearch().forward ? ',' : ';'
 
 
+" split line on space under cursor (by drzel)
+nnoremap <Space>o :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
+
+
 "abbreviation for easier topleft window opening
 cabbrev <expr> tl (getcmdpos() == 3 && getcmdtype() == ":") ? "topleft" : "tl"
 "abbreviation for vertical split and find
