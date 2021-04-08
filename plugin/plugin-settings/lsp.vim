@@ -11,6 +11,8 @@ let g:lsp_signature_help_enabled = 0
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_signs_enabled = 0
 
+" mappings
+nmap <leader>h <plug>(lsp-hover)
 
 " servers
 

@@ -5,7 +5,7 @@ inoremap <buffer> <silent> Ý <End><CR>{<CR>}<Up><CR>
 inoreabbrev <buffer> main# int main(int argc, char** argv)<CR>{<CR>}<Up>
 
 "split source file
-nnoremap <buffer> <silent> <localleader>s :vsplit %:r.cpp<CR>
+nnoremap <buffer> <silent> <expr> <localleader>s ":vsplit %:r." . (expand("%:e") == "cpp" ? "{h,hpp}" : "cpp") . "\<cr>"
 
 syn keyword  cCppLetDeclaration  let
 hi def link cCppLetDeclaration cppType
