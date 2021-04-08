@@ -28,12 +28,12 @@ setlocal grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug,_build}\ --e
 setlocal tags+=.cpptags,./.cpptags
 
 "generate tag files
-command! -nargs=? CppTags !universal-ctags --languages=c++,c -o .cpptags -R <args>
+command! -nargs=? CppTags !universal-ctags --languages=c++,c -D "interface=class" -o .cpptags -R <args>
 
 "write tags files
 augroup cpp_tags
 	autocmd!
-	autocmd BufWritePost *.cpp silent !univesal-ctags --append -o .cpptags %
+	autocmd BufWritePost *.cpp silent !univesal-ctags --append -D "interface=class" -o .cpptags %
 augroup END
 
 "TODO: dynamically determine ctags executable from ctags and universal-ctags,
