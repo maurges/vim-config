@@ -23,10 +23,6 @@ Plug 'godlygeek/tabular'
 Plug 'mbbill/undotree'
 "lots of additional text objects
 Plug 'wellle/targets.vim'
-"stuff mainly to hot typechek haskell code
-"Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
-"haskell completion engine
-"Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 "best autocompletion evaaaar
 Plug 'd86leader/vim-stupidcomplete'
 "rename opened file
@@ -37,10 +33,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'd86leader/vim-netrwild'
 "easier c++ writing
 Plug 'd86leader/vim-cpp-helper'
-"c++ completion
-if has("python") || has("python3")
-	Plug 'd86leader/clang_complete'
-endif
 "detect correct tabstop
 Plug 'd86leader/vim-sleuth'
 "indent movements

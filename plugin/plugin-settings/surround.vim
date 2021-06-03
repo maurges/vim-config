@@ -4,4 +4,3 @@ nmap     <Space>ss <Plug>Yssurround
 xmap     <Space>s  <Plug>VSurround
 "maps for most commonly used surround operations
 nnoremap <Space>b i(<End>)<C-C>
-nmap     <Space>B <<ySs}
