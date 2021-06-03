@@ -18,11 +18,13 @@ elseif filereadable("./build-remote.sh")
 	setlocal makeprg=./build-remote.sh
 elseif filereadable("./build.sh")
 	setlocal makeprg=./build.sh
+elseif filereadable("./justfile") && executable("just")
+	setlocal makeprg=just
 else
 	setlocal makeprg=make
 endif
 
-setlocal grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug,_build}\ --exclude=tags\ $*
+setlocal grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug,_build,build}\ --exclude=.cpptags\ $*
 
 
 setlocal tags+=.cpptags,./.cpptags
@@ -33,7 +35,7 @@ command! -nargs=? CppTags !universal-ctags --languages=c++,c -D "interface=class
 "write tags files
 augroup cpp_tags
 	autocmd!
-	autocmd BufWritePost *.cpp silent !univesal-ctags --append -D "interface=class" -o .cpptags %
+	autocmd BufWritePost *.cpp silent !universal-ctags --append -D "interface=class" -o .cpptags %
 augroup END
 
 "TODO: dynamically determine ctags executable from ctags and universal-ctags,

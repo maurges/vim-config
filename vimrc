@@ -64,6 +64,7 @@ Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'vmchale/dhall-vim'
 Plug 'd86leader/idris2-vim'
+Plug 'LnL7/vim-nix'
 
 call plug#end()
 
