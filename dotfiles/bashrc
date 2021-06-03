@@ -42,7 +42,7 @@ labs)
 algo)
 	ps1_dir='\[\e[01;35m\]\w\[\e[m\]'; #pink
 	;;
-blackwing)
+blackflame)
 	ps1_dir='\[\e[01;36m\]\w\[\e[m\]'; #light blue
 	;;
 workhorse)
