@@ -41,6 +41,14 @@ if executable('clangd')
 		\ })
 endif
 
+if executable('ccls')
+	au User lsp_setup call lsp#register_server({
+		\ 'name': 'ccls',
+		\ 'cmd': {server_info->['ccls']},
+		\ 'whitelist': ['cpp', 'c'],
+		\ })
+endif
+
 if executable('pyls')
 	" pip install python-language-server
 	au User lsp_setup call lsp#register_server({
@@ -65,6 +73,15 @@ if executable('ocamllsp')
 			\ 'name': 'ocamllsp',
 			\ 'cmd': {server_info->['ocamllsp']},
 			\ 'whitelist': ['ocaml'],
+			\ })
+endif
+
+if executable('haskell-language-server')
+	" opam install ocaml-lsp-server
+	au User lsp_setup call lsp#register_server({
+			\ 'name': 'haskell-language-server',
+			\ 'cmd': {server_info->['haskell-language-server-wrapper', '--lsp']},
+			\ 'whitelist': ['haskell', 'lhaskell'],
 			\ })
 endif
 
