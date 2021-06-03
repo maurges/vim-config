@@ -1,15 +1,32 @@
-" Disable floating stuff
-let g:lsp_virtual_text_enabled = 0
-let g:lsp_highlights_enabled = 0
-let g:lsp_textprop_enabled = 0
+" preview window doesn't steal focus
+let g:lsp_preview_keep_focus = 1
+" disable code action signs, whatever that is
+let g:lsp_document_code_action_signs_enabled = 0
+" disable highlighting symbol under cursor
+let g:lsp_document_highlight_enabled = 0
+" don't know what it is
+let g:lsp_signature_help_enabled = 0
+" disbale showing changes made in a workspace edit
+let g:lsp_show_workspace_edits = 0
+" disable semantic highlighting (although..)
+let g:lsp_semantic_enabled = 0
+
+" enable diagnostics
+let g:lsp_diagnostics_enabled = 1
+" but disable intrusiveness
 let g:lsp_diagnostics_echo_cursor = 0
 let g:lsp_diagnostics_float_cursor = 0
-let g:lsp_highlight_references_enabled = 0
-let g:lsp_signature_help_enabled = 0
+let g:lsp_diagnostics_highlights_enabled = 0
+let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
+let g:lsp_diagnostics_signs_enabled = 0
+let g:lsp_diagnostics_virtual_text_enabled = 0
+let g:lsp_diagnostics_virtual_text_insert_mode_enabled = 0
 
-" Disable other stuff
-let g:lsp_diagnostics_enabled = 0
-let g:lsp_signs_enabled = 0
+" don't use ignorecase, match strictly
+let g:lsp_ignorecase = v:false
+" write lsp logs
+let g:lsp_log_file = expand("$HOME") . "/.local/share/vim-lsp.log"
+
 
 " mappings
 nmap <leader>h <plug>(lsp-hover)
