@@ -41,14 +41,6 @@ if executable('clangd')
 		\ })
 endif
 
-if executable('ccls')
-	au User lsp_setup call lsp#register_server({
-		\ 'name': 'ccls',
-		\ 'cmd': {server_info->['ccls']},
-		\ 'whitelist': ['cpp', 'c'],
-		\ })
-endif
-
 if executable('pyls')
 	" pip install python-language-server
 	au User lsp_setup call lsp#register_server({
