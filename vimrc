@@ -399,8 +399,8 @@ cabbrev <expr> vsf (getcmdpos() == 4 && getcmdtype() == ":") ? "vert sfind" : "v
 cabbrev <expr> wmake (getcmdpos() == 6 && getcmdtype() == ":") ? "w <bar> make" : "wmake"
 
 "quickly diff files in split windows
-silent! command! -nargs=0 Diff   :windo setlocal diff cursorbind scrollbind
-silent! command! -nargs=0 Nodiff :windo setlocal nodiff nocursorbind noscrollbind
+silent! command! -nargs=0 Diff   :windo setlocal diff cursorbind scrollbind nowrap
+silent! command! -nargs=0 Nodiff :windo setlocal nodiff nocursorbind noscrollbind wrap
 
 
 "keep folds and other stuff when closing file
