@@ -24,6 +24,10 @@ else
 	setlocal makeprg=make
 endif
 
+if executable("clang-format")
+	setlocal formatprg=clang-format
+endif
+
 setlocal grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug,_build,build}\ --exclude=.cpptags\ $*
 
 

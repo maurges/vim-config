@@ -25,12 +25,30 @@ shopt -s globstar
 
 # colored prompt with color depending on the machine i'm using
 
+ps1_nix_prefix=''
+ps1_nix_suffix=''
 if [[ -n "$IN_NIX_SHELL" ]]; then
-	ps1_level='<NIX>'
-else
+	ps1_nix_prefix='['
+	ps1_nix_suffix=']'
+fi
+
+ps1_level=''
+if [[ $SHLVL -gt 1 ]]; then
+	# shellcheck disable=SC2016
 	ps1_level='<$SHLVL>'
 fi
-ps1_jobs='$(jobs | wc -l | tr -d "\\n")'
+
+format_jobs() {
+	local jobs_amount
+	read -r jobs_amount
+	if [[ $jobs_amount -eq 0 ]]; then
+		echo ""
+	else
+		echo "-$jobs_amount"
+	fi
+}
+# shellcheck disable=SC2016
+ps1_jobs='$(jobs | wc -l | tr -d "\\n" | format_jobs)'
 
 case $(hostname) in
 gypsy)
@@ -53,7 +71,7 @@ workhorse)
 	;;
 esac
 
-PROMPT='\[\e[01;32m\]\u'"$ps1_level"'@\h-'"$ps1_jobs"':'"$ps1_dir"'> '
+PROMPT='\[\e[01;32m\]'"$ps1_nix_prefix"'\u'"$ps1_level"'@\h'"$ps1_jobs""$ps1_nix_suffix"':'"$ps1_dir"'> '
 PS1="$PROMPT"
 
 # this doesn't fucking work
