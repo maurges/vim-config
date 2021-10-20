@@ -37,6 +37,8 @@ Plug 'd86leader/vim-cpp-helper'
 Plug 'd86leader/vim-sleuth'
 "indent movements
 Plug 'jeetsukumaran/vim-indentwise'
+"marker folds in foldmethod=syntax (doesn't work for indent)
+Plug 'Jorengarenar/vim-syntaxMarkerFold'
 "hacker scratchpad
 Plug 'metakirby5/codi.vim'
 "use nvim in firefox
