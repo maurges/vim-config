@@ -77,18 +77,12 @@ alias objdump='objdump --disassembler-options=intel'
 alias find='find 2>/dev/null'
 alias o='less'
 
-#to easily watch twitch broadcasts
-alias livetwitch='livestreamer --http-header Client-ID=jzkbprff40iqj646a697cyrvl0zt2m6'
-
 #faster zypper
 alias zypnr='zypper --no-refresh'
 
 #idaPRO lunchers
 alias ida='WINEDEBUG=-all wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.8/idaq.exe'
 alias ida64='WINEDEBUG=-all wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.8/idaq64.exe'
-
-#easier systemctl usage
-alias sctl='systemctl'
 
 #open files from console without stderr garbage
 alias open='xdg-open 2>/dev/null'
