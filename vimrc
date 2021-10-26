@@ -266,9 +266,9 @@ xnoremap <expr> k v:count ? (v:count > 3 ? ("m'" . v:count) : '') . 'k' : 'gk'
 nnoremap <expr> j v:count ? (v:count > 3 ? ("m'" . v:count) : '') . 'j' : 'gj'
 xnoremap <expr> j v:count ? (v:count > 3 ? ("m'" . v:count) : '') . 'j' : 'gj'
 "because 0 is easier to press
-nnoremap  0 ^
-xnoremap  0 ^
-onoremap  0 ^
+nnoremap <expr> <silent> 0 col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
+xnoremap <expr> <silent> 0 col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
+onoremap <expr> <silent> 0 col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
 nnoremap  ^ 0
 xnoremap  ^ 0
 onoremap  ^ 0
@@ -399,8 +399,8 @@ cabbrev <expr> vsf (getcmdpos() == 4 && getcmdtype() == ":") ? "vert sfind" : "v
 cabbrev <expr> wmake (getcmdpos() == 6 && getcmdtype() == ":") ? "w <bar> make" : "wmake"
 
 "quickly diff files in split windows
-silent! command! -nargs=0 Diff   :windo setlocal diff cursorbind scrollbind
-silent! command! -nargs=0 Nodiff :windo setlocal nodiff nocursorbind noscrollbind
+silent! command! -nargs=0 Diff   :windo setlocal diff cursorbind scrollbind nowrap
+silent! command! -nargs=0 Nodiff :windo setlocal nodiff nocursorbind noscrollbind wrap
 
 
 "keep folds and other stuff when closing file
