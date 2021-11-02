@@ -1,7 +1,7 @@
 "dab on the haters
 set nocompatible
 
-call plug#begin('~/.vim/bundle')
+call plug#begin(fnamemodify(expand("$MYVIMRC"), ":h") .. "/bundle")
 
 " Dependencies
 
