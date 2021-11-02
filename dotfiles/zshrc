@@ -1,0 +1,70 @@
+autoload -Uz compinit && compinit
+
+# use vi mode
+bindkey -v
+bindkey '^R' history-beginning-search-backward
+bindkey '^F' history-beginning-search-forward
+# use colors for programs
+export CLICOLOR=1
+
+setopt PROMPT_SUBST
+
+# Some applications read the EDITOR variable to determine your favourite text
+# editor. So uncomment the line below and enter the editor of your choice :-)
+export EDITOR="/usr/bin/env nvim"
+alias vim=nvim
+
+autoload -U colors && colors
+
+ps1_level=''
+if [[ $SHLVL -gt 1 ]]; then
+	ps1_level="<$SHLVL>"
+fi
+
+format_jobs() {
+	local jobs_amount="$(jobs | wc -l | tr -d '\n ')"
+	if [[ $jobs_amount -eq 0 ]]; then
+		echo ""
+	else
+		echo "-$jobs_amount"
+	fi
+}
+
+PS1="%{$fg[green]%}morj%{$ps1_level%}@mac:%{$(format_jobs)%}%{$fg[blue]%}%~%{$reset_color%}> "
+# nix shell uses bash, so we're clear here
+
+# some useful aliases from suse (and more)
+if [[ $(which ls) != "/bin/ls" ]]; then
+    alias ls='ls --color=auto'
+fi
+alias gdb='gdb -q'
+alias g='grep -i'
+alias objdump='objdump --disassembler-options=intel'
+alias o='less'
+
+exrb() {
+	if [[ $# -ne 1 ]]; then
+		echo "Usage: exrb expression";
+		return 1
+	fi
+	local command=$(echo "${1}" | tr -d '\n')
+	if [[ $command = "--help" ]]; then
+		echo "exrb - quickly run a ruby command and print its output";
+		return
+	fi
+	ruby -e "puts( eval( '${command}' ) )"
+}
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+zstyle :compinstall filename '/Users/n.sorokovikov/.zshrc'
+
+setopt noautomenu
+setopt nomenucomplete
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall

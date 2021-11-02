@@ -14,7 +14,7 @@
 
 # Some applications read the EDITOR variable to determine your favourite text
 # editor. So uncomment the line below and enter the editor of your choice :-)
-export EDITOR=/usr/bin/nvim
+export EDITOR="/usr/bin/env nvim"
 alias vim=nvim
 
 # Stack and many others install binaries here
@@ -49,6 +49,8 @@ format_jobs() {
 }
 # shellcheck disable=SC2016
 ps1_jobs='$(jobs | wc -l | tr -d "\\n" | format_jobs)'
+ps1_user="\u"
+ps1_host="\h"
 
 case $(hostname) in
 gypsy)
@@ -63,7 +65,9 @@ algo)
 blackflame)
 	ps1_dir='\[\e[01;36m\]\w\[\e[m\]'; #light blue
 	;;
-workhorse)
+macbook-n.sorokovikov)
+	ps1_user="morj"
+	ps1_host="mac"
 	ps1_dir='\[\e[02;34m\]\w\[\e[m\]'; #normal blue
 	;;
 *)
@@ -71,7 +75,7 @@ workhorse)
 	;;
 esac
 
-PROMPT='\[\e[01;32m\]'"$ps1_nix_prefix"'\u'"$ps1_level"'@\h'"$ps1_jobs""$ps1_nix_suffix"':'"$ps1_dir"'> '
+PROMPT="\[\e[01;32m\]$ps1_nix_prefix$ps1_user$ps1_level@$ps1_host$ps1_jobs$ps1_nix_suffix:$ps1_dir> "
 PS1="$PROMPT"
 
 # this doesn't fucking work
