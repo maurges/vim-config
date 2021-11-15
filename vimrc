@@ -457,6 +457,7 @@ augroup tempalates
 	autocmd BufNewFile stack.yaml call <sid>read_template("stack.yaml", 1, 10)
 	autocmd BufNewFile package.yaml call <sid>read_template("package.yaml", 1, 21)
 	autocmd BufNewFile Main.hs call <sid>read_template("Main.hs", 5, 7)
+	autocmd BufNewFile *.cabal call <sid>read_template("cabal.cabal", 1, 21)
 augroup END
 fun! s:read_template(name, ...) abort
 	exec ':0read ' . fnamemodify(expand("$MYVIMRC"), ":h")
