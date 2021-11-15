@@ -15,6 +15,7 @@ let g:lsp_log_file = expand("$HOME") . "/.local/share/vim-lsp.log"
 
 " enable diagnostics
 let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_highlights_enabled = 0
 let g:lsp_diagnostics_virtual_text_insert_mode_enabled = 0
 let g:lsp_diagnostics_virtual_text_prefix = "   ‣ "
 let g:lsp_diagnostics_signs_error = {"text": '✗'}
@@ -43,6 +44,8 @@ endif
 nmap <leader>h <plug>(lsp-hover)
 nmap <leader>a <plug>(lsp-code-action)
 cabbrev <expr> diag (getcmdpos() == 5 && getcmdtype() == ":") ? "LspDocumentDiagnostics" : "diag"
+nmap ]l <plug>(lsp-next-diagnostic-nowrap)
+nmap [l <plug>(lsp-previous-diagnostic-nowrap)
 
 " servers
 
