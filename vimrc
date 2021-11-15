@@ -303,9 +303,8 @@ nnoremap <Space>t gT
 "easily split lines
 nnoremap <Space>o i<CR><Esc>
 
-"open tag and let you choose the location
-nnoremap  <Space>] g<C-]>
-xnoremap  <Space>] g<C-]>
+"open tag and let you choose the location; essentially a case sensitive g_^]
+nnoremap <silent> <Space>] :exec "tjump /\\C^" . expand("<cword>") . "$"<cr>
 
 "found i use <C-W> a lot, but it's a pain to press
 nmap     <Space>w <C-W>

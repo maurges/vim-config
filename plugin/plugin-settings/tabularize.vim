@@ -16,10 +16,8 @@ xnoremap <silent> <Leader>t> :Tabularize cpp_io<CR>
 nnoremap <silent> <leader>t, :Tabularize argument_list<CR>
 xnoremap <silent> <leader>t, :Tabularize argument_list<CR>
 
-
-"with non-margin patterns
-nnoremap <silent> <Leader>t<Space> :Tabularize / /l0r0<CR>
-xnoremap <silent> <Leader>t<Space> :Tabularize / /l0r0<CR>
+nnoremap <silent> <Leader>t<Space> :Tabularize spaces<CR>
+xnoremap <silent> <Leader>t<Space> :Tabularize spaces<CR>
 
 
 "with basic patterns
