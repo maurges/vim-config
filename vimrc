@@ -37,6 +37,8 @@ Plug 'd86leader/vim-cpp-helper'
 Plug 'd86leader/vim-sleuth'
 "indent movements
 Plug 'jeetsukumaran/vim-indentwise'
+"marker folds in foldmethod=syntax (doesn't work for indent)
+Plug 'Jorengarenar/vim-syntaxMarkerFold'
 "hacker scratchpad
 Plug 'metakirby5/codi.vim'
 "use nvim in firefox
@@ -318,12 +320,8 @@ nnoremap <Space>l <C-W>l
 
 "some remaps to control completion
 inoremap <expr> <C-C> pumvisible() ? "\<C-E>" : "\<C-C>"
-inoremap <expr> <A-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>"
-inoremap <expr> ê     pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>"
-inoremap <expr> Ãª     pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>"
-inoremap <expr> <A-K> pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
-inoremap <expr> ë     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
-inoremap <expr> Ã«     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
+inoremap <expr> <C-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>"
+inoremap <expr> <C-K> pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 
 
 "a map to copy buffer in new tab
