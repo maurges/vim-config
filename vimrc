@@ -9,7 +9,7 @@ call plug#begin(fnamemodify(expand("$MYVIMRC"), ":h") .. "/bundle")
 "used by vim-surround and maybe others
 Plug 'tpope/vim-repeat'
 "used by vim-lsp
-Plug 'prabirshrestha/async.vim'
+"Plug 'prabirshrestha/async.vim'
 
 " General
 
@@ -48,8 +48,10 @@ endif
 
 " Language support plugins
 
+Plug 'neovim/nvim-lspconfig'
+
 " some are my forks while the authors neglect their repos
-Plug 'prabirshrestha/vim-lsp'
+"Plug 'prabirshrestha/vim-lsp'
 Plug 'd86leader/vim-qml'
 Plug 'd86leader/haskell-vim'
 Plug 'rust-lang/rust.vim'
