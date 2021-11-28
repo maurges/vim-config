@@ -48,7 +48,9 @@ endif
 
 " Language support plugins
 
-Plug 'neovim/nvim-lspconfig'
+if has("nvim-0.5.0")
+	Plug 'neovim/nvim-lspconfig'
+endif
 
 " some are my forks while the authors neglect their repos
 "Plug 'prabirshrestha/vim-lsp'
