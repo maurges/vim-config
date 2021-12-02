@@ -83,6 +83,12 @@ endfun
 
 fun! curlman#run_in_file() abort
 	let lines = getline(1, "$")
+
+	let is_script = v:false
+	if lines[0] =~ '^#!'
+		let is_script = v:true
+	endif
+
 	"remove comments
 	let comments = []
 	let i = 0
@@ -93,14 +99,20 @@ fun! curlman#run_in_file() abort
 			let i += 1
 		endif
 	endwhile
-	" maybe use comments for metainfo later
+	" maybe use comments for other metainfo later
 
 	call s:ensure_env_sourced()
 
-	" join with backslashes or not, depending if first line has them
-	let command = lines[0] =~ '\m\\$'
-		\ ? join(lines, "\n")
-		\ : join(lines, "\\\n")
+	" full path to current file
+	let command = [expand("%:p")]
+	" or just current file itself
+	if !is_script
+		" join with backslashes or not, depending if first line has them
+		let command = lines[0] =~ '\m\\$'
+			\ ? join(lines, "\n")
+			\ : join(lines, "\\\n")
+	endif
+
 	let [output, errors] = s:system(command)
 	if output == [] || output == [""]
 		let output = errors
