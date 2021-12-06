@@ -94,7 +94,7 @@ PROMPT_COMMAND=restore_prompt_after_nix_shell
 alias ls='ls --color=auto'
 alias :q=exit
 alias gdb='gdb -q'
-alias g?='grep -i'
+alias g='grep -i'
 alias objdump='objdump --disassembler-options=intel'
 alias find='find 2>/dev/null'
 alias o='less'
