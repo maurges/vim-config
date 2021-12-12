@@ -3,6 +3,7 @@ version:             0.1.0.0
 license:             BSD3
 author:              "d86leader"
 maintainer:          "d86leader@mail.com"
+synopsis:            Does stuff
 
 executables:
   app-exe:

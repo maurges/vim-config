@@ -15,17 +15,19 @@ elseif filereadable("./build-remote.sh")
 elseif filereadable("./build.sh")
 	setlocal makeprg=./build.sh
 else
-	setlocal makeprg=stack\ build
+	setlocal makeprg=stack\ build\ --fast
 endif
 
 "creates quickfix window to the right
 augroup haskell_qf
 	autocmd!
-	autocmd BufReadPost quickfix exec "normal! \<c-w>L"
+"	autocmd BufReadPost quickfix exec "normal! \<c-w>L"
 augroup end
 
 setlocal grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug,_build}\ --exclude=tags\ $*
 
+"try searching for lens-modified record field
+nnoremap <silent> <Space>] :exec "tjump /\\C^_\\?" . expand("<cword>") . "$"<cr>
 
 setlocal tags+=.hstags,./.hstags
 

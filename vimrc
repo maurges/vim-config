@@ -1,7 +1,7 @@
 "dab on the haters
 set nocompatible
 
-call plug#begin('~/.vim/bundle')
+call plug#begin(fnamemodify(expand("$MYVIMRC"), ":h") .. "/bundle")
 
 " Dependencies
 
@@ -9,7 +9,7 @@ call plug#begin('~/.vim/bundle')
 "used by vim-surround and maybe others
 Plug 'tpope/vim-repeat'
 "used by vim-lsp
-Plug 'prabirshrestha/async.vim'
+"Plug 'prabirshrestha/async.vim'
 
 " General
 
@@ -37,6 +37,8 @@ Plug 'd86leader/vim-cpp-helper'
 Plug 'd86leader/vim-sleuth'
 "indent movements
 Plug 'jeetsukumaran/vim-indentwise'
+"marker folds in foldmethod=syntax (doesn't work for indent)
+Plug 'Jorengarenar/vim-syntaxMarkerFold'
 "hacker scratchpad
 Plug 'metakirby5/codi.vim'
 "use nvim in firefox
@@ -46,8 +48,12 @@ endif
 
 " Language support plugins
 
+if has("nvim-0.5.0")
+	Plug 'neovim/nvim-lspconfig'
+endif
+
 " some are my forks while the authors neglect their repos
-Plug 'prabirshrestha/vim-lsp'
+"Plug 'prabirshrestha/vim-lsp'
 Plug 'd86leader/vim-qml'
 Plug 'd86leader/haskell-vim'
 Plug 'rust-lang/rust.vim'
@@ -303,9 +309,8 @@ nnoremap <Space>t gT
 "easily split lines
 nnoremap <Space>o i<CR><Esc>
 
-"open tag and let you choose the location
-nnoremap  <Space>] g<C-]>
-xnoremap  <Space>] g<C-]>
+"open tag and let you choose the location; essentially a case sensitive g_^]
+nnoremap <silent> <Space>] :exec "tjump /\\C^" . expand("<cword>") . "$"<cr>
 
 "found i use <C-W> a lot, but it's a pain to press
 nmap     <Space>w <C-W>
@@ -319,12 +324,8 @@ nnoremap <Space>l <C-W>l
 
 "some remaps to control completion
 inoremap <expr> <C-C> pumvisible() ? "\<C-E>" : "\<C-C>"
-inoremap <expr> <A-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>"
-inoremap <expr> ê     pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>"
-inoremap <expr> Ãª     pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>"
-inoremap <expr> <A-K> pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
-inoremap <expr> ë     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
-inoremap <expr> Ã«     pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
+inoremap <expr> <C-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>"
+inoremap <expr> <C-K> pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
 
 
 "a map to copy buffer in new tab
@@ -458,6 +459,7 @@ augroup tempalates
 	autocmd BufNewFile stack.yaml call <sid>read_template("stack.yaml", 1, 10)
 	autocmd BufNewFile package.yaml call <sid>read_template("package.yaml", 1, 21)
 	autocmd BufNewFile Main.hs call <sid>read_template("Main.hs", 5, 7)
+	autocmd BufNewFile *.cabal call <sid>read_template("cabal.cabal", 1, 21)
 augroup END
 fun! s:read_template(name, ...) abort
 	exec ':0read ' . fnamemodify(expand("$MYVIMRC"), ":h")
