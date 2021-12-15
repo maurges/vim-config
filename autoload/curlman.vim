@@ -8,7 +8,7 @@ fun! s:ensure_env_sourced() abort
 	if !g:curlman_did_source_env
 		for file in ["./curlman.vim", "./curlman/env.vim"]
 			if filereadable(file)
-				exec "source " . file
+				exec "source " .. file
 				let g:curlman_did_source_env = v:true
 				" do not return as we might want to source many files
 			endif
@@ -19,11 +19,11 @@ endfun
 " Create new scratch window and switch to it
 " @returns window id of the created window
 fun! s:new_scratch_window() abort
-	let bufname = "[output " . s:last_output_number . "]"
+	let bufname = "[output " .. s:last_output_number .. "]"
 	let s:last_output_number += 1
 	rightbelow vertical new
 	setlocal bufhidden=wipe buftype=nofile noswapfile
-	exec "file " . bufname
+	exec "file " .. bufname
 	return bufwinid("%")
 endfun
 
@@ -50,9 +50,13 @@ fun! s:format() abort
 	silent! %!python3 -m json.tool
 	if v:shell_error != 0
 		undo
+	else
+		setlocal filetype=json
+		return
 	endif
 
 	"maybe other formatters?
+	setlocal filetype=
 endfun
 
 " like system(), but collect stdout and stderr separately. Prints stderr as it
@@ -78,35 +82,84 @@ fun! s:system(cmd) abort
 	let id = jobstart(a:cmd, opts)
 	call jobwait([id])
 
+	" for some reason it inserts an empty line there
+	if len(out) > 0 && out[-1] == ""
+		call remove(out, -1)
+	endif
 	return [out, err]
 endfun
 
-fun! curlman#run_in_file() abort
-	let lines = getline(1, "$")
+" struct ParseResult
+" { is_script :: Bool
+" , sets_expressions :: [(String, String)]
+" }
 
-	let is_script = v:false
+" Remove comments from input, and parse metadata from comments
+" :: [String] -- ^ lines of file to parse
+" -> ( [String] -- ^ remaining file lines
+"    , ParseResult
+"    )
+fun! s:parse_lines(lines) abort
+	let lines = copy(a:lines)
+	let r = #{is_script: v:false, sets_expressions: []}
+
 	if lines[0] =~ '^#!'
-		let is_script = v:true
+		let r.is_script = v:true
 	endif
 
 	"remove comments
 	let comments = []
 	let i = 0
 	while i < len(lines)
-		if lines[i] =~ '\m^\s*#'
+		if a:lines[i] =~ '\m^\s*#'
 			call add(comments, remove(lines, i))
 		else
 			let i += 1
 		endif
 	endwhile
-	" maybe use comments for other metainfo later
 
+	for line in comments
+		let pos = match(line, '\m^\s*#\s* curlman:\zs')
+		if pos == -1 | continue | endif
+		let command = line[pos:]
+		let m = matchlist(command, '\m\s*sets\s\+\(\$\?\w\+\)\s*=\s*\(.\+\)')
+		if m == [] | continue | endif
+		call add(r.sets_expressions, [m[1], m[2]])
+	endfor
+
+	return [lines, r]
+endfun
+
+" Run expressions that set variables after program output. The expressions
+" were previously parsed from special program comments.
+" The expressions use current buffer as stdin
+fun! s:run_sets(sets) abort
+	let fname = tempname()
+	silent exec "write " .. fname
+	for [varname, expr] in a:sets
+		let [out, err] = s:system("<" .. fname .. " " .. expr)
+		if len(out) == 0
+			echoerr "No output of expression " .. expr
+		endif
+		if len(out) == 1
+			let resulting = trim(out[0])
+		else
+			let resulting = join(out, "\n")
+		endif
+		exec "let " .. varname .. " = resulting"
+	endfor
+endfun
+
+fun! curlman#run_in_file() abort
 	call s:ensure_env_sourced()
+
+	let lines = getline(1, "$")
+	let [lines, meta] = s:parse_lines(lines)
 
 	" full path to current file
 	let command = [expand("%:p")]
 	" or just current file itself
-	if !is_script
+	if !meta.is_script
 		" join with backslashes or not, depending if first line has them
 		let command = lines[0] =~ '\m\\$'
 			\ ? join(lines, "\n")
@@ -123,6 +176,9 @@ fun! curlman#run_in_file() abort
 	let old_output_pos = getpos(".")
 	call deletebufline("%", 1, "$")
 	call setline(1, output)
+
+	call s:run_sets(meta.sets_expressions)
+
 	call s:format()
 	call setpos(".", old_output_pos)
 	if !g:curlman_switch_to_result
@@ -146,6 +202,6 @@ endfunction
 
 fun! curlman#set_env(varname, value) abort
 	let temp = a:value
-	exec "let $" . a:varname . " = temp"
+	exec "let $" .. a:varname .. " = temp"
 endfun
 
