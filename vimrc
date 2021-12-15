@@ -45,6 +45,10 @@ Plug 'metakirby5/codi.vim'
 if has("nvim-0.4.0")
 	Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
+"command runner like postman
+if has("nvim-0.4.0")
+	Plug 'd86leader/curlman'
+endif
 
 " Language support plugins
 
