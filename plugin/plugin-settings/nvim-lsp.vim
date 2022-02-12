@@ -34,14 +34,23 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'clangd', 'pylsp', 'rls', 'ocamllsp', 'hls' }
-for _, lsp in ipairs(servers) do
-	nvim_lsp[lsp].setup {
-		on_attach = on_attach,
-		flags = {
-			debounce_text_changes = 150,
-		}
+local servers =
+	{ {'clangd', 'clangd'}
+	, {'pylsp', 'pylsp'}
+	, {'rls', 'rls'}
+	, {'ocamllsp', 'ocamllsp'}
+	, {'hls', 'haskell-language-server-wrapper'}
 	}
+for _, pair in ipairs(servers) do
+	local lsp, executable = unpack(pair)
+	if vim.fn.executable(executable) == 1 then
+		nvim_lsp[lsp].setup {
+			on_attach = on_attach,
+			flags = {
+				debounce_text_changes = 150,
+			}
+		}
+	end
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
