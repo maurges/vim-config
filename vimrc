@@ -398,6 +398,7 @@ nnoremap <Space>o :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
 
 "abbreviation for easier topleft window opening
 cabbrev <expr> tl (getcmdpos() == 3 && getcmdtype() == ":") ? "topleft" : "tl"
+cabbrev <expr> la (getcmdpos() == 3 && getcmdtype() == ":") ? "leftabove" : "la"
 "abbreviation for vertical split and find
 cabbrev <expr> vsf (getcmdpos() == 4 && getcmdtype() == ":") ? "vert sfind" : "vsf"
 "remake
