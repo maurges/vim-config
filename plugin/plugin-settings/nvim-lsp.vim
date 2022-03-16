@@ -2,10 +2,6 @@ if !has("nvim-0.5.0")
 	finish
 endif
 
-fun! LuaLspCompletionWrapper(findstart, base)
-	return v:lua.vim.lsp.omnifunc(a:findstart, a:base)
-endfun
-
 lua << EOF
 local nvim_lsp = require('lspconfig')
 
@@ -14,9 +10,6 @@ local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-	-- Enable completion triggered by <c-x><c-o>
-	buf_set_option('omnifunc', 'LuaLspCompletionWrapper')
 
 	-- Mappings.
 	local opts = { noremap=true, silent=true }
@@ -28,30 +21,36 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 	buf_set_keymap('n', '\\n', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 	buf_set_keymap('n', '\\e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-	buf_set_keymap('n', '[l', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-	buf_set_keymap('n', ']l', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+	buf_set_keymap('n', '[l', 'm\'<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+	buf_set_keymap('n', ']l', 'm\'<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 end
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers =
-	{ {'clangd', 'clangd'}
-	, {'pylsp', 'pylsp'}
-	, {'rls', 'rls'}
-	, {'ocamllsp', 'ocamllsp'}
-	, {'hls', 'haskell-language-server-wrapper'}
-	}
-for _, pair in ipairs(servers) do
-	local lsp, executable = unpack(pair)
+function setup(name, executable, settings)
 	if vim.fn.executable(executable) == 1 then
-		nvim_lsp[lsp].setup {
+		nvim_lsp[name].setup {
 			on_attach = on_attach,
 			flags = {
 				debounce_text_changes = 150,
-			}
+			},
+			settings = settings,
 		}
 	end
 end
+
+setup('clangd', 'clangd', nil)
+setup('pylsp', 'pylsp', nil)
+setup('rls', 'rls', nil)
+setup('ocamllsp', 'ocamllsp', nil)
+setup('hls', 'haskell-language-server', {
+	haskell = {
+		formattingProvider = "stylish-haskell",
+		plugin = {
+			hlint = {
+				globalOn = false,
+			},
+		},
+	}
+})
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
 	vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
