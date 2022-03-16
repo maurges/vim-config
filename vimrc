@@ -23,8 +23,6 @@ Plug 'godlygeek/tabular'
 Plug 'mbbill/undotree'
 "lots of additional text objects
 Plug 'wellle/targets.vim'
-"best autocompletion evaaaar
-Plug 'd86leader/vim-stupidcomplete'
 "rename opened file
 Plug 'danro/rename.vim'
 "highlight lines changed since last commit
@@ -56,8 +54,14 @@ if has("nvim-0.5.0")
 	Plug 'neovim/nvim-lspconfig'
 endif
 
+if has("nvim-0.5.0")
+	" nvim-cmp is a pluggable completion engine
+	Plug 'hrsh7th/cmp-nvim-lsp'
+	Plug 'hrsh7th/cmp-buffer'
+	Plug 'hrsh7th/nvim-cmp'
+endif
+
 " some are my forks while the authors neglect their repos
-"Plug 'prabirshrestha/vim-lsp'
 Plug 'd86leader/vim-qml'
 Plug 'd86leader/haskell-vim'
 Plug 'rust-lang/rust.vim'
@@ -209,10 +213,6 @@ augroup comment_formatoptions
 augroup END
 
 
-"using completion-aggregator as usercomplete function
-set completefunc=completion_aggreg#complete
-
-
 set termguicolors
 colo blues
 
@@ -326,12 +326,6 @@ nnoremap <Space>k <C-W>k
 nnoremap <Space>l <C-W>l
 
 
-"some remaps to control completion
-inoremap <expr> <C-C> pumvisible() ? "\<C-E>" : "\<C-C>"
-inoremap <expr> <C-J> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>"
-inoremap <expr> <C-K> pumvisible() ? "\<C-P>" : "\<C-X>\<C-U>\<C-P>\<C-P>"
-
-
 "a map to copy buffer in new tab
 nnoremap <C-W>t :tab split<CR>
 
@@ -423,13 +417,6 @@ fun! s:load_view() abort
 		silent! loadview
 	endif
 endfun
-
-
-"the following code removes omnicompletion window after the completion is finished
-augroup omniclose
-	autocmd!
-	autocmd CompleteDone * pclose
-augroup END
 
 
 "when leaving window, disable relativenumber
