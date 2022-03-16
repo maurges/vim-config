@@ -30,7 +30,7 @@ format_jobs() {
 	fi
 }
 
-PS1="%{$fg[green]%}morj%{$ps1_level%}@mac:%{$(format_jobs)%}%{$fg[blue]%}%~%{$reset_color%}> "
+PS1='%{$fg[green]%}morj%{$ps1_level%}@mac$(format_jobs):%{$fg[blue]%}%~%{$reset_color%}> '
 # nix shell uses bash, so we're clear here
 
 # some useful aliases from suse (and more)
