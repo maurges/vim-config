@@ -301,7 +301,7 @@ nnoremap � O<Esc>j
 "helpful for search and regexps
 cnoremap ;( \(\)<Left><Left>
 cnoremap ;) \(\)<Left><Left>
-cnoremap ;< \<\><Left><Left>
+cnoremap ;< '\<\>'<Left><Left><Left>
 cnoremap ;> \<\><Left><Left>
 
 "hotkeys for moving tabs
@@ -382,6 +382,8 @@ nnoremap <Leader>rn :setlocal relativenumber<CR>
 
 "convenient for file commands
 cnoremap <expr> ;; expand("%:h")
+"convenient for greps
+cnoremap <C-R>' '\<<C-R>"\>'
 
 
 " make n always search forward and N backward

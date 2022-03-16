@@ -25,7 +25,7 @@ endif
 
 " set typechecker to appropriate python version
 if b:python_version == 2
-	setlocal makeprg=mypy\ --py2
+	setlocal makeprg=mypy\ --check-untyped-defs\ --py2
 else
-	setlocal makeprg=mypy
+	setlocal makeprg=mypy\ --check-untyped-defs
 endif

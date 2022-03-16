@@ -47,6 +47,7 @@ silent! command! -nargs=0 Format :%!stack exec -- stylish-haskell
 iabbrev <buffer> lang# {-# LANGUAGE #-}<left><left><left><left>
 iabbrev <buffer> lang_os# {-# LANGUAGE OverloadedStrings #-}
 iabbrev <buffer> opt# {-# OPTIONS_GHC #-}<left><left><left><left>
+iabbrev <buffer> inline# {-# INLINE #-}<left><left><left><left>
 
 
 silent! command! -nargs=+ Stack :call <sid>stack_cmd(<q-args>)
