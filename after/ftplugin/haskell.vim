@@ -18,6 +18,12 @@ else
 	setlocal makeprg=stack\ build\ --fast
 endif
 
+if executable("hindent") && filereadable(".hindent.yaml")
+	setlocal formatprg=hindent
+elseif executable("stylish-haskell") && filereadable(".stylish-haskell.yaml")
+	setlocal formatprg=stylish-haskell
+endif
+
 "creates quickfix window to the right
 augroup haskell_qf
 	autocmd!
