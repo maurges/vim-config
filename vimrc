@@ -301,8 +301,8 @@ nnoremap � O<Esc>j
 "helpful for search and regexps
 cnoremap ;( \(\)<Left><Left>
 cnoremap ;) \(\)<Left><Left>
-cnoremap ;< '\<\>'<Left><Left><Left>
-cnoremap ;> \<\><Left><Left>
+cnoremap ;< \<\><Left><Left>
+cnoremap ;> '\<\>'<Left><Left><Left>
 
 "hotkeys for moving tabs
 nnoremap <silent> gmt :<C-U>tabm +1<CR>
