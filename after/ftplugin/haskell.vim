@@ -30,7 +30,7 @@ augroup haskell_qf
 "	autocmd BufReadPost quickfix exec "normal! \<c-w>L"
 augroup end
 
-setlocal grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug,_build}\ --exclude=tags\ $*
+setlocal grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug,_build}\ --exclude=.hstags\ $*
 
 "try searching for lens-modified record field
 nnoremap <silent> <Space>] :exec "tjump /\\C^_\\?" . expand("<cword>") . "$"<cr>
