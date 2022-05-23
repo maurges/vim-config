@@ -41,6 +41,8 @@ Plug 'jeetsukumaran/vim-indentwise'
 Plug 'Jorengarenar/vim-syntaxMarkerFold'
 "hacker scratchpad
 Plug 'metakirby5/codi.vim'
+"see latest git commit message
+Plug 'rhysd/git-messenger.vim'
 "use nvim in firefox
 if has("nvim-0.4.0")
 	Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
