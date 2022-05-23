@@ -496,3 +496,7 @@ if exists('g:started_by_firenvim')
 		autocmd!
 	augroup END
 endif
+
+fun! Now() abort
+	return strftime("%Y-%m-%d %H:%M")
+endfun
