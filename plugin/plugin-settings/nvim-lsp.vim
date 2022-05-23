@@ -42,6 +42,7 @@ end
 setup('clangd', 'clangd', nil)
 setup('pylsp', 'pylsp', nil)
 setup('rls', 'rls', nil)
+setup('rust_analyzer', 'rust-analyzer', nul)
 setup('ocamllsp', 'ocamllsp', nil)
 setup('hls', 'haskell-language-server', {
 	haskell = {
