@@ -65,9 +65,7 @@ algo)
 blackflame)
 	ps1_dir='\[\e[01;36m\]\w\[\e[m\]'; #light blue
 	;;
-macbook-n.sorokovikov)
-	ps1_user="morj"
-	ps1_host="mac"
+MacBook-Pro)
 	ps1_dir='\[\e[02;34m\]\w\[\e[m\]'; #normal blue
 	;;
 *)
