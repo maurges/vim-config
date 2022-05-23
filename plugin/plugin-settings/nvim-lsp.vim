@@ -63,5 +63,5 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 	)
 EOF
 
-cabbrev <expr> diag (getcmdpos() == 5 && getcmdtype() == ":") ? "lua vim.lsp.diagnostic.set_loclist()" : "diag"
-cabbrev <expr> refs (getcmdpos() == 5 && getcmdtype() == ":") ? "lua vim.lsp.buf.references()" : "refs"
+command! -nargs=0 Diagnostics :lua vim.lsp.diagnostic.set_loclist()
+command! -nargs=0 References :lua vim.lsp.buf.references()
