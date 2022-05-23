@@ -36,18 +36,13 @@ setlocal grepprg=grep\ -In\ --exclude-dir={.stack-work,_build_debug,_build}\ --e
 nnoremap <silent> <Space>] :exec "tjump /\\C^_\\?" . expand("<cword>") . "$"<cr>
 
 setlocal tags+=.hstags,./.hstags
-
 "generate tag files
 command! -nargs=0 HaskellTags !fast-tags -o .hstags -R .
-
 "write tags files
 augroup haskell_tags
 	autocmd!
 	autocmd BufWritePost *.hs	silent! !fast-tags -o .hstags %
 augroup END
-
-
-silent! command! -nargs=0 Format :%!stack exec -- stylish-haskell
 
 
 iabbrev <buffer> lang# {-# LANGUAGE #-}<left><left><left><left>
@@ -57,7 +52,7 @@ iabbrev <buffer> inline# {-# INLINE #-}<left><left><left><left>
 
 
 silent! command! -nargs=+ Stack :call <sid>stack_cmd(<q-args>)
-fun! s:stack_cmd(str) abort
+fun! s:stack_cmd(str) " no abort
 	let save_mkprg = &l:makeprg
 	setlocal makeprg=stack
 	exec "make " . a:str
@@ -68,7 +63,6 @@ cnoremap <buffer> <expr> ;: <sid>find_cabal()
 fun! s:find_cabal() abort
 	let path = expand("%:h")
 	while len(path) > 3 && path != "." && path != "./"
-		echom path
 		let names = glob(path . "/*.cabal", v:false, v:true)
 		echom string(names)
 		if len(names) == 1
@@ -77,7 +71,11 @@ fun! s:find_cabal() abort
 				return path
 			endif
 		endif
-		let path = simplify(path . "/..")
+		let new_path = simplify(path . "/..")
+		if new_path == path
+			break
+		endif
+		let path = new_path
 	endwhile
 	return ""
 endfun
