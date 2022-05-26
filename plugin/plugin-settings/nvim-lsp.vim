@@ -36,13 +36,15 @@ function setup(name, executable, settings)
 			},
 			settings = settings,
 		}
+		return true
+	else
+		return false
 	end
 end
 
 setup('clangd', 'clangd', nil)
 setup('pylsp', 'pylsp', nil)
-setup('rls', 'rls', nil)
-setup('rust_analyzer', 'rust-analyzer', nul)
+local _ = setup('rust_analyzer', 'rust-analyzer', nil) or setup('rls', 'rls', nil)
 setup('ocamllsp', 'ocamllsp', nil)
 setup('hls', 'haskell-language-server', {
 	haskell = {
