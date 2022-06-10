@@ -46,9 +46,9 @@ setup('clangd', 'clangd', nil)
 setup('pylsp', 'pylsp', nil)
 local _ = setup('rust_analyzer', 'rust-analyzer', nil) or setup('rls', 'rls', nil)
 setup('ocamllsp', 'ocamllsp', nil)
-setup('hls', 'haskell-language-server', {
+setup('hls', 'haskell-language-server-wrapper', {
 	haskell = {
-		formattingProvider = "stylish-haskell",
+		formattingProvider = "hindent",
 		plugin = {
 			hlint = {
 				globalOn = false,
