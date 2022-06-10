@@ -1,5 +1,3 @@
-autoload -Uz compinit && compinit
-
 # use vi mode
 bindkey -v
 bindkey '^R' history-beginning-search-backward
