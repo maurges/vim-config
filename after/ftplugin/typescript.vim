@@ -6,10 +6,11 @@ set makeprg=yarn\ build:local
 setlocal tags+=.tstags,./.tstags
 
 "generate tag files
-command! -nargs=? TsTags !universal-ctags --languages=TypeScript -o .tstags -R <args>
+let s:ctags = executable("universal-ctags") ? "universal-ctags" : "ctags"
+exec "command! -nargs=? TsTags !" .. s:ctags .. " --languages=TypeScript -o .tstags -R <args>"
 
 "write tags files
 augroup cpp_tags
 	autocmd!
-	autocmd BufWritePost *.cpp silent !universal-ctags --append -o .tstags %
+	autocmd BufWritePost *.cpp silent exec "!" .. s:ctags .. " --append -o .tstags %"
 augroup END
