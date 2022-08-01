@@ -69,6 +69,8 @@ Plug 'purescript-contrib/purescript-vim'
 Plug 'vmchale/dhall-vim'
 Plug 'd86leader/idris2-vim'
 Plug 'LnL7/vim-nix'
+Plug 'ziglang/zig.vim'
+Plug 'd86leader/vim-rescript'
 
 call plug#end()
 
