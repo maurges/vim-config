@@ -44,8 +44,10 @@ end
 
 setup('clangd', 'clangd', nil)
 setup('pylsp', 'pylsp', nil)
-local _ = setup('rust_analyzer', 'rust-analyzer', nil) or setup('rls', 'rls', nil)
 setup('ocamllsp', 'ocamllsp', nil)
+-- special setup with fallback for rust
+local _ = setup('rust_analyzer', 'rust-analyzer', nil) or setup('rls', 'rls', nil)
+-- setup for haskell with settings
 setup('hls', 'haskell-language-server-wrapper', {
 	haskell = {
 		formattingProvider = "hindent",
@@ -56,6 +58,16 @@ setup('hls', 'haskell-language-server-wrapper', {
 		},
 	}
 })
+-- special setup with cmd for rescript
+if vim.fn.executable('node') == 1 then
+	nvim_lsp.rescriptls.setup {
+		cmd = {'node', vim.env.HOME .. '/.local/share/atom-ide-rescript/vendor/server/out/server.js', '--stdio'},
+		on_attach = on_attach,
+		flags = {
+			debounce_text_changes = 150,
+		},
+	}
+end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
 	vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
@@ -68,3 +80,4 @@ EOF
 
 command! -nargs=0 Diagnostics :lua vim.lsp.diagnostic.set_loclist()
 command! -nargs=0 References :lua vim.lsp.buf.references()
+command! -nargs=0 SymbolRename :lua vim.lsp.buf.rename()

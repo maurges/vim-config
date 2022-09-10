@@ -70,6 +70,8 @@ Plug 'vmchale/dhall-vim'
 Plug 'd86leader/idris2-vim'
 Plug 'LnL7/vim-nix'
 Plug 'ron-rs/ron.vim'
+Plug 'ziglang/zig.vim'
+Plug 'd86leader/vim-rescript'
 
 call plug#end()
 
