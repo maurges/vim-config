@@ -76,8 +76,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 		, signs = true
 		}
 	)
+
 EOF
 
 command! -nargs=0 Diagnostics :lua vim.lsp.diagnostic.set_loclist()
 command! -nargs=0 References :lua vim.lsp.buf.references()
 command! -nargs=0 SymbolRename :lua vim.lsp.buf.rename()
+command! -nargs=0 -range=% Formatting :lua vim.lsp.buf.format()
