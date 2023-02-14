@@ -458,6 +458,7 @@ augroup END
 fun! s:tempfile_cleanup()
 	" remove files older than 30 days
 	exec "!find " . &undodir . " -type f -mtime +30 -exec rm {} \\;"
+	exec "!find " . &viewdir . " -type f -mtime +30 -exec rm {} \\;"
 endfun
 
 
