@@ -59,7 +59,6 @@ if has("nvim-0.5.0")
 endif
 
 " some are my forks while the authors neglect their repos
-"Plug 'prabirshrestha/vim-lsp'
 Plug 'd86leader/vim-qml'
 Plug 'd86leader/haskell-vim'
 Plug 'rust-lang/rust.vim'
@@ -72,6 +71,7 @@ Plug 'LnL7/vim-nix'
 Plug 'ron-rs/ron.vim'
 Plug 'ziglang/zig.vim'
 Plug 'd86leader/vim-rescript'
+Plug 'slint-ui/vim-slint'
 
 call plug#end()
 
