@@ -53,7 +53,7 @@ ps1_user="\u"
 ps1_host="\h"
 
 case $(hostname) in
-gypsy)
+ravenous)
 	ps1_dir='\[\e[01;33m\]\w\[\e[m\]'; #yellow
 	;;
 labs)
