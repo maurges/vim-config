@@ -455,10 +455,16 @@ augroup undofile_cleanup
 	autocmd!
 	autocmd VimLeavePre * call <sid>tempfile_cleanup()
 augroup END
-fun! s:tempfile_cleanup()
+fun! s:tempfile_cleanup() abort
 	" remove files older than 30 days
-	exec "!find " . &undodir . " -type f -mtime +30 -exec rm {} \\;"
-	exec "!find " . &viewdir . " -type f -mtime +30 -exec rm {} \\;"
+	if has('nvim')
+		"workaround for neovim bug #21856
+		call jobstart(["find", &undodir, "-type", "f", "-mtime", "+30", "-exec", "rm", "{}"], {"detach": v:true})
+		call jobstart(["find", &viewdir, "-type", "f", "-mtime", "+30", "-exec", "rm", "{}"], {"detach": v:true})
+	else
+		exec "!find " . &undodir . " -type f -mtime +30 -exec rm {} \\;"
+		exec "!find " . &viewdir . " -type f -mtime +30 -exec rm {} \\;"
+endif
 endfun
 
 
