@@ -15,10 +15,4 @@ augroup rust_tags
 augroup END
 
 
-silent! command! -nargs=+ Cargo :call <sid>cargo_cmd(<q-args>)
-fun! s:cargo_cmd(str) " no abort
-	let save_mkprg = &l:makeprg
-	setlocal makeprg=cargo
-	exec "make " . a:str
-	let &l:makeprg = save_mkprg
-endfun
+silent! command! -nargs=+ Cargo :call ftplugin#rust#cargo_cmd(<q-args>)
