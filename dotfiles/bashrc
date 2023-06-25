@@ -124,7 +124,7 @@ codi() {
 		return 1
 	fi
 	shift
-	/usr/bin/nvim -c "Codi $syntax" "$@"
+	nvim -c "Codi $syntax" "$@"
 }
 
 
