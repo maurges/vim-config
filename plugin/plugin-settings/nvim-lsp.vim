@@ -51,10 +51,15 @@ local _ = setup('rust_analyzer', 'rust-analyzer', nil) or setup('rls', 'rls', ni
 -- setup for haskell with settings
 setup('hls', 'haskell-language-server-wrapper', {
 	haskell = {
-		formattingProvider = "hindent",
+		formattingProvider = "fourmolu",
 		plugin = {
 			hlint = {
 				globalOn = false,
+			},
+			rename = {
+				config = {
+					diff = true,
+				},
 			},
 		},
 	}
