@@ -1,21 +1,29 @@
 " Description: the only two commands I ever used from fugitive, but without
 " bloat, taken from romainl's gists
 
-command! -nargs=? Gdiffsplit :call <SID>gdiffsplit(<q-args>)
+command! -nargs=* Gdiffsplit :call <SID>gdiffsplit(<f-args>)
 command! -nargs=0 Gblame :call <SID>gblame()
 
+fun! s:gdiffsplit(...) abort
+	let spec = ""
+	if a:0 >= 1
+		let spec = a:1
+	endif
 
-fun! s:gdiffsplit(spec) abort
-	let ft = &l:filetype
 	let file_path_full = expand("%:p")
+	let repo_path = fnamemodify(finddir('.git', '.;'), ':p:h:h')
+	let file_path = file_path_full[len(repo_path)+1:]
+	if a:0 == 2
+		let file_path = a:2
+	endif
+
+	let ft = &l:filetype
 
 	leftabove vertical new
 	setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile
 	let cmd = "++edit #"
-	if a:spec != ""
-		let repo_path = fnamemodify(finddir('.git', '.;'), ':p:h:h')
-		let file_path = file_path_full[len(repo_path)+1:]
-		let cmd = "!git -C " . shellescape(repo_path) . " show " . a:spec . ":" . shellescape(file_path)
+	if spec != ""
+		let cmd = "!git -C " . shellescape(repo_path) . " show " . spec . ":" . shellescape(file_path)
 	endif
 	execute "read " . cmd
 	silent 0d_
