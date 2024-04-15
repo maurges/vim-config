@@ -8,8 +8,6 @@ call plug#begin(fnamemodify(expand("$MYVIMRC"), ":h") .. "/bundle")
 "smarter .: aware of plugins
 "used by vim-surround and maybe others
 Plug 'tpope/vim-repeat'
-"used by vim-lsp
-"Plug 'prabirshrestha/async.vim'
 
 " General
 
