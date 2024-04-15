@@ -56,6 +56,9 @@ setup('hls', 'haskell-language-server-wrapper', {
 			hlint = {
 				globalOn = false,
 			},
+			stan = {
+				globalOn = false,
+			},
 			rename = {
 				config = {
 					diff = true,
