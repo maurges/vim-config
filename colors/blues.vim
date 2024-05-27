@@ -19,12 +19,15 @@ hi Directory     ctermfg=32     ctermbg=None  cterm=None  guifg=#0087d7  guibg=#
 hi ErrorMsg      ctermfg=203    ctermbg=None  cterm=None  guifg=#ff5f5f  guibg=#1c1c1c
 hi PreProc       ctermfg=248    ctermbg=None  cterm=None  guifg=#a8a8a8  guibg=#1c1c1c
 hi Search        ctermfg=227    ctermbg=None  cterm=None  guifg=#ffff5f  guibg=#1c1c1c
+hi CurSearch     ctermfg=227    ctermbg=None  cterm=None  guifg=#ffff5f  guibg=#1c1c1c
 hi Type          ctermfg=75     ctermbg=None  cterm=None  guifg=#5fafff  guibg=#1c1c1c
 hi Statement     ctermfg=75     ctermbg=None  cterm=None  guifg=#5fafff  guibg=#1c1c1c
+hi Operator      ctermfg=75     ctermbg=None  cterm=None  guifg=#5fafff  guibg=#1c1c1c
 hi Comment       ctermfg=242    ctermbg=None  cterm=None  guifg=#6c6c6c  guibg=#1c1c1c
 hi Identifier    ctermfg=105    ctermbg=None  cterm=None  guifg=#8787ff  guibg=#1c1c1c
 hi DiffText      ctermfg=203    ctermbg=None  cterm=None  guifg=#ff5f5f  guibg=#1c1c1c
 hi Constant      ctermfg=79     ctermbg=None  cterm=None  guifg=#5fd7af  guibg=#1c1c1c
+hi String        ctermfg=79     ctermbg=None  cterm=None  guifg=#5fd7af  guibg=#1c1c1c
 hi Todo          ctermfg=118    ctermbg=None  cterm=None  guifg=#87ff00  guibg=#1c1c1c
 hi Error         ctermfg=203    ctermbg=None  cterm=None  guifg=#ff5f5f  guibg=#1c1c1c
 hi Special       ctermfg=103    ctermbg=None  cterm=None  guifg=#8787af  guibg=#1c1c1c
