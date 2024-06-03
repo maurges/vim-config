@@ -25,6 +25,7 @@ hi Statement     ctermfg=75     ctermbg=None  cterm=None  guifg=#5fafff  guibg=#
 hi Operator      ctermfg=75     ctermbg=None  cterm=None  guifg=#5fafff  guibg=#1c1c1c
 hi Comment       ctermfg=242    ctermbg=None  cterm=None  guifg=#6c6c6c  guibg=#1c1c1c
 hi Identifier    ctermfg=105    ctermbg=None  cterm=None  guifg=#8787ff  guibg=#1c1c1c
+hi Function      ctermfg=105    ctermbg=None  cterm=None  guifg=#8787ff  guibg=#1c1c1c
 hi DiffText      ctermfg=203    ctermbg=None  cterm=None  guifg=#ff5f5f  guibg=#1c1c1c
 hi Constant      ctermfg=79     ctermbg=None  cterm=None  guifg=#5fd7af  guibg=#1c1c1c
 hi String        ctermfg=79     ctermbg=None  cterm=None  guifg=#5fd7af  guibg=#1c1c1c
