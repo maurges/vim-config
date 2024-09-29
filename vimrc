@@ -358,10 +358,6 @@ nnoremap q/ q/a
 nnoremap q? q?a
 
 
-"close all top-level folds
-nnoremap <silent> zg :%foldc<CR>
-
-
 "browser-like delete word i became familiar with
 inoremap <C-BS> <C-W>
 
