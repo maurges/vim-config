@@ -3,7 +3,7 @@ setlocal textwidth=80
 compiler cargo
 setlocal makeprg=cargo\ build
 
-setlocal grepprg=grep\ -In\ --exclude-dir=target\ --exclude=.rstags\ $*
+setlocal grepprg=grep\ -In\ --exclude-dir=target\ --exclude-dir=.git\ --exclude=.rstags\ $*
 
 setlocal tags +=.rstags,./.rstags
 "generate tag files
