@@ -1,8 +1,8 @@
 name:                
 version:             0.1.0.0
-license:             BSD3
-author:              "d86leader"
-maintainer:          "d86leader@mail.com"
+license:             GPL3
+author:              "morj"
+maintainer:          "contact@morj.com"
 synopsis:            Does stuff
 
 executables:
