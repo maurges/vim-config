@@ -46,8 +46,13 @@ end
 setup('clangd', 'clangd', nil)
 setup('pylsp', 'pylsp', nil)
 setup('ocamllsp', 'ocamllsp', nil)
--- special setup with fallback for rust
-local _ = setup('rust_analyzer', 'rust-analyzer', nil) or setup('rls', 'rls', nil)
+setup('rust_analyzer', 'rust-analyzer', {
+	["rust-analyzer"] = {
+		files = {
+			excludeDirs = { "/nix" },
+		},
+	},
+})
 -- setup for haskell with settings
 setup('hls', 'haskell-language-server-wrapper', {
 	haskell = {
