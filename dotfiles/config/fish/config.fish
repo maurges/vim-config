@@ -34,7 +34,21 @@ if status is-interactive
         end
         set --local jobs $(jobs | wc -l | tr -d " \\n" | format_jobs)
 
-        string join '' -- (set_color green) $nix_prefix $USER $level "@" (prompt_hostname) $jobs $nix_suffix ":" (set_color blue) (prompt_pwd --dir-length=0) (set_color normal) "> "
+        set --local dir_color "red"
+        switch (hostname)
+            case ravenous
+                set dir_color "bryellow"
+            case labs
+                set dir_color "blue"
+            case contaboserver
+                set dir_color "magenta"
+            case blackflame
+                set dir_color "brblue"
+            case MacBook-Pro
+                set dir_color "blue"
+        end
+
+        string join '' -- (set_color green) $nix_prefix $USER $level "@" (prompt_hostname) $jobs $nix_suffix ":" (set_color $dir_color) (prompt_pwd --dir-length=0) (set_color normal) "> "
     end
 end
 

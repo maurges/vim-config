@@ -10,3 +10,6 @@ ln -s "${HOME}/.vim/dotfiles/ghc/Morj_Ghci_Prompt.hs" "${HOME}/.ghc/Morj_Ghci_Pr
 
 ln -s "${HOME}/.vim/dotfiles/config/mpv" "${HOME}/.config/mpv"
 ln -s "${HOME}/.vim/dotfiles/config/streamlink" "${HOME}/.config/streamlink"
+
+mkdir -p "${HOME}/.config/fish"
+ln -s "${HOME}/.vim/dotfiles/config/fish/config.fish" "${HOME}/.config/fish/config.fish"
