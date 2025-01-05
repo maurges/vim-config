@@ -60,6 +60,7 @@ abbr --add objdump objdump --disassembler-options=intel
 abbr --add find find 2>/dev/null
 alias o less
 abbr --add jcurl curl -H "Content-Type: application/json"
+abbr --add zypnr zypper --no-refresh
 
 function disas
     objdump --disassembler-options=intel -D $argv | less
