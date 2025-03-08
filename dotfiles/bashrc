@@ -59,7 +59,7 @@ ravenous)
 labs)
 	ps1_dir='\[\e[01;34m\]\w\[\e[m\]'; #deep blue
 	;;
-contaboserver)
+thevps)
 	ps1_dir='\[\e[01;35m\]\w\[\e[m\]'; #pink
 	;;
 blackflame)
