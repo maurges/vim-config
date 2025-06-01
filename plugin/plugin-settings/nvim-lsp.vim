@@ -5,6 +5,11 @@ endif
 lua << EOF
 local nvim_lsp = require('lspconfig')
 
+local on_init = function(client)
+	-- Disable lsp-server adding highlighting
+	client.server_capabilities.semanticTokensProvider = nil
+end
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -23,15 +28,13 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', ']l', 'm\'<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 
 	vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-	-- Disable lsp-server adding highlighting
-	client.server_capabilities.semanticTokensProvider = nil
 end
 
 function setup(name, executable, settings)
 	if vim.fn.executable(executable) == 1 then
 		nvim_lsp[name].setup {
 			on_attach = on_attach,
+			on_init = on_init,
 			flags = {
 				debounce_text_changes = 150,
 			},
