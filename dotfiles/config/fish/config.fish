@@ -40,7 +40,7 @@ if status is-interactive
                 set dir_color "bryellow"
             case labs
                 set dir_color "blue"
-            case contaboserver
+            case thevps
                 set dir_color "magenta"
             case blackflame
                 set dir_color "brblue"
