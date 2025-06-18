@@ -2,6 +2,13 @@ set --global fish_greeting
 fish_config theme choose "Mono Smoke"
 set --global fish_autosuggestion_enabled 0
 
+set fish_cursor_default block
+set fish_cursor_insert block
+set fish_cursor_replace_one underscore
+set fish_cursor_replace underscore
+set fish_cursor_external block
+set fish_cursor_visual block
+
 set --global --export EDITOR "/usr/bin/env nvim"
 
 if status is-interactive
