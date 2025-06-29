@@ -5,14 +5,20 @@ endif
 lua << EOF
 local nvim_lsp = require('lspconfig')
 
+-- Semantic tokens is a way to provide highlighting by LSP. I hate it, and
+-- neovim moves its config around all the time, so disable it in all places I
+-- could find
+vim.lsp.handlers['textDocument/semanticTokens/full'] = function() end
 local on_init = function(client)
-	-- Disable lsp-server adding highlighting
 	client.server_capabilities.semanticTokensProvider = nil
 end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+	-- another attempt to disable semantic tokens
+	client.server_capabilities.semanticTokensProvider = nil
+
 	-- Mappings.
 	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -86,13 +92,30 @@ if vim.fn.executable('node') == 1 then
 	}
 end
 
+-- Disable dumb distracting diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
 	vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
 		{ underline = false
 		, virtual_text = false
+		, virtual_lines = false
+
+		, update_in_insert = false
 		, signs = true
 		}
 	)
+-- they changed the api again?
+vim.diagnostic.config(
+	{ underline = false
+	, virtual_text = false
+	, virtual_lines = false
+
+	, update_in_insert = false
+	, signs = true
+	}
+)
+-- Disable the new fucking diagnostic highlights
+vim.api.nvim_set_hl(0, "DiagnosticDeprecated", {})
+vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", {})
 
 EOF
 
