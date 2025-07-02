@@ -203,6 +203,11 @@ if has("win32")
 	set grepprg=grep\ -n
 endif
 
+if has("nvim")
+	" Disable tree-sitter
+	lua vim.treesitter.start = function() end
+endif
+
 
 
 "don't insert comment leader when creating a new line
