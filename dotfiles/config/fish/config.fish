@@ -3,6 +3,7 @@ fish_config theme choose "Mono Smoke"
 set --global fish_autosuggestion_enabled 0
 
 set --global --export EDITOR "/usr/bin/env nvim"
+set --global --export MANPAGER "nvim +Man!"
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
