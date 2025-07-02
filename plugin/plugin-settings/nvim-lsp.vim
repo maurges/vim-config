@@ -51,6 +51,9 @@ setup('rust_analyzer', 'rust-analyzer', {
 		files = {
 			excludeDirs = { "/nix" },
 		},
+		cargo = {
+			allFeatures = true,
+		},
 	},
 })
 -- setup for haskell with settings
