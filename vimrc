@@ -402,6 +402,10 @@ nnoremap <expr> , getcharsearch().forward ? ',' : ';'
 nnoremap <Space>o :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
 
 
+nnoremap <expr> "? "\"" .. question_register#question_register("normal")
+inoremap <expr> <C-R>? "\<C-R>" .. question_register#question_register("insert")
+
+
 "abbreviation for easier topleft window opening
 cabbrev <expr> tl (getcmdpos() == 3 && getcmdtype() == ":") ? "topleft" : "tl"
 cabbrev <expr> la (getcmdpos() == 3 && getcmdtype() == ":") ? "leftabove" : "la"
