@@ -45,7 +45,7 @@ if status is-interactive
                 set dir_color "magenta"
             case blackflame
                 set dir_color "brblue"
-            case MacBook-Pro
+            case XKY-FR-MBP16-US-LXLT4P
                 set dir_color "blue"
         end
 
