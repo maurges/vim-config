@@ -86,13 +86,35 @@ if vim.fn.executable('node') == 1 then
 	}
 end
 
+-- fix a bug with nvim interrupting typing randomly
+for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
+	local default_diagnostic_handler = vim.lsp.handlers[method]
+	vim.lsp.handlers[method] = function(err, result, context, config)
+		if err ~= nil and (err.code == -32802 or err.code == -32603) then
+			return
+		end
+		return default_diagnostic_handler(err, result, context, config)
+	end
+end
+-- disable distracting diagnostic elements
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
 	vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
 		{ underline = false
 		, virtual_text = false
 		, signs = true
+		, update_in_insert = false
+		, severity_sort = true
 		}
 	)
+-- the same but with the fucking new api
+vim.diagnostic.config(
+	{ underline = false
+	, virtual_text = false
+	, signs = true
+	, update_in_insert = false
+	, severity_sort = true
+	}
+)
 
 EOF
 
