@@ -7,8 +7,8 @@ synopsis:            Does stuff
 
 executables:
   app-exe:
-    main:                Main.hs
-    source-dirs:         src
+    main: Main.hs
+    source-dirs: src
     ghc-options:
     - -threaded
     - -rtsopts
@@ -16,3 +16,19 @@ executables:
     - -Wall -Wcompat
     dependencies:
     - base
+
+ghc-options:
+- -Wall -Wcompat
+- -Werror=incomplete-patterns
+default-extensions:
+- ApplicativeDo
+- BangPatterns
+- ConstraintKinds
+- DuplicateRecordFields
+- ExplicitForAll
+- LambdaCase
+- NamedFieldPuns
+- NumericUnderscores
+- OverloadedStrings
+- QuasiQuotes
+- ScopedTypeVariables
