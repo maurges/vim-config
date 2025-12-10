@@ -34,21 +34,43 @@ fun! s:gdiffsplit(...) abort
 endfun
 
 fun! s:gblame() abort
-	let cmd = "!git -C " . shellescape(expand('%:p:h')) . " annotate " . expand('%:t')
-	echom cmd
+  " a hack to fix scrollbind. This works, but fucks up scroll position
+	let save = getpos(".")
+	normal! gg
+
+	let cmd = "git -C " . shellescape(expand('%:p:h')) . " blame --line-porcelain " . expand('%:t')
+	let git_output = system(cmd)
+	let chunks = split(git_output, "\t[^\n]*\\zs\n")
+	" map each chunk to an ouptut line
+	let output = []
+	for chunk in chunks
+		let fields = split(chunk, "\n")
+		let commit = fields[0][0:8]
+		" first is commit id, last is line itself. Rest is fields with names
+		let fields = fields[1:-2]
+		let fs = {}
+		for field in fields
+			let space_pos = stridx(field, " ")
+			let name = field[:space_pos-1]
+			let val = field[space_pos+1:]
+			let fs[name] = val
+		endfor
+		let s = commit .. " " .. fs["committer"] .. "(" .. strftime("%Y %b %d", fs["committer-time"]) .. "): " .. fs["summary"]
+		let output += [s]
+	endfor
 
 	leftabove vertical new
 	setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile
 	setlocal nowrap
 	vertical resize 40
-	execute "read " . cmd
-	silent 0d_
+	call append(0, output)
+	silent $d_
 
-	" this shit doesn't work!
-	setlocal cursorbind scrollbind
-	wincmd p
-	let save = getpos(".")
+	" right now we're in the split with blame output
 	normal! gg
 	setlocal cursorbind scrollbind
+	wincmd p
+	setlocal cursorbind scrollbind
+  " we did gg in the original split at the start of this function
 	call setpos(".", save)
 endfun
