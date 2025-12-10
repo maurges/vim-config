@@ -2,6 +2,13 @@ set --global fish_greeting
 fish_config theme choose "Mono Smoke"
 set --global fish_autosuggestion_enabled 0
 
+set fish_cursor_default block
+set fish_cursor_insert block
+set fish_cursor_replace_one underscore
+set fish_cursor_replace underscore
+set fish_cursor_external block
+set fish_cursor_visual block
+
 set --global --export EDITOR "/usr/bin/env nvim"
 set --global --export MANPAGER "nvim +Man!"
 
@@ -41,7 +48,7 @@ if status is-interactive
                 set dir_color "bryellow"
             case labs
                 set dir_color "blue"
-            case contaboserver
+            case thevps
                 set dir_color "magenta"
             case blackflame
                 set dir_color "brblue"
@@ -61,6 +68,7 @@ abbr --add objdump objdump --disassembler-options=intel
 abbr --add find find 2>/dev/null
 alias o less
 abbr --add jcurl curl -H "Content-Type: application/json"
+abbr --add zypnr zypper --no-refresh
 
 function disas
     objdump --disassembler-options=intel -D $argv | less
