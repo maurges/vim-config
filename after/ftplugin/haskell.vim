@@ -14,6 +14,8 @@ elseif filereadable("./build-remote.sh")
 	setlocal makeprg=./build-remote.sh
 elseif filereadable("./build.sh")
 	setlocal makeprg=./build.sh
+elseif executable("stack.sh")
+	setlocal makeprg=stack.sh\ build\ --fast
 else
 	setlocal makeprg=stack\ build\ --fast
 endif
