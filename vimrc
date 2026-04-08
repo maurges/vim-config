@@ -439,6 +439,12 @@ augroup omniclose
 	autocmd CompleteDone * pclose
 augroup END
 
+"open the quickfix/loclist window at the bottom instead of a random split
+augroup qflist
+	autocmd!
+	autocmd BufWinEnter * if &buftype == "quickfix" | exec "normal! \<c-w>J" | endif
+augroup END
+
 
 "when leaving window, disable relativenumber
 augroup relativenumber
