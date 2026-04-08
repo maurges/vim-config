@@ -1,8 +1,14 @@
 {-# LANGUAGE FunctionalDependencies, FlexibleInstances #-}
 module Morjlude
     ( egcd, modInverse
+    , showHex
     , unwrap
     ) where
+
+import qualified Numeric
+
+showHex :: Integral a => a -> String
+showHex a = Numeric.showHex a ""
 
 egcd :: Integer -> Integer -> (Integer, Integer, Integer)
 egcd a 0 = (a, 1, 0)
