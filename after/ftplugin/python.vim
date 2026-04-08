@@ -1,12 +1,3 @@
-" Determine which python we're using
-let b:python_version = 0
-if getline(1) =~ 'python3'
-	let b:python_version = 3
-elseif getline(1) =~ 'python[^3]\?$'
-	let b:python_version = 2
-endif
-
-
 "syntax folding doesn't work for some reason
 setlocal foldmethod=indent
 
@@ -17,15 +8,11 @@ iabbrev <buffer> read_array# map(int, raw_input().strip().split(' '))
 iabbrev <buffer> init# def __init__(self,):<left><left>
 iabbrev <buffer> init: def __init__(self):
 
-if has('python3')
-	setlocal omnifunc=python3complete#Complete
-else
-	setlocal omnifunc=pythoncomplete#Complete
-endif
+setlocal omnifunc=python3complete#Complete
 
 " set typechecker to appropriate python version
-if b:python_version == 2
-	setlocal makeprg=mypy\ --check-untyped-defs\ --py2
-else
+if executable("mypy")
 	setlocal makeprg=mypy\ --check-untyped-defs
+elseif executable("ty")
+	setlocal makeprg=ty\ check\ --output-format=concise
 endif
