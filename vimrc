@@ -19,8 +19,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'godlygeek/tabular'
 "undo tree visualisation
 Plug 'mbbill/undotree'
-"lots of additional text objects
-Plug 'wellle/targets.vim'
 "best autocompletion evaaaar
 Plug 'd86leader/vim-stupidcomplete'
 "rename opened file
@@ -37,10 +35,6 @@ Plug 'd86leader/vim-sleuth'
 Plug 'jeetsukumaran/vim-indentwise'
 "marker folds in foldmethod=syntax (doesn't work for indent)
 Plug 'Jorengarenar/vim-syntaxMarkerFold'
-"hacker scratchpad
-Plug 'metakirby5/codi.vim'
-"see latest git commit message
-Plug 'rhysd/git-messenger.vim'
 "use nvim in firefox
 if has("nvim-0.4.0")
 	Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
