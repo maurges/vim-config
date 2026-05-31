@@ -106,18 +106,6 @@ for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) d
 	end
 end
 -- Disable dumb distracting diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-	vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
-		{ underline = false
-		, virtual_text = false
-		, virtual_lines = false
-
-		, update_in_insert = false
-		, signs = true
-		, severity_sort = true
-		}
-	)
--- The same but with the fucking new api
 vim.diagnostic.config(
 	{ underline = false
 	, virtual_text = false
