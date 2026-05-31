@@ -35,14 +35,6 @@ Plug 'd86leader/vim-sleuth'
 Plug 'jeetsukumaran/vim-indentwise'
 "marker folds in foldmethod=syntax (doesn't work for indent)
 Plug 'Jorengarenar/vim-syntaxMarkerFold'
-"use nvim in firefox
-if has("nvim-0.4.0")
-	Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-endif
-"command runner like postman
-if has("nvim-0.4.0")
-	Plug 'd86leader/curlman'
-endif
 
 " Language support plugins
 
@@ -54,15 +46,10 @@ endif
 Plug 'd86leader/vim-qml'
 Plug 'd86leader/haskell-vim'
 Plug 'rust-lang/rust.vim'
-Plug 'momota/cisco.vim'
 Plug 'pbrisbin/vim-syntax-shakespeare'
-Plug 'purescript-contrib/purescript-vim'
-Plug 'vmchale/dhall-vim'
-Plug 'd86leader/idris2-vim'
 Plug 'LnL7/vim-nix'
 Plug 'ron-rs/ron.vim'
 Plug 'ziglang/zig.vim'
-Plug 'd86leader/vim-rescript'
 Plug 'slint-ui/vim-slint'
 
 call plug#end()
