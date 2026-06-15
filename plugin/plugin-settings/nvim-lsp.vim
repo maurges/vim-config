@@ -24,11 +24,20 @@ end
 -- jump was added only recently
 local diag_prev_cmd, diag_next_cmd
 if vim.diagnostic.jump then
-	diag_prev_cmd = '<cmd>lua vim.diagnostic.jump({count = -1, float = false})<CR>'
-	diag_next_cmd = '<cmd>lua vim.diagnostic.jump({count = 1, float = false})<CR>'
+	local function on_jump(diagnostic, bufnr)
+		if not diagnostic then return end
+		vim.cmd("normal! m'")
+		vim.diagnostic.open_float({
+			bufnr = bufnr,
+			scope = 'cursor',
+			focus = false,
+		})
+	end
+	diag_prev = function() vim.diagnostic.jump({count=-1, on_jump=on_jump}) end
+	diag_next = function() vim.diagnostic.jump({count=1, on_jump=on_jump}) end
 else
-	diag_prev_cmd = '<cmd>lua vim.diagnostic.goto_prev()<CR>'
-	diag_next_cmd = '<cmd>lua vim.diagnostic.goto_next()<CR>'
+	diag_prev_cmd = vim.diagnostic.goto_prev
+	diag_next_cmd = vim.diagnostic.goto_next
 end
 
 -- Use an on_attach function to only map the following keys
@@ -38,17 +47,16 @@ local on_attach = function(client, bufnr)
 	client.server_capabilities.semanticTokensProvider = nil
 
 	-- Mappings.
-	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-	local opts = { noremap=true, silent=true }
+	local opts = { remap=false, silent=true, buf=bufnr }
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	buf_set_keymap('n', '\\h', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-	buf_set_keymap('n', '\\a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-	buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-	buf_set_keymap('n', '\\d', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-	buf_set_keymap('n', '<C-K>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-	buf_set_keymap('n', '\\e', '<cmd>lua vim.diagnostic.open_float(nil)<CR>', opts)
-	buf_set_keymap('n', '[l', 'm\'' .. diag_prev_cmd, opts)
-	buf_set_keymap('n', ']l', 'm\'' .. diag_next_cmd, opts)
+	vim.keymap.set('n', '\\h', vim.lsp.buf.hover, opts)
+	vim.keymap.set('n', '\\a', vim.lsp.buf.code_action, opts)
+	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+	vim.keymap.set('n', '\\d', vim.lsp.buf.type_definition, opts)
+	vim.keymap.set('n', '<C-K>', vim.lsp.buf.signature_help, opts)
+	vim.keymap.set('n', '\\e', function() vim.diagnostic.open_float(nil) end, opts)
+	vim.keymap.set('n', '[l', diag_prev, opts)
+	vim.keymap.set('n', ']l', diag_next, opts)
 
 	vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 end
