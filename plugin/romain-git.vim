@@ -11,7 +11,7 @@ fun! s:gdiffsplit(...) abort
 	endif
 
 	let file_path_full = expand("%:p")
-	let repo_path = fnamemodify(finddir('.git', '.;'), ':p:h:h')
+	let repo_path = systemlist(["git", "-C", expand("%:p:h"), "rev-parse", "--show-toplevel"])[0]
 	let file_path = file_path_full[len(repo_path)+1:]
 	if a:0 == 2
 		let file_path = a:2

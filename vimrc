@@ -134,6 +134,11 @@ set iminsert=0
 set imsearch=0
 "use persistent undo
 set undofile
+"disable fold gutter in diff mode
+set diffopt+=foldcolumn:0
+"stop diff when a window is closed
+set diffopt+=closeoff
+
 "directories for temp files
 if has("win32")
 	let prefix = fnamemodify(expand("$MYVIMRC"), ":h") . "/tempfiles/"
