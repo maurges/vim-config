@@ -77,3 +77,5 @@ function disas
 end
 
 set --global --export NIX_BUILD_SHELL fshell
+
+set --global --export STACK_XDG 1

@@ -163,3 +163,5 @@ exrb() {
 	fi
 	ruby -e "puts( eval( '${command}' ) )"
 }
+
+export STACK_XDG=1
