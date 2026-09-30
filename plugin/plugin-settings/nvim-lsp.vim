@@ -25,29 +25,37 @@ local diag_next = function() vim.diagnostic.jump({count=1, on_jump=on_jump}) end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-	-- another attempt to disable semantic tokens
-	client.server_capabilities.semanticTokensProvider = nil
+vim.api.nvim_create_autocmd('LspAttach', {
+	callback = function(args)
+		local bufnr = args.buf
 
-	-- Mappings.
-	local opts = { remap=false, silent=true, buf=bufnr }
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	vim.keymap.set('n', '\\h', vim.lsp.buf.hover, opts)
-	vim.keymap.set('n', '\\a', vim.lsp.buf.code_action, opts)
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-	vim.keymap.set('n', '\\d', vim.lsp.buf.type_definition, opts)
-	vim.keymap.set('n', '<C-K>', vim.lsp.buf.signature_help, opts)
-	vim.keymap.set('n', '\\e', function() vim.diagnostic.open_float(nil) end, opts)
-	vim.keymap.set('n', '[l', diag_prev, opts)
-	vim.keymap.set('n', ']l', diag_next, opts)
+		-- another attempt to disable semantic tokens
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if client then
+			client.server_capabilities.semanticTokensProvider = nil
+		end
 
-	vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
-end
+		-- Mappings.
+		local opts = { remap=false, silent=true, buf=bufnr }
+		-- See `:help vim.lsp.*` for documentation on any of the below functions
+		vim.keymap.set('n', '\\h', vim.lsp.buf.hover, opts)
+		vim.keymap.set('n', '\\a', vim.lsp.buf.code_action, opts)
+		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+		vim.keymap.set('n', '\\d', vim.lsp.buf.type_definition, opts)
+		vim.keymap.set('n', '<C-K>', vim.lsp.buf.signature_help, opts)
+		vim.keymap.set('n', '\\e', function() vim.diagnostic.open_float(nil) end, opts)
+		vim.keymap.set('n', '[l', diag_prev, opts)
+		vim.keymap.set('n', ']l', diag_next, opts)
+
+		vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
+	end,
+})
 
 vim.lsp.config('*', {
-	on_attach = on_attach,
 	on_init = on_init,
 	flags = { debounce_text_changes = 150 },
+	-- Don't advertize support for semantic tokens
+	capabilities = { textDocument = { semanticTokens = vim.NIL } },
 })
 
 function setup(name, executable, settings)
