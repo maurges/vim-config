@@ -9,6 +9,8 @@ set fish_cursor_replace underscore
 set fish_cursor_external block
 set fish_cursor_visual block
 
+set --global --append fish_features no-keyboard-protocols
+
 set --global --export EDITOR "/usr/bin/env nvim"
 set --global --export MANPAGER "nvim +Man!"
 
